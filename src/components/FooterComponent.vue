@@ -32,7 +32,7 @@
 <template>
   <footer class="bg-[#2C2C2C] text-center text-white py-6 border-t-4 border-[#be985d]">
     <div class="container mx-auto">
-      <p class="text-lg">&copy; {{ currentYear }} NewsHub.</p>
+      <p class="text-lg">&copy; {{ currentYear }} NewsHub. Hecho por Javier Cruz Rojas</p>
       
       <!-- Social media links -->
       <div class="flex justify-center space-x-4 mt-4">
