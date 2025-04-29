@@ -8,10 +8,12 @@ const cargando = ref(true);
 const error = ref(null);
 let intervalId = null;
 
+console.log('API_URL:', import.meta.env.VITE_API_URL);
 const fetchNoticias = () => {
     cargando.value = true;
     // Combinar la URL base con la ruta específica
-    fetch(`${import.meta.env.VITE_API_BASE_URL}/api/noticias/ultimas-noticias`)
+    fetch(import.meta.env.VITE_API_URL + '/api/noticias/ultimas-noticias')
+      
     .then(response => {
         if (!response.ok) {
             throw new Error(`¡Error HTTP! Estado: ${response.status}`);

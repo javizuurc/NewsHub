@@ -22,9 +22,13 @@
 
   const submitForm = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/evaluar-noticia', {
-        url: newsUrl.value
-      });
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/noticias/evaluar-noticia`,
+    {
+      url: newsUrl.value
+    }
+  );
+
 
       score.value = Number(response.data.score);
       console.log('Puntuación:', score.value);

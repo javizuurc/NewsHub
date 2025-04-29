@@ -20,7 +20,7 @@ const capitalize = (str) => {
 
 const fetchTopicosDiarios = () => {
     cargandoDiarios.value = true;
-    fetch(`${import.meta.env.VITE_API_BASE_URL}/api/noticias/topicos-diarios`)
+    fetch(import.meta.env.VITE_API_URL + '/api/noticias/topicos-diarios')
     .then(response => {
         if (!response.ok) {
             throw new Error(`¡Error HTTP! Estado: ${response.status}`);
@@ -50,7 +50,7 @@ const fetchTopicosDiarios = () => {
 
 const fetchTopicosSemanales = () => {
     cargandoSemanales.value = true;
-    fetch(`${import.meta.env.VITE_API_BASE_URL}/api/noticias/topicos-semanales`)
+    fetch(import.meta.env.VITE_API_URL + '/api/noticias/topicos-semanales')
     .then(response => {
         if (!response.ok) {
             throw new Error(`¡Error HTTP! Estado: ${response.status}`);
