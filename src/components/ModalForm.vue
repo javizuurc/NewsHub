@@ -23,7 +23,7 @@
   const submitForm = async () => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/noticias/evaluar-noticia`,
+        `${import.meta.env.VITE_API_URL}/api/ai/evaluar-noticia`,
     {
       url: newsUrl.value
     }

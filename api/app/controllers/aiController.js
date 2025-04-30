@@ -108,6 +108,53 @@ class AIController {
             });
         }
     }
+
+    async getEvaluarNoticia(req, res) {
+        try {
+          const url = req.body.url;
+          console.log(req.body)
+      
+          if (!url) {
+            return res.status(400).json({ success: false, message: "URL no proporcionada" });
+          }
+      
+          const regex = /^https?:\/\/(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+(\/.*)?$/;
+          if (!regex.test(url)) {
+            return res.status(400).json({ success: false, message: "URL inválida" });
+          }
+      
+          const prompt = PROMPTS.EVALUACION_URL.replace('{URL}', url);
+          const respuestaOpenAI = await this.aiService.evaluarURLNoticia(prompt);
+
+      
+          // Intentar extraer un número del string
+          const parsed = parseFloat(respuestaOpenAI.match(/-?\d+(\.\d+)?/)?.[0]);
+      
+          if (isNaN(parsed)) {
+            return res.status(500).json({
+              success: false,
+              score: null,
+              message: "No se pudo interpretar la respuesta de OpenAI",
+              respuesta_raw: respuestaOpenAI
+            });
+          }
+      
+          return res.status(200).json({
+            success: true,
+            score: parsed
+          });
+      
+        } catch (error) {
+            console.error('Error al evaluar la noticia:', error);
+          return res.status(500).json({
+            success: false,
+            message: "Error al obtener la puntuación",
+            error: error.message || error
+          });
+        }
+      }
+
 }
 
 module.exports = new AIController();
+

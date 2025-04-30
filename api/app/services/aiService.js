@@ -130,6 +130,55 @@ class AIService {
       };
     }
   }
+
+
+
+
+  async evaluarURLNoticia(prompt) {
+    try {
+      const apiKeyError = this.verificarAPI();
+      if (apiKeyError) return apiKeyError;
+  
+      const response = await axios.post('https://api.openai.com/v1/chat/completions', {
+        model: this.model,
+        messages: [
+          { role: "system", content: "Eres un analista experto en medios de comunicación. Evalúas el sesgo ideológico en base a URLs de noticias." },
+          { role: "user", content: prompt }
+        ],
+        max_tokens: 20,
+        temperature: 0.2
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${this.apiKey}`
+        },
+        timeout: 30000
+      });
+  
+      if (!response.data?.choices?.[0]?.message?.content) {
+        console.error("Respuesta inesperada:", response.data);
+        return { error: "Formato inesperado de respuesta de OpenAI" };
+      }
+  
+      return response.data.choices[0].message.content.trim();
+  
+    } catch (error) {
+      console.error("Error al llamar a OpenAI desde evaluarURLNoticia:");
+  
+      if (error.response) {
+        console.error("Respuesta con error:", error.response.data);
+        return { error: "Respuesta inválida de OpenAI", detalle: error.response.data };
+      } else if (error.request) {
+        console.error("No hubo respuesta:", error.request);
+        return { error: "No hubo respuesta de OpenAI" };
+      } else {
+        console.error("Error inesperado:", error.message);
+        return { error: "Error inesperado: " + error.message };
+      }
+    }
+  }
+  
+  
 }
 
 module.exports = new AIService();

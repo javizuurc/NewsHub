@@ -37,6 +37,7 @@ class ElPais(ModeloPeriodico):
                                     'articulo': parrafo_p.get_text(strip=True) if parrafo_p else '',
                                     'url': url_articulo
                                 }
+                                print(datos)
                                 articulos.append(datos)
         return articulos
     
@@ -77,3 +78,6 @@ class ElPais(ModeloPeriodico):
                                             }
                                             articulos.append(datos)
         return articulos
+
+elpais0=ElPais()
+elpais0.obtener_noticias()

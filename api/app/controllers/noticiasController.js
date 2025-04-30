@@ -165,26 +165,7 @@ class NoticiasController {
         }
     }
 
-    async evaluarNoticia(req, res) {
-        try {
-          const url = req.body.url;
-          if (!url) {
-            return res.status(400).json({ success: false, message: "URL no proporcionada" });
-          }
-          const score = Math.random() * 10;
       
-          return res.status(200).json({
-            success: true,
-            score: score.toFixed(2)
-          });
-        } catch (error) {
-          return res.status(500).json({
-            success: false,
-            message: "Error al evaluar la noticia",
-            error: error.message
-          });
-        }
-      }
       
 
 
@@ -198,5 +179,6 @@ module.exports = {
     almacenarEnBBDD: controller.almacenarEnBBDD.bind(controller),
     getUltimasNoticias: controller.getUltimasNoticias.bind(controller),
     getTopicosDiarios: controller.getTopicosDiarios.bind(controller),
-    getTopicosSemanales: controller.getTopicosSemanales.bind(controller)
+    getTopicosSemanales: controller.getTopicosSemanales.bind(controller),
+   // getEvaluarNoticia: controller.getEvaluarNoticia.bind(controller)
 };

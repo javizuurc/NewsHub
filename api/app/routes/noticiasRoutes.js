@@ -7,8 +7,7 @@ router.post('/crear-json', noticiasController.crearJSON);
 router.post('/guardar-noticia-json', noticiasController.guardarNoticiaJSON);
 router.get('/ver-json', noticiasController.verJSON);
 router.post('/almacenar-bbdd', noticiasController.almacenarEnBBDD);
-// evaluar noticias externas
-router.post('evaluar-noticia', noticiasController.evaluarNoticia);
+
 
 // Nuevas rutas para consultas a la base de datos
 router.get('/ultimas-noticias', noticiasController.getUltimasNoticias);

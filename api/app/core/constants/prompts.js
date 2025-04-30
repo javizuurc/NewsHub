@@ -75,6 +75,11 @@ module.exports = {
 
     `,
 
-  EVALUACION_URL: `Evalúa el sesgo ideológico del periódico basado en la URL proporcionada. 
-      Limítate a dar simplemente un número del -6 al +6 siendo -6 extrema izquierda y 6 extrema derecha.`
+    EVALUACION_URL: `
+    Evalúa el sesgo ideológico del periódico basado en la siguiente URL: {URL}
+    Devuelve únicamente un número entre -6 y +6, donde:
+    -6 es extrema izquierda, 0 es centro, +6 es extrema derecha.
+    No incluyas explicaciones ni texto adicional. Solo el número.
+    `
+    
 };
