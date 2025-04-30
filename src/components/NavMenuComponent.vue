@@ -46,12 +46,11 @@
             @click="openModal" 
             class="py-2 px-4 bg-[#5A5A5A] hover:bg-[#be985d] text-white rounded transition-colors duration-300"
           >
-           Analiza el sesgo ideológico
+           Analiza tu propia noticia
           </button>
         </li>
       </ul>
 
-      <!-- Eliminado el segundo botón de menú hamburguesa que estaba aquí -->
     </div>
 
     <div 
@@ -76,7 +75,7 @@
     <ModalForm 
       v-if="showModal" 
       :show="showModal" 
-      title="Analiza el sesgo ideológico" 
+      title="Analiza tu propia noticia" 
       @close="showModal = false"
       @submit="handleFormSubmit"
     />
