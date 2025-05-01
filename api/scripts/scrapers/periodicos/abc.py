@@ -42,13 +42,18 @@ class ABC(ModeloPeriodico):
                                                 autor_p = soup_art.find('p', class_='voc-author__name')
                                                 subtitulos_h2 = soup_art.find_all('h2')
                                                 parrafo_p = soup_art.find('p', class_='voc-p')
+                                                time_tag = soup_art.find('time', class_='voc-author__time')
+                                                fecha = time_tag['datetime'][:10] if time_tag else ''
+
                                                 
                                                 datos = {
                                                     'autor': autor_p.get_text(strip=True) if autor_p else '',
                                                     'titulo': titulo_h1.get_text(strip=True) if titulo_h1 else '',
                                                     'subtitulo': ' '.join([h2.get_text(strip=True) for h2 in subtitulos_h2]),
                                                     'articulo': parrafo_p.get_text(strip=True) if parrafo_p else '',
-                                                    'url': url_articulo
+                                                    'url': url_articulo,
+                                                    'fecha_publicacion': fecha
                                                 }
                                                 articulos.append(datos)
         return articulos
+    
