@@ -9,6 +9,6 @@ router.post('/almacenar-bbdd', noticiasController.almacenarEnBBDD);
 router.get('/ultimas-noticias', noticiasController.getUltimasNoticias);
 router.get('/topicos-diarios', noticiasController.getTopicosDiarios);
 router.get('/topicos-semanales', noticiasController.getTopicosSemanales);
-
+router.get('/contar-noticias', noticiasController.getContadorNoticias);
 
 module.exports = router;

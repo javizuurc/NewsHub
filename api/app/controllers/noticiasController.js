@@ -163,11 +163,27 @@ class NoticiasController {
         }
     }
 
-      
-      
-
-
+    async getContadorNoticias(req, res) {
+        try {
+            console.log("Obteniendo últimas noticias de cada periódico...");
+            
+            const sequelize = BBDD.getSequelize();
+            const [results] = await sequelize.query(QUERIES.CONTAR_NOTICIAS);
+            
+            return res.status(200).json({
+                success: true,
+                data: results
+            });
+        } catch (error) {
+            console.error("Error al obtener últimas noticias:", error);
+            return res.status(500).json({
+                success: false,
+                message: "Error al obtener las últimas noticias",
+                error: error.message
+            });
+        }
+    }
 }
 
 const controller = new NoticiasController();
-module.exports = controller; //Si da error el exprés aquí puede estar el causante
+module.exports = controller;

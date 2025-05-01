@@ -59,6 +59,15 @@ const QUERIES = {
         ORDER BY 
             frecuencia DESC
         LIMIT 6
+    `,
+    CONTAR_NOTICIAS: `
+        SELECT COUNT(id) FROM noticias
+    `,
+    CONTAR_PERIODICOS: `
+        SELECT id FROM periodicos
+    `,
+    MEDIA_CALIFICACION_NOTICIAS: `
+    SELECT AVG(coeficiente) FROM noticias
     `
 };
 

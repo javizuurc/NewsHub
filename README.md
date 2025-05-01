@@ -40,7 +40,19 @@ npm install
 Configure sus variables de entorno siguiendo la estructura que le proporcionamos:
 
 ```
-ESTRUCTURA
+OPENAI_API_KEY = 
+
+DB_NAME     = database
+DB_USER     = root
+DB_PASS = 11092001
+DB_HOST     = 127.0.0.1
+DB_DIALECT  = mysql
+DB_LOGIN  = false
+```
+
+además de otro al mismo nivel del proyecto con este parámetro:
+```
+VITE_API_URL=http://localhost:3000
 ```
 
 #### 6. Inicie la API
