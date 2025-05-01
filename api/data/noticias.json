@@ -42,6 +42,20 @@
       "El artículo se enfoca en la política energética del Gobierno, un tema que suele ser de interés para los lectores de derechas.",
       "Se menciona a la exministra Teresa Ribera, del PSOE, en un tono neutral, lo que puede indicar una postura de derechas.",
       "El periódico ABC es conocido por su orientación de derechas."
+    ],
+    "id_claves": [
+      84,
+      85,
+      86,
+      88,
+      89,
+      90,
+      91,
+      93,
+      94,
+      95,
+      96,
+      97
     ]
   },
   {
@@ -87,6 +101,19 @@
       "El enfoque de la noticia se centra en la figura de Beatriz Corredor, presidenta de Red Eléctrica, sin ofrecer una visión crítica de su gestión.",
       "El tono utilizado hacia Beatriz Corredor es neutro, sin cuestionar su decisión de no dimitir tras el apagón.",
       "El artículo no cuestiona las políticas públicas o la gestión de Red Eléctrica, lo que se alinea con la línea editorial de ABC, un periódico de derechas."
+    ],
+    "id_claves": [
+      86,
+      100,
+      101,
+      106,
+      107,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114
     ]
   },
   {
@@ -138,6 +165,28 @@
       "El artículo se publica en ABC, un periódico conocido por su orientación de derechas.",
       "El enfoque de la noticia es crítico con la gestión de la energía renovable, una postura más común en la derecha política.",
       "Se menciona a Beatriz Corredor, presidenta de Red Eléctrica, en un tono crítico, lo que puede indicar una postura de derechas."
+    ],
+    "id_claves": [
+      86,
+      116,
+      107,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129,
+      130,
+      131,
+      132,
+      133
     ]
   },
   {
@@ -187,6 +236,28 @@
       "El artículo se centra en explicar el funcionamiento de la generación de electricidad, sin tomar una postura clara a favor o en contra de ninguna fuente de energía.",
       "No se mencionan figuras políticas ni se toma una postura sobre políticas públicas.",
       "El tono del artículo es neutral y técnico, centrado en explicar un proceso más que en argumentar una posición."
+    ],
+    "id_claves": [
+      135,
+      136,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146,
+      147,
+      148,
+      149,
+      150,
+      151,
+      152,
+      153,
+      154
     ]
   },
   {
@@ -236,6 +307,20 @@
       "El artículo se centra en la investigación de un suceso de interés público, lo cual es una característica común en medios de comunicación de derechas.",
       "Se menciona a la Junta de Castilla y León y a Carlos Fernández Carriedo, consejero de Economía y Hacienda, lo cual indica un enfoque en la política y el gobierno.",
       "El periódico ABC es conocido por su orientación ideológica de derechas."
+    ],
+    "id_claves": [
+      2,
+      155,
+      157,
+      86,
+      158,
+      103,
+      91,
+      159,
+      160,
+      161,
+      162,
+      166
     ]
   },
   {
@@ -289,6 +374,27 @@
       "El artículo proviene de ABC, un periódico conocido por tener una orientación ideológica de derechas.",
       "El enfoque del artículo es económico y tecnológico, temas que suelen ser de interés para las ideologías de derechas.",
       "El artículo menciona el 'boom' renovable de una manera que podría interpretarse como crítica, lo que puede ser indicativo de una postura más conservadora hacia las políticas de energía."
+    ],
+    "id_claves": [
+      172,
+      173,
+      117,
+      174,
+      175,
+      88,
+      176,
+      86,
+      177,
+      181,
+      107,
+      182,
+      183,
+      184,
+      158,
+      90,
+      185,
+      186,
+      102
     ]
   },
   {
@@ -335,6 +441,20 @@
       "La noticia se centra en criticar a una figura política del Gobierno, en este caso la subdelegada del Gobierno en Zaragoza, por un supuesto uso indebido de recursos públicos.",
       "El tono utilizado hacia la subdelegada del Gobierno es negativo, lo que sugiere una postura de oposición hacia el Gobierno actual.",
       "La noticia se publicó en ABC, un periódico conocido por su orientación ideológica de derechas."
+    ],
+    "id_claves": [
+      188,
+      189,
+      191,
+      192,
+      193,
+      86,
+      194,
+      196,
+      197,
+      198,
+      199,
+      200
     ]
   },
   {
@@ -379,6 +499,22 @@
       "El artículo se publica en ABC, un periódico conocido por su orientación ideológica de derechas.",
       "El tono del artículo es de validación y reconocimiento hacia los 'preparacionistas', un grupo que podría asociarse con ideologías de supervivencia y autodefensa, más comunes en la derecha.",
       "El artículo no menciona políticas públicas ni figuras políticas, pero su enfoque en la autosuficiencia individual frente a las crisis puede interpretarse como una postura más conservadora."
+    ],
+    "id_claves": [
+      86,
+      205,
+      206,
+      207,
+      85,
+      208,
+      210,
+      211,
+      212,
+      213,
+      214,
+      215,
+      216,
+      217
     ]
   },
   {
@@ -434,6 +570,17 @@
       "El artículo se centra en criticar la decisión del Tribunal Constitucional de no declarar inconstitucional la Ley Trans, una ley que ha sido impulsada por partidos de izquierdas y que ha generado controversia en sectores conservadores.",
       "El tono del artículo es claramente crítico hacia Pedro Sánchez y su gobierno de coalición, sugiriendo que la decisión del TC está motivada por intereses políticos y no por criterios jurídicos.",
       "El artículo menciona a figuras políticas de izquierdas (Pedro Sánchez, Juan Carlos Campo, Irene Montero) en un tono negativo, mientras que el Partido Popular, de derechas, es presentado como la parte que ha presentado el recurso de inconstitucionalidad contra la Ley Trans."
+    ],
+    "id_claves": [
+      222,
+      224,
+      225,
+      226,
+      230,
+      232,
+      233,
+      234,
+      235
     ]
   },
   {
@@ -494,6 +641,20 @@
       "El artículo se enfoca en la política energética del Gobierno, un tema que suele ser de interés para los medios de derechas.",
       "El tono utilizado hacia la presidenta de Red Eléctrica y la ministra de Transición Ecológica es crítico, lo que sugiere una postura de derechas.",
       "El artículo cuestiona la teoría del ciberataque propuesta por el Gobierno, lo que indica una postura contraria a la línea editorial del periódico, que es de derechas."
+    ],
+    "id_claves": [
+      86,
+      245,
+      101,
+      246,
+      249,
+      250,
+      251,
+      253,
+      88,
+      94,
+      254,
+      255
     ]
   },
   {
@@ -551,6 +712,27 @@
       "El artículo critica fuertemente al gobierno actual, representado por Sánchez, y a sus asesores, particularmente a Iván Redondo y Diego Rubio.",
       "El tono utilizado hacia las figuras políticas mencionadas es despectivo y acusatorio, sugiriendo una orientación ideológica contraria a la de dichas figuras.",
       "El artículo defiende la idea de que la responsabilidad de los apagones recae en el gobierno, lo cual puede interpretarse como una postura a favor de la reducción del gasto público y en contra de la intervención del estado en la economía."
+    ],
+    "id_claves": [
+      268,
+      255,
+      269,
+      270,
+      271,
+      272,
+      273,
+      86,
+      274,
+      275,
+      276,
+      277,
+      258,
+      278,
+      279,
+      280,
+      281,
+      282,
+      283
     ]
   },
   {
@@ -599,6 +781,21 @@
       "Se menciona a figuras políticas del PP y del Gobierno, con un tono más favorable hacia el PP.",
       "Se critica la política energética del Gobierno, especialmente en relación a las energías renovables y nucleares.",
       "El artículo sigue la línea editorial de Libertad Digital, que es un medio de comunicación de derechas."
+    ],
+    "id_claves": [
+      292,
+      293,
+      150,
+      294,
+      295,
+      296,
+      254,
+      268,
+      298,
+      88,
+      86,
+      299,
+      255
     ]
   },
   {
@@ -656,6 +853,28 @@
       "El artículo critica fuertemente a Pedro Sánchez y su gobierno, especialmente en relación a su gestión de la crisis energética y el apagón.",
       "Se menciona la 'asfixia' y 'discriminación' que sufren las nucleares frente a otras tecnologías, sugiriendo una postura favorable hacia las nucleares y crítica hacia las políticas de energías renovables.",
       "El artículo sugiere que el gobierno es responsable de la situación actual, mencionando que los reactores estaban parados porque 'así se lo había autorizado el operador del sistema, Red Eléctrica, una empresa controlada por el Ejecutivo'."
+    ],
+    "id_claves": [
+      150,
+      86,
+      85,
+      302,
+      303,
+      88,
+      304,
+      305,
+      103,
+      306,
+      139,
+      307,
+      308,
+      309,
+      310,
+      311,
+      312,
+      313,
+      107,
+      314
     ]
   },
   {
@@ -720,6 +939,30 @@
       "El artículo se enfoca en la economía, específicamente en el aumento del precio de la electricidad en España.",
       "El tono del artículo es neutral, presentando hechos y cifras sin tomar una postura ideológica clara.",
       "A pesar de la neutralidad del contenido, el periódico Libertad Digital es conocido por su orientación de derechas."
+    ],
+    "id_claves": [
+      135,
+      86,
+      323,
+      136,
+      324,
+      325,
+      326,
+      329,
+      330,
+      331,
+      332,
+      323,
+      333,
+      334,
+      335,
+      338,
+      339,
+      340,
+      341,
+      344,
+      345,
+      346
     ]
   },
   {
@@ -769,6 +1012,24 @@
       "El artículo critica la política energética del gobierno de Pedro Sánchez, especialmente en lo que respecta a las energías renovables y el gas natural.",
       "El artículo defiende la necesidad de incentivos económicos para mantener la viabilidad de las centrales de ciclo combinado, lo que se alinea con una visión de libre mercado.",
       "El artículo fue publicado en Libertad Digital, un medio conocido por su orientación ideológica de derechas."
+    ],
+    "id_claves": [
+      195,
+      136,
+      350,
+      351,
+      352,
+      353,
+      354,
+      149,
+      355,
+      88,
+      257,
+      356,
+      357,
+      358,
+      359,
+      360
     ]
   },
   {
@@ -820,6 +1081,20 @@
       "El artículo critica la postura del presidente Pedro Sánchez, una figura política de izquierdas, sobre la tecnología nuclear y su relación con el reciente apagón.",
       "El enfoque del artículo es pro-nuclear, lo que generalmente se asocia con una postura de derechas que favorece las soluciones de mercado y energéticas tradicionales sobre las renovables.",
       "El periódico Libertad Digital es conocido por su orientación ideológica de derechas, lo que influye en la interpretación de la noticia."
+    ],
+    "id_claves": [
+      150,
+      86,
+      364,
+      96,
+      365,
+      366,
+      255,
+      88,
+      367,
+      368,
+      158,
+      303
     ]
   },
   {
@@ -876,6 +1151,18 @@
       "El tono utilizado hacia las figuras políticas mencionadas, especialmente hacia Sánchez y el gobierno en general, es mayoritariamente crítico, lo que sugiere una postura de oposición a la actual administración de centro-izquierda.",
       "El artículo menciona la necesidad de una mayor inversión en infraestructuras tras la DANA, lo que se alinea con una postura de izquierdas que defiende la inversión pública en servicios y bienestar social.",
       "El periódico El Plural es conocido por su orientación de izquierdas, lo que también influye en la clasificación ideológica del artículo."
+    ],
+    "id_claves": [
+      86,
+      373,
+      374,
+      258,
+      334,
+      375,
+      338,
+      136,
+      381,
+      382
     ]
   },
   {
@@ -939,6 +1226,28 @@
       "El tono del artículo es neutral hacia las figuras políticas mencionadas, lo que indica un enfoque de izquierdas que prioriza los hechos y la objetividad sobre la ideología.",
       "El artículo aboga por la resolución de conflictos a través del diálogo y la diplomacia, lo cual es una postura típicamente asociada con las izquierdas.",
       "El periódico El Plural es conocido por su orientación de izquierdas, lo que también influye en la clasificación ideológica del artículo."
+    ],
+    "id_claves": [
+      390,
+      391,
+      392,
+      393,
+      394,
+      395,
+      396,
+      397,
+      398,
+      399,
+      400,
+      401,
+      393,
+      402,
+      403,
+      404,
+      405,
+      406,
+      407,
+      408
     ]
   },
   {
@@ -1079,6 +1388,86 @@
       "El artículo critica la postura del Partido Popular y su rechazo al plan del Gobierno para responder a la guerra comercial de Trump.",
       "Se menciona la defensa del PP de la energía nuclear, una postura generalmente asociada con la derecha política.",
       "El periódico El Plural es conocido por su orientación de izquierdas, lo que puede influir en el enfoque de la noticia."
+    ],
+    "id_claves": [
+      292,
+      422,
+      423,
+      295,
+      424,
+      425,
+      427,
+      84,
+      293,
+      429,
+      430,
+      431,
+      245,
+      366,
+      432,
+      433,
+      71,
+      94,
+      254,
+      434,
+      435,
+      86,
+      436,
+      439,
+      158,
+      90,
+      257,
+      440,
+      442,
+      443,
+      445,
+      446,
+      447,
+      448,
+      449,
+      450,
+      451,
+      452,
+      453,
+      454,
+      95,
+      455,
+      456,
+      457,
+      458,
+      459,
+      460,
+      434,
+      461,
+      462,
+      435,
+      463,
+      464,
+      465,
+      150,
+      466,
+      467,
+      470,
+      51,
+      471,
+      464,
+      465,
+      137,
+      150,
+      472,
+      296,
+      254,
+      86,
+      474,
+      150,
+      475,
+      476,
+      477,
+      478,
+      479,
+      429,
+      481,
+      482
     ]
   },
   {
@@ -1129,6 +1518,16 @@
       "La noticia se centra en criticar al PP, un partido de derechas, lo que indica una orientación de izquierdas.",
       "El tono utilizado hacia el PP es negativo, lo que sugiere una postura de izquierdas.",
       "La noticia se publicó en El Plural, un periódico conocido por su orientación de izquierdas."
+    ],
+    "id_claves": [
+      178,
+      29,
+      485,
+      487,
+      488,
+      492,
+      495,
+      496
     ]
   },
   {
@@ -1179,6 +1578,20 @@
       "El autor muestra una perspectiva positiva sobre la vida sin tecnología, lo que puede interpretarse como una crítica a la dependencia de la tecnología en la sociedad actual, una postura más común en la izquierda.",
       "El autor menciona la importancia de los servicios públicos, como la radio pública, durante el apagón, lo que puede interpretarse como una defensa de los servicios públicos, una postura más común en la izquierda.",
       "El autor muestra una perspectiva positiva sobre la vida en la jubilación, lo que puede interpretarse como una defensa de los derechos de los jubilados, una postura más común en la izquierda."
+    ],
+    "id_claves": [
+      86,
+      501,
+      502,
+      136,
+      504,
+      505,
+      506,
+      507,
+      508,
+      512,
+      513,
+      514
     ]
   },
   {
@@ -1230,6 +1643,23 @@
       "El tono hacia las figuras políticas del PP y Vox es negativo, lo que sugiere una orientación de izquierdas.",
       "El artículo destaca la falta de transparencia y la gestión del gobierno, temas que suelen ser enfocados desde una perspectiva de izquierdas.",
       "El periódico 'El Plural' es conocido por su orientación de izquierdas, lo que se refleja en la noticia."
+    ],
+    "id_claves": [
+      521,
+      522,
+      2,
+      523,
+      524,
+      525,
+      526,
+      527,
+      528,
+      529,
+      530,
+      268,
+      531,
+      532,
+      334
     ]
   },
   {
@@ -1287,6 +1717,28 @@
       "La noticia menciona a Santiago Abascal, líder de Vox, y a Quim Torra, expresidente de la Generalitat, en un tono negativo, lo que sugiere una postura de izquierdas.",
       "La noticia resalta la ilegalidad y gravedad de las acciones de Vox, lo que puede interpretarse como una crítica a las políticas de derecha.",
       "El periódico El Plural es conocido por su orientación de izquierdas, lo que influye en la clasificación ideológica de la noticia."
+    ],
+    "id_claves": [
+      535,
+      536,
+      537,
+      538,
+      539,
+      540,
+      541,
+      542,
+      543,
+      544,
+      545,
+      546,
+      547,
+      548,
+      549,
+      550,
+      551,
+      552,
+      553,
+      554
     ]
   },
   {
@@ -1367,7 +1819,47 @@
       "El enfoque en la necesidad de transparencia y colaboración entre el gobierno y las empresas eléctricas refleja una postura de izquierdas hacia la regulación y el control gubernamental de la industria.",
       "El periódico 'El Plural' es conocido por su orientación de izquierdas, lo que también influye en la clasificación ideológica."
     ],
-    
+    "id_claves": [
+      86,
+      366,
+      274,
+      338,
+      91,
+      302,
+      356,
+      258,
+      522,
+      560,
+      561,
+      562,
+      563,
+      565,
+      566,
+      567,
+      568,
+      569,
+      570,
+      71,
+      166,
+      571,
+      572,
+      573,
+      574,
+      101,
+      575,
+      334,
+      576,
+      577,
+      578,
+      579,
+      580,
+      581,
+      582,
+      584,
+      585,
+      586,
+      456
+    ]
   },
   {
     "titulo": "Consumo investiga subidas de precios de Uber y Cabify tras el apagón masivo",
@@ -1421,6 +1913,26 @@
       "El artículo se centra en la acción del Ministerio de Derechos Sociales, Consumo y Agenda 2030, un organismo gubernamental dirigido por un miembro del partido de izquierdas Podemos, Pablo Bustinduy.",
       "La noticia critica las prácticas de empresas de libre mercado como Uber y Cabify, sugiriendo que se aprovechan de situaciones de emergencia para aumentar sus precios.",
       "El periódico El Plural es conocido por su orientación de izquierdas, lo que puede influir en la forma en que se presenta la noticia."
+    ],
+    "id_claves": [
+      589,
+      2,
+      457,
+      86,
+      374,
+      592,
+      593,
+      594,
+      595,
+      596,
+      367,
+      597,
+      598,
+      599,
+      600,
+      601,
+      539,
+      602
     ]
   },
   {
@@ -1519,6 +2031,33 @@
       "El artículo critica fuertemente al gobierno actual, liderado por Pedro Sánchez, y lo acusa de incompetencia y sectarismo.",
       "Se menciona a figuras políticas de la derecha, como José María Aznar y Alberto Núñez Feijóo, de manera positiva, presentándolos como figuras de esperanza.",
       "Se critica la postura del gobierno en temas de política exterior, como la crisis con Rusia y Ucrania, y se le acusa de alinearse con la extrema izquierda que apoya a Putin."
+    ],
+    "id_claves": [
+      611,
+      612,
+      613,
+      302,
+      86,
+      615,
+      616,
+      254,
+      617,
+      620,
+      622,
+      623,
+      627,
+      488,
+      628,
+      277,
+      107,
+      527,
+      629,
+      637,
+      638,
+      641,
+      643,
+      70,
+      645
     ]
   },
   {
@@ -1569,6 +2108,19 @@
       "El tono hacia Beatriz Corredor es neutral, sin juicios de valor ideológicos.",
       "La postura de la entrevistada es de defensa de las energías renovables frente a la energía nuclear, una postura que puede ser asociada a la izquierda, pero en este caso se presenta de forma neutral y técnica.",
       "El País, el periódico en el que se publica la noticia, tiene una orientación centro-izquierda, pero en este caso la noticia no parece seguir una línea editorial específica."
+    ],
+    "id_claves": [
+      598,
+      125,
+      653,
+      655,
+      86,
+      90,
+      656,
+      356,
+      88,
+      657,
+      107
     ]
   },
   {
@@ -1622,6 +2174,24 @@
       "Se mencionan figuras políticas como Pedro Sánchez y Sara Aagesen, pero el tono es neutral.",
       "El artículo discute políticas públicas relacionadas con la energía y la seguridad, pero no toma una postura ideológica clara.",
       "El País es un periódico de centro-izquierda, pero este artículo en particular no parece seguir una línea editorial claramente de izquierdas."
+    ],
+    "id_claves": [
+      83,
+      274,
+      166,
+      86,
+      658,
+      423,
+      527,
+      659,
+      660,
+      661,
+      2,
+      299,
+      561,
+      662,
+      338,
+      255
     ]
   },
   {
@@ -1669,6 +2239,20 @@
       "El artículo critica a la presidenta de Madrid, Ayuso, quien es del Partido Popular, de derechas.",
       "El artículo menciona la gestión de un apagón, lo que implica una discusión sobre los servicios públicos, un tema generalmente asociado a las izquierdas.",
       "El periódico El País es conocido por su orientación centro-izquierda."
+    ],
+    "id_claves": [
+      424,
+      334,
+      86,
+      374,
+      20,
+      666,
+      667,
+      577,
+      258,
+      668,
+      192,
+      669
     ]
   },
   {
@@ -1719,6 +2303,27 @@
       "El artículo presenta un enfoque neutral, analizando tanto las críticas a las energías renovables como las defensas de las mismas.",
       "El tono del artículo es informativo y no se detecta una postura clara a favor o en contra de las energías renovables.",
       "El artículo se publica en El País, un periódico de centro-izquierda, pero no se detecta una clara línea editorial en el contenido."
+    ],
+    "id_claves": [
+      673,
+      88,
+      86,
+      91,
+      95,
+      674,
+      675,
+      676,
+      107,
+      117,
+      677,
+      678,
+      257,
+      679,
+      680,
+      681,
+      90,
+      682,
+      683
     ]
   },
   {
@@ -1778,6 +2383,35 @@
       "El artículo se enfoca en la repercusión social y económica de un apagón masivo, sin tomar una postura política clara.",
       "No se mencionan figuras políticas ni se toma una postura sobre políticas públicas o ideologías.",
       "El artículo sigue la línea editorial de El País, que tiende a ser de centro-izquierda, pero en este caso no se inclina hacia ninguna orientación política en particular."
+    ],
+    "id_claves": [
+      86,
+      685,
+      686,
+      149,
+      325,
+      687,
+      688,
+      689,
+      690,
+      691,
+      692,
+      507,
+      693,
+      694,
+      695,
+      356,
+      696,
+      212,
+      211,
+      697,
+      698,
+      699,
+      700,
+      701,
+      702,
+      457,
+      703
     ]
   },
   {
@@ -1794,7 +2428,8 @@
       "comunes": [],
       "nombres_propios": []
     },
-    "posicion": ""
+    "posicion": "",
+    "id_claves": []
   },
   {
     "titulo": "Competencia aprueba la opa del BBVA al Sabadell con unos requisitos que deberá validar el Gobierno",
@@ -1845,6 +2480,25 @@
       "No se mencionan figuras políticas ni se toma una postura ideológica clara en el artículo.",
       "El tono del artículo es neutral y se limita a informar sobre los hechos.",
       "El País, el periódico en el que se publica el artículo, tiene una orientación centro-izquierda, pero en este caso la noticia no presenta un enfoque ideológico claro."
+    ],
+    "id_claves": [
+      278,
+      707,
+      544,
+      710,
+      83,
+      711,
+      712,
+      423,
+      714,
+      119,
+      560,
+      715,
+      716,
+      717,
+      688,
+      718,
+      578
     ]
   },
   {
@@ -1890,6 +2544,23 @@
       "El artículo critica la política económica y comercial de Donald Trump, un político de derechas.",
       "El tono del artículo es negativo hacia las medidas de Trump, lo que indica una postura de izquierdas o centro.",
       "El artículo se publica en El País, un periódico de centro-izquierda."
+    ],
+    "id_claves": [
+      722,
+      580,
+      723,
+      292,
+      424,
+      425,
+      724,
+      725,
+      726,
+      727,
+      163,
+      728,
+      696,
+      729,
+      730
     ]
   },
   {
@@ -1943,8 +2614,27 @@
       "El artículo se centra en la política internacional, específicamente en un acuerdo entre Estados Unidos y Ucrania, sin tomar una postura clara a favor o en contra de ninguna de las partes.",
       "Se menciona a figuras políticas como Donald Trump y Volodímir Zelenski, pero el tono es neutral y se limita a informar sobre los hechos.",
       "El periódico El País tiene una orientación centro-izquierda, pero en este caso la noticia no presenta un enfoque particularmente progresista o conservador."
+    ],
+    "id_claves": [
+      733,
+      734,
+      735,
+      736,
+      737,
+      405,
+      738,
+      741,
+      742,
+      743,
+      744,
+      745,
+      746,
+      747,
+      675,
+      748,
+      424,
+      749
     ]
-    
   },
   {
     "titulo": "Malestar en Moncloa con Corredor por su gestión en las horas críticas: «No es el momento, Beatriz»",
@@ -1991,6 +2681,19 @@
       "El enfoque del artículo es crítico con la gestión de un gobierno de izquierdas, en este caso el de Pedro Sánchez.",
       "Se menciona a figuras políticas de izquierdas, como Pedro Sánchez y Beatriz Corredor, en un tono negativo.",
       "El artículo critica la gestión de una empresa pública, Red Eléctrica, que está presidida por una figura política de izquierdas."
+    ],
+    "id_claves": [
+      302,
+      86,
+      751,
+      94,
+      752,
+      753,
+      36,
+      754,
+      755,
+      246,
+      101
     ]
   },
   {
@@ -2051,6 +2754,27 @@
       "El artículo critica el plan de energía de Teresa Ribera, una figura política de izquierdas, lo que sugiere una orientación de derechas.",
       "El artículo cuestiona las políticas de energía y medio ambiente del Gobierno, que son generalmente asociadas con la izquierda, lo que sugiere una orientación de derechas.",
       "El artículo se publica en ABC, un periódico conocido por su orientación de derechas."
+    ],
+    "id_claves": [
+      84,
+      158,
+      179,
+      758,
+      445,
+      446,
+      86,
+      759,
+      90,
+      129,
+      246,
+      302,
+      760,
+      372,
+      761,
+      762,
+      763,
+      764,
+      661
     ]
   },
   {
@@ -2101,6 +2825,22 @@
       "El artículo critica la gestión de Teresa Ribera, figura política de izquierdas, lo cual sugiere una orientación de derechas.",
       "El enfoque en la economía y las políticas públicas, especialmente en relación con el medio ambiente, sugiere una postura de derechas.",
       "El periódico ABC es conocido por su orientación de derechas, lo cual se refleja en el tono y contenido del artículo."
+    ],
+    "id_claves": [
+      660,
+      767,
+      768,
+      769,
+      770,
+      101,
+      771,
+      772,
+      334,
+      773,
+      774,
+      775,
+      776,
+      777
     ]
   },
   {
@@ -2153,6 +2893,14 @@
       "Se cuestiona la competencia técnica del Gobierno, al que se le atribuye una fe climática y lealtad a Sánchez por encima de la eficiencia.",
       "Se menciona una supuesta desatención de Ribera a sus tareas como ministra para promocionar su candidatura europea, lo que se presenta como una crítica a la gestión del Gobierno.",
       "El periódico ABC, conocido por su orientación de derechas, mantiene su línea editorial al criticar a figuras políticas de izquierdas y a la gestión del Gobierno."
+    ],
+    "id_claves": [
+      86,
+      660,
+      88,
+      356,
+      246,
+      783
     ]
   },
   {
@@ -2213,6 +2961,16 @@
       "La noticia critica a Carlos Mazón, 'president' de la Generalitat, quien es de derechas, y lo hace desde la perspectiva de dos políticos de izquierdas (PSOE y Compromís).",
       "La noticia se publica en El Plural, un medio de comunicación de izquierdas.",
       "El tono de la noticia es crítico hacia la gestión de la derecha, especialmente en lo que respecta a la atención de emergencias y la relación con la ciudadanía."
+    ],
+    "id_claves": [
+      784,
+      785,
+      786,
+      787,
+      299,
+      246,
+      791,
+      292
     ]
   },
   {
@@ -2294,6 +3052,49 @@
       "El artículo critica la explotación de recursos naturales por parte de Estados Unidos en Ucrania, lo que puede interpretarse como una postura de izquierdas que prioriza la soberanía de los países y la protección del medio ambiente.",
       "El tono hacia Donald Trump es negativo, lo que es consistente con la orientación de izquierdas de El Plural.",
       "El artículo destaca el hecho de que Ucrania no contraerá ninguna deuda obligatoria con Estados Unidos, lo que puede interpretarse como una defensa de la independencia económica de los países, una postura comúnmente asociada a la izquierda."
+    ],
+    "id_claves": [
+      733,
+      734,
+      807,
+      808,
+      811,
+      747,
+      812,
+      813,
+      814,
+      149,
+      355,
+      815,
+      816,
+      817,
+      818,
+      257,
+      821,
+      258,
+      822,
+      823,
+      824,
+      825,
+      675,
+      826,
+      827,
+      828,
+      424,
+      397,
+      829,
+      830,
+      831,
+      832,
+      366,
+      833,
+      834,
+      835,
+      836,
+      837,
+      838,
+      839,
+      840
     ]
   },
   {
@@ -2352,6 +3153,24 @@
       "El artículo critica las acciones del juez Peinado, quien es presentado como impulsor de causas de fuerte carga política, especialmente cuando los querellantes provienen del entorno de la ultraderecha.",
       "El artículo señala que el juez Peinado ha admitido a trámite una querella interpuesta por la organización ultraderechista Hazte Oír contra Begoña Gómez, esposa del presidente del Gobierno, Pedro Sánchez, de orientación política de izquierdas.",
       "El artículo menciona que el juez Peinado ha abierto una causa penal a instancias de Vox, partido de ultraderecha, por supuestas injurias en un libro de texto."
+    ],
+    "id_claves": [
+      846,
+      848,
+      850,
+      851,
+      176,
+      854,
+      855,
+      856,
+      857,
+      858,
+      859,
+      860,
+      861,
+      496,
+      545,
+      862
     ]
   },
   {
@@ -2400,6 +3219,25 @@
       "El artículo se centra en un análisis técnico y económico del reciente apagón en España, sin hacer hincapié en políticas o ideologías específicas.",
       "No se mencionan figuras políticas ni se toma una postura clara sobre políticas públicas.",
       "El artículo sigue la línea editorial de El País, que tiende a ser de centro-izquierda, pero en este caso se mantiene neutral."
+    ],
+    "id_claves": [
+      869,
+      136,
+      163,
+      870,
+      575,
+      107,
+      158,
+      871,
+      872,
+      873,
+      874,
+      875,
+      277,
+      86,
+      876,
+      877,
+      878
     ]
   },
   {
@@ -2461,6 +3299,29 @@
       "El artículo se centra en un análisis técnico y económico de un fallo en la red eléctrica, sin tomar postura política explícita.",
       "Se menciona al Gobierno, pero solo para señalar que aún no ha proporcionado una explicación, sin emitir juicio sobre su actuación.",
       "El tono del artículo es neutral, centrado en la presentación de hechos y opiniones de expertos, sin un enfoque ideológico claro."
+    ],
+    "id_claves": [
+      880,
+      655,
+      334,
+      86,
+      881,
+      91,
+      882,
+      883,
+      884,
+      255,
+      131,
+      715,
+      107,
+      885,
+      136,
+      2,
+      886,
+      132,
+      887,
+      888,
+      889
     ]
   },
   {
@@ -2511,6 +3372,28 @@
       "El artículo se centra en relatar experiencias personales durante un colapso energético, sin tomar una postura política o ideológica.",
       "No se mencionan figuras políticas ni se critica o defiende ninguna política pública.",
       "El artículo no contradice la línea editorial de El País, que es de centro-izquierda."
+    ],
+    "id_claves": [
+      277,
+      158,
+      207,
+      894,
+      895,
+      199,
+      896,
+      897,
+      898,
+      899,
+      900,
+      901,
+      902,
+      903,
+      904,
+      905,
+      906,
+      907,
+      908,
+      909
     ]
   },
   {
@@ -2557,6 +3440,25 @@
       "El enfoque del artículo es principalmente técnico y neutral, centrado en explicar cómo funcionan los sistemas de emergencia en caso de fallos en las infraestructuras digitales.",
       "No se mencionan figuras políticas ni se toma una postura sobre políticas públicas o ideologías.",
       "El artículo no parece seguir o contradecir la línea editorial del periódico El País, que es de centro-izquierda."
+    ],
+    "id_claves": [
+      86,
+      910,
+      911,
+      912,
+      140,
+      690,
+      913,
+      570,
+      914,
+      915,
+      916,
+      917,
+      918,
+      919,
+      920,
+      921,
+      506
     ]
   },
   {
@@ -2621,6 +3523,27 @@
       "El artículo menciona al presidente Sánchez, pero no ofrece un tono particularmente positivo o negativo hacia él.",
       "El artículo no toma una postura clara sobre las políticas públicas o ideologías mencionadas.",
       "El artículo parece seguir la línea editorial del periódico El País, que es conocido por su orientación centro-izquierda."
+    ],
+    "id_claves": [
+      86,
+      521,
+      675,
+      748,
+      302,
+      103,
+      923,
+      924,
+      925,
+      564,
+      926,
+      929,
+      574,
+      931,
+      231,
+      615,
+      932,
+      933,
+      936
     ]
   },
   {
@@ -2681,6 +3604,30 @@
       "El enfoque del artículo es principalmente informativo y técnico, sin tomar una postura política clara.",
       "No se mencionan figuras políticas ni se toma una postura sobre políticas públicas o ideologías.",
       "El artículo sigue la línea editorial de El País, que tiende a ser de centro-izquierda, pero en este caso la noticia no tiene un enfoque político claro."
+    ],
+    "id_claves": [
+      938,
+      939,
+      940,
+      372,
+      941,
+      942,
+      945,
+      880,
+      950,
+      951,
+      952,
+      953,
+      954,
+      955,
+      956,
+      957,
+      958,
+      959,
+      960,
+      961,
+      962,
+      963
     ]
   },
   {
@@ -2734,6 +3681,27 @@
       "El enfoque de la noticia es sobre un evento de seguridad y crimen, sin una orientación política clara.",
       "No se mencionan figuras políticas ni se toma una postura sobre políticas públicas o ideologías.",
       "La noticia sigue la línea editorial de El País, que tiende a ser de centro-izquierda, pero en este caso no se observa una inclinación ideológica."
+    ],
+    "id_claves": [
+      966,
+      967,
+      372,
+      969,
+      970,
+      971,
+      972,
+      30,
+      975,
+      198,
+      976,
+      125,
+      977,
+      978,
+      979,
+      980,
+      849,
+      981,
+      191
     ]
   },
   {
@@ -2782,6 +3750,21 @@
       "El artículo critica la gestión del gobierno de Pedro Sánchez, especialmente en relación con la descoordinación y la falta de transparencia.",
       "Se menciona la estrategia del gobierno de 'estirar el chicle del ciberataque', lo que implica una postura escéptica hacia las explicaciones oficiales.",
       "El periódico es Libertad Digital, conocido por su orientación ideológica de derechas."
+    ],
+    "id_claves": [
+      255,
+      568,
+      984,
+      86,
+      985,
+      268,
+      2,
+      299,
+      334,
+      302,
+      100,
+      88,
+      986
     ]
   },
   {
@@ -2837,6 +3820,27 @@
       "El artículo critica fuertemente las políticas de energía renovable del gobierno actual, que está liderado por el PSOE, un partido de izquierdas.",
       "El tono del artículo es despectivo hacia las figuras políticas mencionadas, que son principalmente de izquierdas.",
       "El artículo se opone a las políticas públicas de transición ecológica y energía renovable, que son generalmente apoyadas por la izquierda."
+    ],
+    "id_claves": [
+      107,
+      117,
+      990,
+      991,
+      88,
+      992,
+      993,
+      994,
+      90,
+      89,
+      996,
+      997,
+      86,
+      677,
+      998,
+      435,
+      149,
+      355,
+      303
     ]
   },
   {
@@ -2922,6 +3926,50 @@
       "El artículo critica el intervencionismo regulatorio del Gobierno en el sector industrial, una postura comúnmente asociada a las ideologías de derechas.",
       "El tono del artículo es crítico hacia la diputada del PSOE, Obdulia Taboadela, y su acusación de negacionismo climático.",
       "El artículo defiende el uso de la energía nuclear, una postura que suele ser más común en las ideologías de derechas."
+    ],
+    "id_claves": [
+      1001,
+      1002,
+      86,
+      1003,
+      1004,
+      1005,
+      85,
+      235,
+      268,
+      451,
+      163,
+      1008,
+      448,
+      1009,
+      346,
+      1010,
+      1011,
+      653,
+      158,
+      88,
+      150,
+      86,
+      1012,
+      1013,
+      814,
+      1014,
+      125,
+      85,
+      198,
+      1016,
+      1018,
+      1019,
+      1020,
+      1021,
+      1022,
+      726,
+      1023,
+      1024,
+      1025,
+      1026,
+      90,
+      248
     ]
   },
   {
@@ -2973,6 +4021,26 @@
       "El artículo critica la dependencia de las energías renovables y defiende las energías tradicionales como el gas y la hidroeléctrica, lo que se alinea con las posturas de derechas.",
       "Se menciona a Pedro Sánchez y Beatriz Corredor, ambos del PSOE, en un tono crítico, lo que sugiere una orientación de derechas.",
       "El artículo se publicó en Libertad Digital, un medio conocido por su orientación de derechas."
+    ],
+    "id_claves": [
+      86,
+      158,
+      992,
+      149,
+      578,
+      1029,
+      677,
+      59,
+      679,
+      137,
+      88,
+      1030,
+      1031,
+      1032,
+      1033,
+      1034,
+      85,
+      1035
     ]
   },
   {
@@ -3019,6 +4087,22 @@
       "El artículo critica a Beatriz Corredor, una figura política de izquierdas, por su manejo del apagón eléctrico.",
       "El tono del artículo es claramente negativo hacia Corredor y su gestión, lo que indica una postura de derechas.",
       "El artículo desacredita la energía renovable, una postura comúnmente asociada a la derecha."
+    ],
+    "id_claves": [
+      86,
+      356,
+      117,
+      188,
+      91,
+      257,
+      88,
+      107,
+      1037,
+      305,
+      598,
+      1038,
+      679,
+      1039
     ]
   },
   {
@@ -3095,6 +4179,48 @@
       "Se menciona a Jorge Sanz, un experto en energía, para respaldar la crítica al Gobierno.",
       "El artículo critica la gestión de la crisis del apagón y la falta de información proporcionada por el Gobierno.",
       "El artículo está en línea con la orientación ideológica de derechas de Libertad Digital."
+    ],
+    "id_claves": [
+      86,
+      1041,
+      1042,
+      1043,
+      655,
+      784,
+      1044,
+      1045,
+      680,
+      305,
+      103,
+      158,
+      1046,
+      1047,
+      1048,
+      102,
+      887,
+      1034,
+      85,
+      1049,
+      137,
+      940,
+      1050,
+      880,
+      247,
+      334,
+      313,
+      1051,
+      1052,
+      1053,
+      1054,
+      101,
+      246,
+      653,
+      338,
+      1055,
+      199,
+      1057,
+      1058,
+      1059
     ]
   }
 ]

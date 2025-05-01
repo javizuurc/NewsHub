@@ -7,7 +7,6 @@ router.get('/leer-json', almacenamientoController.leerJSON.bind(almacenamientoCo
 router.get('/data-directory', almacenamientoController.getDataDirectory.bind(almacenamientoController));
 router.post('/create-directory', almacenamientoController.createDataDirectory.bind(almacenamientoController));
 router.get('/json', almacenamientoController.getJsonData.bind(almacenamientoController));
-router.post('/backup', almacenamientoController.createBackup.bind(almacenamientoController));
 router.post('/verificar-palabras-clave', almacenamientoController.verificarPalabrasClave.bind(almacenamientoController));
 
 module.exports = router;

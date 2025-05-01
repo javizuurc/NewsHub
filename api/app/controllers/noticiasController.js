@@ -186,4 +186,14 @@ class NoticiasController {
 }
 
 const controller = new NoticiasController();
-module.exports = controller;
+module.exports = {
+    crearJSON: controller.crearJSON.bind(controller),
+    guardarNoticiaJSON: controller.guardarNoticiaJSON.bind(controller),
+    verJSON: controller.verJSON.bind(controller),
+    almacenarEnBBDD: controller.almacenarEnBBDD.bind(controller),
+    getUltimasNoticias: controller.getUltimasNoticias.bind(controller),
+    getTopicosDiarios: controller.getTopicosDiarios.bind(controller),
+    getTopicosSemanales: controller.getTopicosSemanales.bind(controller),
+    // getEvaluarNoticia: controller.getEvaluarNoticia.bind(controller)
+    getContadorNoticias: controller.getContadorNoticias.bind(controller) // AÑADI
+};
