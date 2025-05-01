@@ -39,7 +39,7 @@
 
       <!-- Menú para pantallas medianas y grandes -->
       <ul class="hidden md:flex items-center space-x-6 mx-auto">
-        <li><a href="#" class="py-2 px-3 hover:text-[#be985d] transition-all duration-300 border-b-2 border-transparent hover:border-[#be985d]">Termómetro Nacional</a></li>
+        <li><router-link to="/estadisticas" class="py-2 px-3 hover:text-[#be985d] transition-all duration-300 border-b-2 border-transparent hover:border-[#be985d]">Estadísticas</router-link></li>
         <li><a href="#" class="py-2 px-3 hover:text-[#be985d] transition-all duration-300 border-b-2 border-transparent hover:border-[#be985d]">¿Cómo sería si... ?</a></li>
         <li>
           <button 
@@ -58,8 +58,8 @@
       class="md:hidden bg-[#3A3A3A] border-t border-[#be985d]/30 mt-2"
     >
       <ul class="flex flex-col py-2">
-        <li><a href="#" class="block px-4 py-3 hover:bg-[#4A4A4A] hover:text-[#be985d] transition-colors duration-200">Inicio</a></li>
-        <li><a href="#" class="block px-4 py-3 hover:bg-[#4A4A4A] hover:text-[#be985d] transition-colors duration-200">Termómetro Nacional</a></li>
+        <li><router-link to="/" class="block px-4 py-3 hover:bg-[#4A4A4A] hover:text-[#be985d] transition-colors duration-200">Inicio</router-link></li>
+        <li><router-link to="/estadisticas" class="block px-4 py-3 hover:bg-[#4A4A4A] hover:text-[#be985d] transition-colors duration-200">Estadísticas</router-link></li>
         <li><a href="#" class="block px-4 py-3 hover:bg-[#4A4A4A] hover:text-[#be985d] transition-colors duration-200">¿Cómo sería?</a></li>
         <li>
           <button 
