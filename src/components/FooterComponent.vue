@@ -53,7 +53,6 @@
           :href="link.url" 
           class="text-[#C0C0C0] hover:text-[#be985d] transition-colors duration-300"
         >
-          {{ link.name }}
         </a>
       </div>
     </div>
