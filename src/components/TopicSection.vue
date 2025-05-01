@@ -1,5 +1,5 @@
 <script setup>
-import Topic from './cards/tags/TopicTagComponent.vue'  // Fixed import name and path
+import Topic from './cards/tags/TopicTagComponent.vue'
 
 defineProps({
   title: {

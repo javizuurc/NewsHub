@@ -1,7 +1,6 @@
 <script setup>
   const currentYear = new Date().getFullYear();
   
-  // Social media links as a dictionary/array
   const socialLinks = [
     {
       name: 'Facebook',
@@ -20,7 +19,6 @@
     }
   ];
   
-  // Footer links
   const footerLinks = [
     { name: 'Acerca de', url: '#' },
     { name: 'Política de Privacidad', url: '#' },
@@ -34,7 +32,6 @@
     <div class="container mx-auto">
       <p class="text-lg">&copy; {{ currentYear }} NewsHub. Hecho por Javier Cruz Rojas</p>
       
-      <!-- Social media links -->
       <div class="flex justify-center space-x-4 mt-4">
         <a 
           v-for="(social, index) in socialLinks" 
@@ -49,10 +46,9 @@
         </a>
       </div>
       
-      <!-- Links section -->
       <div class="mt-6 flex flex-wrap justify-center gap-4 text-sm">
         <a 
-          v-for="(link, index) in footerLinks" 
+          v-for="(link, index) in socialLinks" 
           :key="index"
           :href="link.url" 
           class="text-[#C0C0C0] hover:text-[#be985d] transition-colors duration-300"

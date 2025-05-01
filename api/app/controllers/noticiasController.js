@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const AlmacenamientoService = require('../services/almacenamientoService');
 const almacenamientoController = require('./almacenamientoController');
-// Corregir la importación de la base de datos
 const BBDD = require('../database/db');
 const QUERIES = require('../core/constants/querys');
 
@@ -101,7 +100,6 @@ class NoticiasController {
         }
     }
 
-    // New methods for database queries
     async getUltimasNoticias(req, res) {
         try {
             console.log("Obteniendo últimas noticias de cada periódico...");
@@ -172,13 +170,4 @@ class NoticiasController {
 }
 
 const controller = new NoticiasController();
-module.exports = {
-    crearJSON: controller.crearJSON.bind(controller),
-    guardarNoticiaJSON: controller.guardarNoticiaJSON.bind(controller),
-    verJSON: controller.verJSON.bind(controller),
-    almacenarEnBBDD: controller.almacenarEnBBDD.bind(controller),
-    getUltimasNoticias: controller.getUltimasNoticias.bind(controller),
-    getTopicosDiarios: controller.getTopicosDiarios.bind(controller),
-    getTopicosSemanales: controller.getTopicosSemanales.bind(controller),
-   // getEvaluarNoticia: controller.getEvaluarNoticia.bind(controller)
-};
+module.exports = controller; //Si da error el exprés aquí puede estar el causante

@@ -12,7 +12,6 @@ const errorSemanales = ref(null);
 let intervalIdDiarios = null;
 let intervalIdSemanales = null;
 
-// Función para capitalizar la primera letra
 const capitalize = (str) => {
   if (!str) return '';
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
@@ -31,7 +30,6 @@ const fetchTopicosDiarios = () => {
         console.log('Tópicos diarios obtenidos:', responseData);
         cargandoDiarios.value = false;
         if (responseData && responseData.data) {
-            // Transformar los datos para que coincidan con lo que espera el componente
             topicosDiarios.value = responseData.data.map(item => ({
                 nombre: capitalize(item.palabra),
                 url: `/topico/${item.palabra.toLowerCase()}`,
@@ -61,7 +59,6 @@ const fetchTopicosSemanales = () => {
         console.log('Tópicos semanales obtenidos:', responseData);
         cargandoSemanales.value = false;
         if (responseData && responseData.data) {
-            // Transformar los datos para que coincidan con lo que espera el componente
             topicosSemanales.value = responseData.data.map(item => ({
                 nombre: capitalize(item.palabra),
                 url: `/topico/${item.palabra.toLowerCase()}`,
@@ -79,16 +76,13 @@ const fetchTopicosSemanales = () => {
 };
 
 onMounted(() => {
-    // Obtener tópicos inmediatamente al montar
     fetchTopicosDiarios();
     fetchTopicosSemanales();
     
-    // Configurar intervalos para actualizar cada 5 minutos (300000 ms)
     intervalIdDiarios = setInterval(fetchTopicosDiarios, 300000);
     intervalIdSemanales = setInterval(fetchTopicosSemanales, 300000);
 });
 
-// Limpiar los intervalos cuando el componente se desmonta
 onBeforeUnmount(() => {
     if (intervalIdDiarios) {
         clearInterval(intervalIdDiarios);
@@ -106,7 +100,6 @@ onBeforeUnmount(() => {
     titleClass="text-[#be985d] border-[#b08d57] text-xl tracking-wide"
   >
     <ul class="space-y-6">
-      <!-- Tópicos Diarios -->
       <li>
         <h3 class="text-[#b08d57] font-medium mb-2">Tópicos Diarios</h3>
         <div v-if="cargandoDiarios" class="p-2 text-center text-gray-300">
@@ -123,9 +116,9 @@ onBeforeUnmount(() => {
             :link="topico.url"
             :type="'daily'"
           />
-          <!-- Tópicos de ejemplo como fallback -->
+          
           <TopicCard 
-            v-if="topicosDiarios.length === 0"
+            v-if="topicosDiarios.length == 0"
             :key="'topico-diario-1'" 
             :name="'Economía'"
             :link="'/topico/economia'"
@@ -134,7 +127,6 @@ onBeforeUnmount(() => {
         </div>
       </li>
       
-      <!-- Tópicos Semanales -->
       <li>
         <h3 class="text-[#d4af37] font-medium mb-2">Tópicos Semanales</h3>
         <div v-if="cargandoSemanales" class="p-2 text-center text-gray-300">
@@ -151,9 +143,8 @@ onBeforeUnmount(() => {
             :link="topico.url"
             :type="'weekly'"
           />
-          <!-- Tópicos de ejemplo como fallback -->
           <TopicCard 
-            v-if="topicosSemanales.length === 0"
+            v-if="topicosSemanales.length == 0"
             :key="'topico-semanal-1'" 
             :name="'Tecnología'"
             :link="'/topico/tecnologia'"

@@ -2,7 +2,6 @@
   import { ref } from 'vue';
   
   import BaseCard from './BaseCardComponent.vue';
-  // Cambiamos a:
   import Thermometer from '../thermometers/NewsThermometerComponent.vue';
 
   const props = defineProps({
@@ -43,7 +42,7 @@
     >
       <div class="flex flex-col h-full w-full">
         <div class="mb-2 w-full">
-          <h5 class="text-sm font-semibold text-gray-800 dark:text-white line-clamp-2 bg-gradient-to-r from-gray-700 via-gray-400 to-gray-700 bg-[length:200%_auto] text-transparent bg-clip-text animate-silverShine break-words">{{ titulo }}</h5>
+          <h5 class="text-sm font-semibold line-clamp-2 bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-[length:200%_auto] text-transparent bg-clip-text animate-silverShine break-words">{{ titulo }}</h5>
         </div>
         
         <div class="flex-grow flex flex-col justify-between w-full">
@@ -80,15 +79,21 @@
 <style scoped>
 @keyframes silverShine {
   0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .animate-silverShine {
-  animation: silverShine 3s linear infinite;
-  text-shadow: 0 0 2px rgba(192, 192, 192, 0.3);
+  animation: silverShine 6s linear infinite !important;
+  text-shadow: 0 0 3px rgba(200, 200, 200, 0.5);
+  background-size: 200% auto !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  text-fill-color: transparent !important;
 }
 
 :deep(.dark) .animate-silverShine {
-  text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0 4px rgba(220, 220, 220, 0.7);
 }
 </style>

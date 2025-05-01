@@ -48,19 +48,6 @@ class AlmacenamientoController {
         }
     }
 
-    createBackup(req, res) {
-        try {
-            const result = this.almacenamientoService.crearBackup();
-            return res.status(result.success ? 200 : 400).json(result);
-        } catch (error) {
-            return res.status(500).json({
-                success: false,
-                message: "Error al crear backup",
-                error: error.message
-            });
-        }
-    }
-
     guardarNoticiaJSON(req, res) {
         try {
             console.log('=== Datos recibidos en guardarNoticiaJSON ===');
@@ -223,17 +210,13 @@ class AlmacenamientoController {
                             
                             if (noticia.palabras_claves.comunes) {
                                 noticia.palabras_claves.comunes.forEach(palabra => {
-                                    if (mapaPalabrasIds[palabra]) {
-                                        idsArray.push(mapaPalabrasIds[palabra]);
-                                    }
+                                    if (mapaPalabrasIds[palabra]) idsArray.push(mapaPalabrasIds[palabra]);
                                 });
                             }
                             
                             if (noticia.palabras_claves.nombres_propios) {
                                 noticia.palabras_claves.nombres_propios.forEach(palabra => {
-                                    if (mapaPalabrasIds[palabra]) {
-                                        idsArray.push(mapaPalabrasIds[palabra]);
-                                    }
+                                    if (mapaPalabrasIds[palabra]) idsArray.push(mapaPalabrasIds[palabra]);
                                 });
                             }
                             

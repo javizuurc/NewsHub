@@ -15,7 +15,7 @@
   
   const handleFormSubmit = (formData) => {
     console.log('Datos enviados:', formData);
-    showModal.value = false; // Cerrar el modal después de enviar el formulario
+    showModal.value = false;
   };
 </script>
 

@@ -52,7 +52,7 @@ async function createDatabaseIfNotExists() { // Función para crear la base de d
   }
 }
 
-async function initializeDatabase() { // Función para iniciar la base de datos
+async function initializeDatabase() {
   try {
     const dbCreated = await createDatabaseIfNotExists();
     if (!dbCreated) {
@@ -60,7 +60,6 @@ async function initializeDatabase() { // Función para iniciar la base de datos
       return;
     }
     
-    // Create a new Sequelize instance with explicit dialect
     const sequelize = new Sequelize(
       dbConfig.database,
       dbConfig.username,
@@ -72,11 +71,9 @@ async function initializeDatabase() { // Función para iniciar la base de datos
       }
     );
     
-    // Test connection
     await sequelize.authenticate();
     console.log('Database connection established successfully');
     
-    // Define models directly in this file for seeding purposes
     const Periodico = sequelize.define('Periodico', {
       id: {
         type: DataTypes.INTEGER,
@@ -86,7 +83,7 @@ async function initializeDatabase() { // Función para iniciar la base de datos
       nombre: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true // Make nombre unique to help with upserts
+        unique: true
       },
       url: {
         type: DataTypes.STRING,
@@ -106,42 +103,34 @@ async function initializeDatabase() { // Función para iniciar la base de datos
       nombre: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true // Make nombre unique to help with upserts
+        unique: true
       }
     }, {
       tableName: 'temas',
       timestamps: false
     });
     
-    // Usar alter: true en lugar de force: true para no eliminar las tablas
     await sequelize.sync({ alter: true });
     
     console.log('Database schema updated successfully');
-    
-    // Use individual upserts instead of bulkCreate
     console.log('Updating periodicos data...');
     
-    // Process each periodico individually
     for (const periodico of periodicosData) {
       await Periodico.upsert(periodico, {
         where: { nombre: periodico.nombre }
       });
     }
     
-    // Process each tema individually
     for (const tema of temasData) {
       await Tema.upsert(tema, {
         where: { nombre: tema.nombre }
       });
     }
     
-    // Verify data was inserted/updated correctly
     const insertedPeriodicos = await Periodico.findAll();
     console.log('Updated periodicos:', JSON.stringify(insertedPeriodicos, null, 2));
-    
     console.log('Database initialization completed successfully');
     
-    // Close the connection
     await sequelize.close();
   } catch (error) {
     console.error('Error initializing database:', error);
@@ -154,5 +143,3 @@ if (require.main == module) {
 }
 
 module.exports = { initializeDatabase };
-
-// Para ejecutar: node app/database/seeders.js

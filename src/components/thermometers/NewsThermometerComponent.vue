@@ -43,7 +43,6 @@
 
 <template>
   <div class="news-thermometer">
-    <!-- Option 1: Use the ThermometerComponent directly -->
     <ThermometerComponent 
       v-if="false"
       :value="thermometerValue" 
@@ -52,7 +51,6 @@
       title="Tendencia Ideológica"
     />
     
-    <!-- Option 2: Keep your custom implementation -->
     <div class="thermometer-container">
       <div class="flex rounded-full overflow-hidden" :class="height">
         <div class="bg-red-500 flex-1"></div>

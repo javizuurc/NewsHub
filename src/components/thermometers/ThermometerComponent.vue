@@ -37,11 +37,10 @@ const positionLabel = computed(() => {
   return 'Derecha';
 });
 
-// Update this to use standard Tailwind colors
 const textColor = computed(() => {
-  if (props.value < 35) return 'text-sky-500';  // Changed from text-blue-500
-  if (props.value < 65) return 'text-amber-500'; // Changed from text-yellow-500
-  return 'text-rose-500';  // Changed from text-red-500
+  if (props.value < 35) return 'text-sky-500';
+  if (props.value < 65) return 'text-amber-500';
+  return 'text-rose-500';
 });
 </script>
 

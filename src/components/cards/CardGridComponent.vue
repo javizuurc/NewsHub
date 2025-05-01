@@ -61,21 +61,4 @@
 </template>
 
 <style scoped>
-  /* Tailwind doesn't have built-in line-clamp classes for multiple lines */
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  
-  /* Ensure consistent card sizing on small screens */
-  @media (max-width: 640px) {
-    :deep(article) {
-      height: auto !important;
-      min-height: 150px !important;
-      width: 100% !important;
-      margin-bottom: 0.75rem;
-    }
-  }
 </style>

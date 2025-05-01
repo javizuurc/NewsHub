@@ -1,5 +1,4 @@
 <script setup>
-  //import CardGridComponent from './cards/CardGridComponent.vue';
   import CardGrid from './cards/CardGridComponent.vue';
 
   const props = defineProps({
@@ -9,7 +8,6 @@
     },
   });
 
-  // Define card data array for dynamic rendering
   const cardsStyles = [
     {
       type: 'large-left',
