@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV /home/kerlos/Escritorio/notic.ia/scripts/venv
+set -gx VIRTUAL_ENV /var/www/html/NewsHub/api/scripts/venv
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"bin $PATH

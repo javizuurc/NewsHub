@@ -1,14 +1,15 @@
 import sqlite3
-import os
 import sys
 from dotenv import load_dotenv
 from difflib import SequenceMatcher
 from collections import defaultdict
+import os
+import json
 
 def get_db_connection():
     """Establish connection to the database using credentials from .env"""
     # Load environment variables from .env file in project root
-    env_path = "/home/manu/Escritorio/notic.ia/.env"
+    env_path = "/var/www/html/NewsHub/api/.env"
     if not os.path.exists(env_path):
         print(f"Error: .env file not found at {env_path}")
         sys.exit(1)
@@ -19,7 +20,7 @@ def get_db_connection():
     db_host = os.getenv("DB_HOST")
     db_name = os.getenv("DB_NAME")
     db_user = os.getenv("DB_USER")
-    db_password = os.getenv("DB_PASSWORD")
+    db_password = os.getenv("DB_PASS")
     db_path = os.getenv("DB_PATH")
     
     # If DB_PATH is provided, use SQLite
@@ -143,7 +144,7 @@ def titular_representativo(titulos):
     puntajes.sort(reverse=True)
     return puntajes[0][1] if puntajes else titulos[0]
 
-def agrupar_noticias_similares(noticias, threshold_keywords=0.1, threshold_titles=0.4):
+def agrupar_noticias_similares(noticias, threshold_keywords=0.2, threshold_titles=0.3):
     """Group similar news based on keyword IDs and title similarity"""
     n = len(noticias)
     visitados = [False] * n
@@ -192,44 +193,63 @@ def agrupar_noticias_similares(noticias, threshold_keywords=0.1, threshold_title
 
     return grupos
 
+def guardar_grupos_en_json(grupos, output_path=None):
+    if output_path is None:
+        output_path = os.path.join(os.path.dirname(__file__), '../../data/grupos.json')
+
+    output_path = os.path.abspath(output_path)
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(grupos, f, ensure_ascii=False, indent=2)
+
+
+import json
+import os
+
+def guardar_grupos_en_json(grupos):
+    """Guardar los grupos en formato JSON en api/data/grupos.json"""
+    ruta_archivo = os.path.join(os.path.dirname(__file__), '../../data/grupos.json')
+    ruta_absoluta = os.path.abspath(ruta_archivo)
+
+    try:
+        with open(ruta_absoluta, 'w', encoding='utf-8') as f:
+            json.dump(grupos, f, ensure_ascii=False, indent=2)
+        print(f"\nGrupos guardados correctamente en {ruta_absoluta}")
+    except Exception as e:
+        print(f"Error al guardar el archivo JSON: {e}")
+
 def main():
-    # Connect to the database using .env credentials
     conn = get_db_connection()
     
-    # Get news with their keywords
     noticias = get_noticias_with_keywords(conn)
-    
     if not noticias:
-        print("No noticias found in the database.")
-        if isinstance(conn, sqlite3.Connection):
-            conn.close()
-        else:
-            conn.close()
+        print("No se encontraron noticias en la base de datos.")
+        conn.close()
         return
-    
-    print(f"Found {len(noticias)} noticias.")
-    
-    # Group similar news
+
+    print(f"Se encontraron {len(noticias)} noticias.")
+
     grupos = agrupar_noticias_similares(noticias)
-    
-    # Display the results
+
     if grupos:
-        print(f"\nAgrupadas en {len(grupos)} grupos:")
+        print(f"\nAgrupadas en {len(grupos)} grupos.")
+
         for i, grupo in enumerate(grupos, 1):
             print(f"\n=== GRUPO {i} ===")
             print(f"Titular representativo: {grupo['titular_general']}")
-            print(f"Noticias en este grupo ({len(grupo['noticias'])}):")
+            print(f"Noticias ({len(grupo['noticias'])}):")
             for j, noticia in enumerate(grupo['noticias'], 1):
                 print(f"  {j}. ID: {noticia['id']} - {noticia['titulo']}")
+
+        guardar_grupos_en_json(grupos)
+
     else:
-        print("\nNo se encontraron grupos de noticias similares.")
-        print("Prueba a ajustar los umbrales de similitud para obtener más grupos.")
+        print("\nNo se encontraron grupos similares.")
     
-    # Close the connection
-    if isinstance(conn, sqlite3.Connection):
-        conn.close()
-    else:
-        conn.close()
+    conn.close()
+
+
 
 if __name__ == "__main__":
     main()
