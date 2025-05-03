@@ -58,6 +58,10 @@ class ElPlural(ModeloPeriodico):
                                         except ValueError:
                                             pass
 
+                                  
+                                    img_tag = soup1.select_one('div.article-image picture img')
+                                    imagen_url = img_tag['src'] if img_tag and img_tag.has_attr('src') else ''
+
                                    
                                     datos = {
                                         'autor': autor,
@@ -65,7 +69,8 @@ class ElPlural(ModeloPeriodico):
                                         'subtitulo': subtitulo,
                                         'articulo': articulo,
                                         'url': url,
-                                        'fecha_publicacion': fecha_iso
+                                        'fecha_publicacion': fecha_iso,
+                                        'imagen': imagen_url
                                     }
                                    
                                     articulos.append(datos)

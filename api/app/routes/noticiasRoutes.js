@@ -10,5 +10,7 @@ router.get('/ultimas-noticias', noticiasController.getUltimasNoticias.bind(notic
 router.get('/topicos-diarios', noticiasController.getTopicosDiarios.bind(noticiasController));
 router.get('/topicos-semanales', noticiasController.getTopicosSemanales.bind(noticiasController));
 router.get('/contar-noticias', noticiasController.getContadorNoticias.bind(noticiasController));
+router.post('/agrupar', noticiasController.getAgruparNoticias); 
+
 
 module.exports = router;

@@ -70,6 +70,9 @@ class LibertadDigital(ModeloPeriodico):
                                                 fecha_iso = fecha_obj.strftime('%Y-%m-%d')
                                             except:
                                                 pass
+                                    img_tag = soup_art.select_one('picture img')
+                                    imagen_url = img_tag['src'] if img_tag and img_tag.has_attr('src') else ''
+
 
                                     # Diccionario final
                                     datos = {
@@ -78,7 +81,8 @@ class LibertadDigital(ModeloPeriodico):
                                         'subtitulo': subtitulo,
                                         'articulo': articulo,
                                         'fecha_publicacion': fecha_iso,
-                                        'url': url_articulo
+                                        'url': url_articulo,
+                                        'imagen': imagen_url
                                     }
                                     articulos.append(datos)
 

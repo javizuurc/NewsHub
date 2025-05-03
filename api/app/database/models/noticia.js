@@ -28,6 +28,9 @@ module.exports = (sequelize, DataTypes) => {
     fecha_scraping: {
       type: DataTypes.DATE
     },
+    imagen: {
+      type: DataTypes.TEXT,
+    },
     coeficiente: {
       type: DataTypes.STRING
     },
@@ -48,8 +51,9 @@ module.exports = (sequelize, DataTypes) => {
 
   Noticia.associate = function(models) {
     Noticia.belongsTo(models.Periodico, { foreignKey: 'periodico_id' });
-    Noticia.belongsToMany(models.Tema, { through: 'noticias_temas', foreignKey: 'noticia_id' });
+    Noticia.belongsToMany(models.Tema,  { through: 'noticias_temas',  foreignKey: 'noticia_id' });
     Noticia.belongsToMany(models.Clave, { through: 'noticias_claves', foreignKey: 'noticia_id' });
+    Noticia.belongsToMany(models.Grupo, { through: 'grupo_noticia',   foreignKey: 'noticia_id', otherKey: 'grupo_id' });
   };
 
   return Noticia;

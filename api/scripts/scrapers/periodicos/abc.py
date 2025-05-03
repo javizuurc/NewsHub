@@ -44,6 +44,9 @@ class ABC(ModeloPeriodico):
                                                 parrafo_p = soup_art.find('p', class_='voc-p')
                                                 time_tag = soup_art.find('time', class_='voc-author__time')
                                                 fecha = time_tag['datetime'][:10] if time_tag else ''
+                                                img_tag = soup_art.find('img', class_='voc-img')
+                                                imagen_url = img_tag['src'] if img_tag and img_tag.has_attr('src') else ''
+
 
                                                 
                                                 datos = {
@@ -52,7 +55,8 @@ class ABC(ModeloPeriodico):
                                                     'subtitulo': ' '.join([h2.get_text(strip=True) for h2 in subtitulos_h2]),
                                                     'articulo': parrafo_p.get_text(strip=True) if parrafo_p else '',
                                                     'url': url_articulo,
-                                                    'fecha_publicacion': fecha
+                                                    'fecha_publicacion': fecha,
+                                                    'imagen': imagen_url
                                                 }
                                                 articulos.append(datos)
         return articulos

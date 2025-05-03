@@ -1,0 +1,70 @@
+[
+  {
+    "titular_general": "Llegó el día del preparacionista: «Os hemos demostrado que no éramos ningunos frikis»",
+    "noticias": [
+      {
+        "id": 11,
+        "titulo": "Llegó el día del preparacionista: «Os hemos demostrado que no éramos ningunos frikis»"
+      },
+      {
+        "id": 34,
+        "titulo": "El apagón dispara el interés por comprar radios y hornillos de gas, que suben de precio"
+      }
+    ]
+  },
+  {
+    "titular_general": "Red Eléctrica se encomienda a los embalses tras el apagón: \"Se han puesto el cinturón\"",
+    "noticias": [
+      {
+        "id": 13,
+        "titulo": "El Gobierno respalda a la presidenta de Red Eléctrica mientras sigue alentando la teoría del ciberataque"
+      },
+      {
+        "id": 20,
+        "titulo": "Génova se enroca en la crítica: Feijóo y Mazón acusan a Sánchez de \"atacar\" por el apagón y la DANA"
+      },
+      {
+        "id": 27,
+        "titulo": "El Gobierno solicita a las empresas eléctricas que compartan sus datos \"esta misma tarde\" para investigar el apagón"
+      },
+      {
+        "id": 41,
+        "titulo": "Ribera, la profeta del apagón"
+      },
+      {
+        "id": 55,
+        "titulo": "Red Eléctrica se encomienda a los embalses tras el apagón: \"Se han puesto el cinturón\""
+      },
+      {
+        "id": 56,
+        "titulo": "Beatriz Corredor aparece casi 48 horas después del apagón: \"No volverá a ocurrir\""
+      }
+    ]
+  },
+  {
+    "titular_general": "Solo ha sido un apagón",
+    "noticias": [
+      {
+        "id": 24,
+        "titulo": "Solo ha sido un apagón"
+      },
+      {
+        "id": 57,
+        "titulo": "Los gigavatios no desaparecieron, pero el Gobierno, sí"
+      }
+    ]
+  },
+  {
+    "titular_general": "El apagón acalla el debate sobre las inversiones en defensa",
+    "noticias": [
+      {
+        "id": 48,
+        "titulo": "De la megafonía al ‘plan Mercurio’: así se comunicarían las autoridades cuando todo fallase"
+      },
+      {
+        "id": 49,
+        "titulo": "El apagón acalla el debate sobre las inversiones en defensa"
+      }
+    ]
+  }
+]

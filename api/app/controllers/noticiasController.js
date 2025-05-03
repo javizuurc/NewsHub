@@ -4,6 +4,8 @@ const AlmacenamientoService = require('../services/almacenamientoService');
 const almacenamientoController = require('./almacenamientoController');
 const BBDD = require('../database/db');
 const QUERIES = require('../core/constants/querys');
+const path = require('path');
+const { exec } = require('child_process');
 
 class NoticiasController {
     constructor() {
@@ -183,6 +185,40 @@ class NoticiasController {
             });
         }
     }
+
+
+    async getAgruparNoticias(req, res) {
+        try {
+            console.log('Ejecutando script de agrupación de noticias...');
+            const scriptPath = path.resolve(__dirname, '../../scripts/grupos/grupos.py');
+
+    
+            exec(`python3 ${scriptPath}`, (error, stdout, stderr) => {
+                if (error) {
+                    console.error('Error al ejecutar el script:', error);
+                    return res.status(500).json({
+                        success: false,
+                        message: 'Error al ejecutar el script de agrupación',
+                        error: error.message
+                    });
+                }
+    
+                console.log('Script ejecutado correctamente:\n', stdout);
+                return res.status(200).json({
+                    success: true,
+                    message: 'Grupos generados e insertados en la base de datos',
+                    output: stdout
+                });
+            });
+        } catch (error) {
+            console.error("Error general en agrupación:", error);
+            return res.status(500).json({
+                success: false,
+                message: "Fallo inesperado al ejecutar la agrupación",
+                error: error.message
+            });
+        }
+    }
 }
 
 const controller = new NoticiasController();
@@ -195,5 +231,7 @@ module.exports = {
     getTopicosDiarios: controller.getTopicosDiarios.bind(controller),
     getTopicosSemanales: controller.getTopicosSemanales.bind(controller),
     // getEvaluarNoticia: controller.getEvaluarNoticia.bind(controller)
-    getContadorNoticias: controller.getContadorNoticias.bind(controller) // AÑADI
+    getContadorNoticias: controller.getContadorNoticias.bind(controller), // AÑADI
+    getAgruparNoticias: controller.getAgruparNoticias.bind(controller)
+
 };

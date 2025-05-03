@@ -11,8 +11,7 @@ let intervalId = null;
 console.log('API_URL:', import.meta.env.VITE_API_URL);
 const fetchNoticias = () => {
     cargando.value = true;
-    fetch('http://192.169.1.113:3000/api/noticias/ultimas-noticias')
-      
+    fetch(import.meta.env.VITE_API_URL + '/api/noticias/ultimas-noticias')
     .then(response => {
         if (!response.ok) {
             throw new Error(`¡Error HTTP! Estado: ${response.status}`);

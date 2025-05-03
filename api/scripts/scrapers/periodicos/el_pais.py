@@ -15,7 +15,7 @@ class ElPais(ModeloPeriodico):
         respuesta = requests.get(self.url)
         if respuesta.status_code == 200:
             soup = BeautifulSoup(respuesta.text, 'html.parser')
-            section = soup.find('section', class_='_g _g-md _g-o b b-d')
+            section = soup.find('section', class_='_g _g-md _g-o b b-d b--o')
             if section:
                 for sec in section.find_all(recursive=False):
                     h2_tags = sec.find_all('h2', class_='c_t')
@@ -32,8 +32,8 @@ class ElPais(ModeloPeriodico):
                                 titulo_h1 = soup_art.find('h1')
                                 subtitulo_h2 = soup_art.find('h2')
                                 parrafo_p = soup_art.find('p')
-                            
-                                print(fecha)
+
+                        
                                 datos = {
                                     'autor': autor_div.get_text(strip=True) if autor_div else '',
                                     'titulo': titulo_h1.get_text(strip=True) if titulo_h1 else '',
@@ -54,7 +54,7 @@ class ElPais(ModeloPeriodico):
                 if respuesta.status == 200:
                     html = await respuesta.text()
                     soup = BeautifulSoup(html, 'html.parser')
-                    section = soup.find('section', class_='_g _g-md _g-o b b-d')
+                    section = soup.find('section', class_='_g _g-md _g-o b b-d b--o') 
                     if section:
                         # Se itera sobre los elementos hijos directos de la sección
                         for sec in section.find_all(recursive=False):
@@ -73,16 +73,21 @@ class ElPais(ModeloPeriodico):
                                             parrafo_p = soup_art.find('p')
                                             fecha_tag = soup_art.find('a', attrs={'data-date': True})
                                             fecha = fecha_tag['data-date'][:10] if fecha_tag else ''
+                                            img_tag = soup_art.find('img', class_='_re  a_m-h') or soup_art.select_one('figure img')
+                                            if img_tag and img_tag.has_attr('srcset'):
+                                                srcset = img_tag['srcset']
+                                                imagen_url = srcset.split(',')[-1].strip().split(' ')[0]
+                                            else:
+                                                imagen_url = img_tag.get('src') if img_tag and img_tag.has_attr('src') else ''
+                                                
                                             datos = {
                                                 'autor': autor_div.get_text(strip=True) if autor_div else '',
                                                 'titulo': titulo_h1.get_text(strip=True) if titulo_h1 else '',
                                                 'subtitulo': subtitulo_h2.get_text(strip=True) if subtitulo_h2 else '',
                                                 'articulo': parrafo_p.get_text(strip=True) if parrafo_p else '',
                                                 'url': url_articulo,
-                                                'fecha_publicacion': fecha
+                                                'fecha_publicacion': fecha,
+                                                'imagen': imagen_url
                                             }
                                             articulos.append(datos)
         return articulos
-
-
-

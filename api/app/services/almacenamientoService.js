@@ -25,8 +25,9 @@ class AlmacenamientoService {
             'url',
             'fecha_publicacion',
             'fecha_scraping',
+            'imagen',
             'temas',
-            'palabras_claves', // Contains 'comunes' and 'nombres_propios' arrays
+            'palabras_claves', 
             'coeficiente',
             'posicion',
             'justificacion'
@@ -223,7 +224,7 @@ class AlmacenamientoService {
                     error: resultadoJSON.message
                 };
             }
-    
+            
             const noticias = resultadoJSON.data;
             const sequelize = this.BBDD.getSequelize();
             const NoticiaModel = sequelize.models.Noticia;
@@ -317,11 +318,12 @@ class AlmacenamientoService {
                         url: noticiaJSON.url || null,
                         fecha_publicacion: noticiaJSON.fecha_publicacion ? new Date(noticiaJSON.fecha_publicacion) : null,
                         fecha_scraping: noticiaJSON.fecha_scraping ? new Date(noticiaJSON.fecha_scraping) : null,
+                        imagen: noticiaJSON.imagen || null,
                         coeficiente: noticiaJSON.coeficiente ? noticiaJSON.coeficiente.toString() : null,
                         justificacion: noticiaJSON.justificacion ? JSON.stringify(noticiaJSON.justificacion) : null,
                         periodico_id: periodicoId
                     };
-    
+                    console.log(noticiaJSON.imagen)
                     const nuevaNoticia = await NoticiaModel.create(datosNoticia);
                     console.log(`Noticia insertada con ID: ${nuevaNoticia.id}`);
     

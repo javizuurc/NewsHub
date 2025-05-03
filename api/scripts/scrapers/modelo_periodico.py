@@ -35,8 +35,10 @@ class ModeloPeriodico:
             'articulo':   '',
             'url':        '',
 
+
             'fecha_publicacion':  '',
             'fecha_scraping':     '',
+            'imagen': '',
 
             # DATOS A PASAR A LA API (vacíos para las noticias enviadas)
             'temas':              '',
