@@ -144,7 +144,7 @@ def titular_representativo(titulos):
     puntajes.sort(reverse=True)
     return puntajes[0][1] if puntajes else titulos[0]
 
-def agrupar_noticias_similares(noticias, threshold_keywords=0.2, threshold_titles=0.3):
+def agrupar_noticias_similares(noticias, threshold_keywords=0.1, threshold_titles=0.3):
     """Group similar news based on keyword IDs and title similarity"""
     n = len(noticias)
     visitados = [False] * n

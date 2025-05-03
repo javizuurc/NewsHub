@@ -1,23 +1,88 @@
 [
   {
-    "titular_general": "Las energías renovables, en la diana por un apagón del que todavía no se saben las causas",
+    "titular_general": "El plan de Sánchez incluye elevar hasta el 81% la dependencia de las renovables y el apagón se produjo con un 71%",
     "noticias": [
       {
         "id": 2,
         "titulo": "Red Eléctrica avisó de que la gran penetración de las renovables podía generar «riesgos de desconexión»"
       },
       {
+        "id": 5,
+        "titulo": "Sánchez apunta a las responsabilidades de las empresas privadas y promete cambios: “Esto no puede volver a pasar jamás”"
+      },
+      {
+        "id": 11,
+        "titulo": "Portugal detiene «por precaución» el intercambio eléctrico con España y ve plausible que el exceso de renovables sea la causa del apagón"
+      },
+      {
+        "id": 15,
+        "titulo": "El Gobierno respalda a la presidenta de Red Eléctrica mientras sigue alentando la teoría del ciberataque"
+      },
+      {
+        "id": 21,
+        "titulo": "Los expertos contestan al brutal ataque de Sánchez a las nucleares aprovechando el apagón"
+      },
+      {
+        "id": 33,
+        "titulo": "El Gobierno exige los datos ya a las eléctricas y respalda tímidamente a Corredor"
+      },
+      {
         "id": 35,
         "titulo": "Las energías renovables, en la diana por un apagón del que todavía no se saben las causas"
+      },
+      {
+        "id": 55,
+        "titulo": "Sánchez y Ribera exigieron \"demostrar\" que el sistema eléctrico era capaz de aguantar casi en exclusiva con renovables"
+      },
+      {
+        "id": 57,
+        "titulo": "Red Eléctrica se encomienda a los embalses tras el apagón: \"Se han puesto el cinturón\""
+      },
+      {
+        "id": 85,
+        "titulo": "El plan de Sánchez incluye elevar hasta el 81% la dependencia de las renovables y el apagón se produjo con un 71%"
       }
     ]
   },
   {
-    "titular_general": "Ribera, la profeta del apagón",
+    "titular_general": "El PP sugiere que el Gobierno conoce la causa del apagón y la oculta",
     "noticias": [
       {
-        "id": 15,
-        "titulo": "El Gobierno respalda a la presidenta de Red Eléctrica mientras sigue alentando la teoría del ciberataque"
+        "id": 3,
+        "titulo": "El PP sugiere que el Gobierno conoce la causa del apagón y la oculta"
+      },
+      {
+        "id": 10,
+        "titulo": "Investigan si una persona enferma de ELA con respirador murió por el apagón en Castilla y León"
+      },
+      {
+        "id": 48,
+        "titulo": "Expertos apuntan a un fallo de gestión de Red Eléctrica en el apagón del siglo en la Península"
+      },
+      {
+        "id": 61,
+        "titulo": "Seis de cada diez españoles vieron «insuficiente» la información del Gobierno de Sánchez durante el apagón"
+      },
+      {
+        "id": 87,
+        "titulo": "El Gobierno analizará por separado el error técnico y el ciberataque como causas del apagón del lunes"
+      }
+    ]
+  },
+  {
+    "titular_general": "El Gobierno mantendrá su plan energético tal y como estaba a pesar del apagón",
+    "noticias": [
+      {
+        "id": 6,
+        "titulo": "El Gobierno mantendrá su plan energético tal y como estaba a pesar del apagón"
+      },
+      {
+        "id": 18,
+        "titulo": "Sánchez mintió hasta con el número de centrales nucleares en marcha en el momento del apagón"
+      },
+      {
+        "id": 41,
+        "titulo": "El Gobierno blinda el cuestionado plan de energía de Ribera"
       },
       {
         "id": 43,
@@ -26,15 +91,74 @@
     ]
   },
   {
-    "titular_general": "Beatriz Corredor: “El riesgo cero no existe, que se lo digan a Francia o a Italia, que han tenido problemas similares”",
+    "titular_general": "Beatriz Corredor rompe su silencio sin dar explicaciones claras del apagón y no planea dimitir",
     "noticias": [
+      {
+        "id": 7,
+        "titulo": "Beatriz Corredor rompe su silencio sin dar explicaciones claras del apagón y no planea dimitir"
+      },
+      {
+        "id": 17,
+        "titulo": "EL PP no apoyará el decreto sobre aranceles del Gobierno hasta que ceda en las nucleares"
+      },
       {
         "id": 32,
         "titulo": "Beatriz Corredor: “El riesgo cero no existe, que se lo digan a Francia o a Italia, que han tenido problemas similares”"
       },
       {
+        "id": 40,
+        "titulo": "Malestar en Moncloa con Corredor por su gestión en las horas críticas: «No es el momento, Beatriz»"
+      },
+      {
+        "id": 47,
+        "titulo": "Cinco segundos que sumieron España en el colapso"
+      },
+      {
         "id": 58,
         "titulo": "Beatriz Corredor aparece casi 48 horas después del apagón: \"No volverá a ocurrir\""
+      },
+      {
+        "id": 67,
+        "titulo": "Cristina Narbona señala a quienes cuestionan al Gobierno por el apagón: \"Forma parte de la oposición chusca del PP\""
+      }
+    ]
+  },
+  {
+    "titular_general": "Génova se enroca en la crítica: Feijóo y Mazón acusan a Sánchez de \"atacar\" por el apagón y la DANA",
+    "noticias": [
+      {
+        "id": 22,
+        "titulo": "Génova se enroca en la crítica: Feijóo y Mazón acusan a Sánchez de \"atacar\" por el apagón y la DANA"
+      },
+      {
+        "id": 29,
+        "titulo": "El Gobierno solicita a las empresas eléctricas que compartan sus datos \"esta misma tarde\" para investigar el apagón"
+      }
+    ]
+  },
+  {
+    "titular_general": "El caso Editorial Santillana: la otra vez que el juez Peinado propulsó las demandas de Vox y la Audiencia tuvo que revocarle",
+    "noticias": [
+      {
+        "id": 46,
+        "titulo": "El juez Peinado y la sombra del lawfare: todas las veces que la Justicia ha tenido que frenar sus desmanes"
+      },
+      {
+        "id": 66,
+        "titulo": "El caso Editorial Santillana: la otra vez que el juez Peinado propulsó las demandas de Vox y la Audiencia tuvo que revocarle"
+      }
+    ]
+  },
+  {
+    "titular_general": "El ingeniero que alertó en marzo del apagón en el Congreso: \"En el PSOE me llamaron negacionista\"",
+    "noticias": [
+      {
+        "id": 56,
+        "titulo": "El ingeniero que alertó en marzo del apagón en el Congreso: \"En el PSOE me llamaron negacionista\""
+      },
+      {
+        "id": 78,
+        "titulo": "La ministra Aagesen fue advertida del riesgo de apagón y ordenó seguir apostando por una generación masiva de renovables"
       }
     ]
   }

@@ -400,6 +400,86 @@ class AlmacenamientoService {
         }
     }
 
+    async almacenarGruposBBDD() {
+        try {
+            const rutaArchivo = path.join(this.dataDir, 'grupos.json');
+            if (!fs.existsSync(rutaArchivo)) {
+                return { success: false, message: "Archivo grupos.json no encontrado" };
+            }
+    
+            const contenido = fs.readFileSync(rutaArchivo, 'utf8');
+            const grupos = JSON.parse(contenido);
+    
+            const sequelize = this.BBDD.getSequelize();
+            const GrupoModel = sequelize.models.Grupo;
+            const GrupoNoticiaModel = sequelize.models.grupo_noticia;
+    
+            const resultado = {
+                total: grupos.length,
+                insertados: 0,
+                errores: 0,
+                detalles: []
+            };
+    
+            for (const grupo of grupos) {
+                try {
+                    // Verificar si ya existe un grupo con mismo titular
+                    const [grupoCreado, creado] = await GrupoModel.findOrCreate({
+                        where: { titular_general: grupo.titular_general },
+                        defaults: {
+                            titular_general: grupo.titular_general,
+                            fecha_creacion: new Date()
+                        }
+                    });
+    
+                    for (const noticia of grupo.noticias) {
+                        await GrupoNoticiaModel.findOrCreate({
+                            where: {
+                                grupo_id: grupoCreado.id,
+                                noticia_id: noticia.id
+                            },
+                            defaults: {
+                                grupo_id: grupoCreado.id,
+                                noticia_id: noticia.id,
+                                createdAt: new Date(),
+                                updatedAt: new Date()
+                            }
+                        });
+                    }
+    
+                    resultado.insertados++;
+                    resultado.detalles.push({
+                        titular_general: grupo.titular_general,
+                        grupo_id: grupoCreado.id,
+                        estado: creado ? "nuevo" : "existente"
+                    });
+                } catch (err) {
+                    console.error("Error al insertar grupo:", grupo.titular_general, err);
+                    resultado.errores++;
+                    resultado.detalles.push({
+                        titular_general: grupo.titular_general,
+                        estado: "error",
+                        error: err.message
+                    });
+                }
+            }
+    
+            return {
+                success: true,
+                message: `Grupos procesados: ${resultado.total}, Insertados: ${resultado.insertados}, Errores: ${resultado.errores}`,
+                resultado
+            };
+    
+        } catch (error) {
+            console.error("Error general al almacenar grupos:", error);
+            return {
+                success: false,
+                message: "Error general al almacenar grupos",
+                error: error.message
+            };
+        }
+    }
+
     sacarPalabrasClaves(){
         const resultado = this.leerNoticiasJSON();
         if (resultado.success && resultado.data.length > 0) {

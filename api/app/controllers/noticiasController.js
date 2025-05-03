@@ -187,38 +187,82 @@ class NoticiasController {
     }
 
 
-    async getAgruparNoticias(req, res) {
+    async insertarGruposBBDD(req, res) {
         try {
-            console.log('Ejecutando script de agrupación de noticias...');
-            const scriptPath = path.resolve(__dirname, '../../scripts/grupos/grupos.py');
-
+            console.log("Iniciando proceso de almacenamiento de grupos en la base de datos...");
     
-            exec(`python3 ${scriptPath}`, (error, stdout, stderr) => {
-                if (error) {
-                    console.error('Error al ejecutar el script:', error);
-                    return res.status(500).json({
-                        success: false,
-                        message: 'Error al ejecutar el script de agrupación',
-                        error: error.message
-                    });
-                }
+            const resultado = await this.almacenamientoService.almacenarGruposBBDD();
     
-                console.log('Script ejecutado correctamente:\n', stdout);
+            if (resultado.success) {
                 return res.status(200).json({
                     success: true,
-                    message: 'Grupos generados e insertados en la base de datos',
-                    output: stdout
+                    message: resultado.message,
+                    resultado: resultado.resultado
                 });
-            });
+            } else {
+                return res.status(400).json({
+                    success: false,
+                    message: resultado.message,
+                    error: resultado.error
+                });
+            }
         } catch (error) {
-            console.error("Error general en agrupación:", error);
+            console.error("Error al almacenar grupos en la base de datos:", error);
             return res.status(500).json({
                 success: false,
-                message: "Fallo inesperado al ejecutar la agrupación",
+                message: "Error al almacenar grupos en la base de datos",
                 error: error.message
             });
         }
     }
+
+    async getGruposNoticias(req, res) {
+        try {
+          console.log("Obteniendo grupos de noticias...");
+      
+          const sequelize = BBDD.getSequelize();
+          const [results] = await sequelize.query(QUERIES.GRUPOS_NOTICIAS);
+      
+          // Agrupar los resultados por grupo_id
+          const gruposMap = new Map();
+      
+          results.forEach(row => {
+            if (!gruposMap.has(row.grupo_id)) {
+              gruposMap.set(row.grupo_id, {
+                titular_general: row.titular_general,
+                imagen: row.imagen || null,
+                noticias: []
+              });
+            }
+      
+            const grupo = gruposMap.get(row.grupo_id);
+      
+            // Añadir solo una imagen si no hay ninguna
+            if (!grupo.imagen && row.imagen) {
+              grupo.imagen = row.imagen;
+            }
+      
+            grupo.noticias.push({
+              id: row.noticia_id,
+              titulo: row.noticia_titulo,
+              periodico: row.periodico
+            });
+          });
+      
+          const grupos = Array.from(gruposMap.values());
+      
+          return res.status(200).json(grupos);
+        } catch (error) {
+          console.error("Error al obtener grupos de noticias:", error);
+          return res.status(500).json({
+            success: false,
+            message: "Error al obtener grupos de noticias",
+            error: error.message
+          });
+        }
+      } 
+      
+    
 }
 
 const controller = new NoticiasController();
@@ -232,6 +276,7 @@ module.exports = {
     getTopicosSemanales: controller.getTopicosSemanales.bind(controller),
     // getEvaluarNoticia: controller.getEvaluarNoticia.bind(controller)
     getContadorNoticias: controller.getContadorNoticias.bind(controller), // AÑADI
-    getAgruparNoticias: controller.getAgruparNoticias.bind(controller)
+    insertarGruposBBDD: controller.insertarGruposBBDD.bind(controller),
+    getGruposNoticias: controller.getGruposNoticias.bind(controller),
 
 };

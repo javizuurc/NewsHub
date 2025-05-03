@@ -11,7 +11,7 @@ const grupoSeleccionado = ref(null);
 
 const fetchGrupos = () => {
   cargando.value = true;
-  fetch(import.meta.env.VITE_API_URL + '/api/noticias/grupos')
+  fetch(import.meta.env.VITE_API_URL + '/api/noticias/grupos-noticias')
     .then(res => res.json())
     .then(data => {
       grupos.value = data;
