@@ -87,27 +87,29 @@ ORDER BY
     SELECT AVG(coeficiente) FROM noticias
     `,
     GRUPOS_NOTICIAS:`
-        SELECT
-            g.id AS grupo_id,
-            g.titular_general,
-            n.id AS noticia_id,
-            n.titulo AS noticia_titulo,
-            n.imagen,
-            p.nombre AS periodico
-        FROM
-            grupos g
-        JOIN grupo_noticia gn ON g.id = gn.grupo_id
-        JOIN noticias n ON gn.noticia_id = n.id
-        JOIN periodicos p ON n.periodico_id = p.id
-        WHERE
-            g.id IN (
+                    SELECT
+                g.id AS grupo_id,
+                g.titular_general,
+                n.id AS noticia_id,
+                n.titulo AS noticia_titulo,
+                n.imagen,
+                n.justificacion,                   
+                n.url,
+                n.fecha_publicacion,
+                n.coeficiente,
+                p.nombre AS periodico
+            FROM grupos g
+            JOIN grupo_noticia gn ON g.id = gn.grupo_id
+            JOIN noticias n ON gn.noticia_id = n.id
+            JOIN periodicos p ON n.periodico_id = p.id
+            WHERE g.id IN (
                 SELECT grupo_id
                 FROM grupo_noticia
                 GROUP BY grupo_id
                 HAVING COUNT(*) > 1
             )
-        ORDER BY
-            g.id, n.id;
+            ORDER BY g.id, n.id;
+
         `
 
 };

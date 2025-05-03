@@ -1,7 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import Modal from './ModalForm.vue';
-import TermometroCard from './cards/NewsCardComponent.vue'; 
+import Modal from './GrupoModal.vue'; // Asegúrate de que se llame así
 const grupos = ref([]);
 const cargando = ref(true);
 const error = ref(null);
@@ -55,24 +54,25 @@ onMounted(fetchGrupos);
       </div>
     </div>
 
-    <!-- MODAL -->
-    <Modal v-if="modalVisible" @close="cerrarModal">
+    <Modal v-if="modalVisible && grupoSeleccionado" :grupo="grupoSeleccionado" @close="cerrarModal">
       <template #header>
-        <h2 class="text-lg font-semibold">{{ grupoSeleccionado.titular_general }}</h2>
+        <h2 class="text-xl font-bold text-black">{{ grupoSeleccionado.titular_general }}</h2>
       </template>
+
       <template #body>
-        <div class="space-y-4">
-          <TermometroCard
-            v-for="noticia in grupoSeleccionado.noticias"
-            :key="noticia.id"
-            :titulo="noticia.titulo"
-            :fecha="noticia.fecha_publicacion"
-            :url="noticia.url"
-            :periodico="noticia.periodico_nombre"
-            :coeficiente="Number(noticia.coeficiente)"
-          />
+        <img 
+          v-if="grupoSeleccionado.imagen" 
+          :src="grupoSeleccionado.imagen" 
+          alt="Imagen representativa" 
+          class="w-full h-64 object-cover rounded-md mb-4" 
+        />
+
+        <div v-for="noticia in grupoSeleccionado.noticias" :key="noticia.id" class="mb-4 border p-3 rounded-md bg-white shadow-sm">
+          <p class="font-semibold text-black">{{ noticia.titulo }}</p>
+          <p class="text-sm text-gray-600">Periódico: {{ noticia.periodico }}</p>
+          <p v-if="noticia.justificacion" class="text-xs text-gray-500 mt-1 italic">Justificación: {{ noticia.justificacion }}</p>
         </div>
       </template>
-    </Modal>
-  </section>
-</template>
+      </Modal>
+    </section>
+  </template>

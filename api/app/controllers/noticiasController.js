@@ -223,7 +223,6 @@ class NoticiasController {
           const sequelize = BBDD.getSequelize();
           const [results] = await sequelize.query(QUERIES.GRUPOS_NOTICIAS);
       
-          // Agrupar los resultados por grupo_id
           const gruposMap = new Map();
       
           results.forEach(row => {
@@ -237,7 +236,7 @@ class NoticiasController {
       
             const grupo = gruposMap.get(row.grupo_id);
       
-            // Añadir solo una imagen si no hay ninguna
+            // Usa la primera imagen válida
             if (!grupo.imagen && row.imagen) {
               grupo.imagen = row.imagen;
             }
@@ -245,11 +244,27 @@ class NoticiasController {
             grupo.noticias.push({
               id: row.noticia_id,
               titulo: row.noticia_titulo,
-              periodico: row.periodico
+              periodico: row.periodico,
+              url: row.url || null,
+              fecha_publicacion: row.fecha_publicacion || null,
+              coeficiente: row.coeficiente ? parseFloat(row.coeficiente) : null,
+              justificacion: row.justificacion || null
             });
           });
       
-          const grupos = Array.from(gruposMap.values());
+          const grupos = Array.from(gruposMap.values()).map(grupo => {
+            const coeficientes = grupo.noticias
+              .map(n => parseFloat(n.coeficiente))
+              .filter(n => !isNaN(n));
+            const media = coeficientes.length > 0
+              ? (coeficientes.reduce((a, b) => a + b, 0) / coeficientes.length).toFixed(2)
+              : null;
+      
+            return {
+              ...grupo,
+              media_coeficiente: media !== null ? Number(media) : null
+            };
+          });
       
           return res.status(200).json(grupos);
         } catch (error) {
@@ -260,7 +275,9 @@ class NoticiasController {
             error: error.message
           });
         }
-      } 
+      }
+      
+      
       
     
 }
