@@ -1,8 +1,8 @@
 const QUERIES = {
     ULTIMAS_NOTICIAS_PERIODICOS: `
-        SELECT
+      SELECT
     n.titulo,
-    n.fecha_publicacion,
+    DATE_FORMAT(n.fecha_publicacion, '%d-%m-%Y') AS fecha_publicacion,
     p.nombre AS periodico_nombre,
     n.url,
     n.coeficiente
@@ -13,25 +13,30 @@ JOIN
 JOIN (
     SELECT
         periodico_id,
-        MAX(fecha_publicacion) AS max_fecha
+        MIN(fecha_scraping) AS min_fecha
     FROM
         noticias
+    WHERE DATE(fecha_scraping) = CURDATE()
     GROUP BY
         periodico_id
 ) sub ON sub.periodico_id = n.periodico_id
-AND n.fecha_publicacion = sub.max_fecha
+AND n.fecha_scraping = sub.min_fecha
 JOIN (
     SELECT
         periodico_id,
-        MAX(id) AS max_id
+        MIN(id) AS min_id
     FROM
         noticias
+    WHERE DATE(fecha_scraping) = CURDATE()
     GROUP BY
         periodico_id
 ) sub2 ON sub2.periodico_id = n.periodico_id
-AND n.id = sub2.max_id
+AND n.id = sub2.min_id
+WHERE DATE(n.fecha_scraping) = CURDATE()
 ORDER BY
-    n.fecha_publicacion DESC;
+    n.fecha_scraping ASC;
+
+
 
 
 
@@ -47,7 +52,7 @@ ORDER BY
         JOIN 
             noticias n ON nc.noticia_id = n.id
         WHERE 
-            DATE(n.fecha_publicacion) = (SELECT MAX(DATE(fecha_publicacion)) FROM noticias)
+            DATE(n.fecha_scraping) = (SELECT MAX(DATE(fecha_scraping)) FROM noticias)
         GROUP BY 
             c.nombre
         ORDER BY 
@@ -65,7 +70,7 @@ ORDER BY
         JOIN 
             noticias n ON nc.noticia_id = n.id
         WHERE 
-            n.fecha_publicacion >= DATE_SUB((SELECT MAX(DATE(fecha_publicacion)) FROM noticias), INTERVAL 7 DAY)
+            n.fecha_scraping >= DATE_SUB((SELECT MAX(DATE(fecha_scraping)) FROM noticias), INTERVAL 7 DAY)
         GROUP BY 
             c.nombre
         ORDER BY 

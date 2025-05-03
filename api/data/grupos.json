@@ -1,69 +1,40 @@
 [
   {
-    "titular_general": "Llegó el día del preparacionista: «Os hemos demostrado que no éramos ningunos frikis»",
+    "titular_general": "Las energías renovables, en la diana por un apagón del que todavía no se saben las causas",
     "noticias": [
       {
-        "id": 11,
-        "titulo": "Llegó el día del preparacionista: «Os hemos demostrado que no éramos ningunos frikis»"
+        "id": 2,
+        "titulo": "Red Eléctrica avisó de que la gran penetración de las renovables podía generar «riesgos de desconexión»"
       },
       {
-        "id": 34,
-        "titulo": "El apagón dispara el interés por comprar radios y hornillos de gas, que suben de precio"
+        "id": 35,
+        "titulo": "Las energías renovables, en la diana por un apagón del que todavía no se saben las causas"
       }
     ]
   },
   {
-    "titular_general": "Red Eléctrica se encomienda a los embalses tras el apagón: \"Se han puesto el cinturón\"",
+    "titular_general": "Ribera, la profeta del apagón",
     "noticias": [
       {
-        "id": 13,
+        "id": 15,
         "titulo": "El Gobierno respalda a la presidenta de Red Eléctrica mientras sigue alentando la teoría del ciberataque"
       },
       {
-        "id": 20,
-        "titulo": "Génova se enroca en la crítica: Feijóo y Mazón acusan a Sánchez de \"atacar\" por el apagón y la DANA"
-      },
-      {
-        "id": 27,
-        "titulo": "El Gobierno solicita a las empresas eléctricas que compartan sus datos \"esta misma tarde\" para investigar el apagón"
-      },
-      {
-        "id": 41,
+        "id": 43,
         "titulo": "Ribera, la profeta del apagón"
+      }
+    ]
+  },
+  {
+    "titular_general": "Beatriz Corredor: “El riesgo cero no existe, que se lo digan a Francia o a Italia, que han tenido problemas similares”",
+    "noticias": [
+      {
+        "id": 32,
+        "titulo": "Beatriz Corredor: “El riesgo cero no existe, que se lo digan a Francia o a Italia, que han tenido problemas similares”"
       },
       {
-        "id": 55,
-        "titulo": "Red Eléctrica se encomienda a los embalses tras el apagón: \"Se han puesto el cinturón\""
-      },
-      {
-        "id": 56,
+        "id": 58,
         "titulo": "Beatriz Corredor aparece casi 48 horas después del apagón: \"No volverá a ocurrir\""
-      }
-    ]
-  },
-  {
-    "titular_general": "Solo ha sido un apagón",
-    "noticias": [
-      {
-        "id": 24,
-        "titulo": "Solo ha sido un apagón"
-      },
-      {
-        "id": 57,
-        "titulo": "Los gigavatios no desaparecieron, pero el Gobierno, sí"
-      }
-    ]
-  },
-  {
-    "titular_general": "El apagón acalla el debate sobre las inversiones en defensa",
-    "noticias": [
-      {
-        "id": 48,
-        "titulo": "De la megafonía al ‘plan Mercurio’: así se comunicarían las autoridades cuando todo fallase"
-      },
-      {
-        "id": 49,
-        "titulo": "El apagón acalla el debate sobre las inversiones en defensa"
       }
     ]
   }
