@@ -37,7 +37,7 @@ onMounted(fetchGrupos);
 
 <template>
   <section class="flex-1 p-4 bg-white rounded-lg shadow">
-    <h2 class="text-lg font-bold text-[#be985d] mb-3 border-b border-[#b08d57] pb-2 text-center">
+    <h2 class="text-lg font-bold text-[#be985d] mb-3 border-b-2 border-[#b08d57] pb-2 text-center">
       Noticias Relevantes
     </h2>
 
