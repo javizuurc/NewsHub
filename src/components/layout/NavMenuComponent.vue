@@ -34,14 +34,11 @@
             <img src="/src/assets/Logo NewsHub.png" alt="Logo NewsHub" class="size-15">
           </router-link>
 
-          <router-link 
-          to="/" 
+          <router-link to="/" 
           class="text-3xl md:text-4xl font-extrabold text-white hover:text-[#C0C0C0] transition-all duration-500 transform hover:scale-105 ml-1" 
-          aria-label="NewsHub" 
-          id="nombre"
-        >
-    NewsHub
-  </router-link>
+          aria-label="NewsHub" id="nombre">
+            NewsHub
+          </router-link>
 
         </div>
       </div>
@@ -51,6 +48,7 @@
       <ul class="hidden md:flex items-center space-x-6 mx-auto">
         <li><router-link to="/estadisticas" class="py-2 px-3 hover:text-[#be985d] transition-all duration-300 border-b-2 border-transparent hover:border-[#be985d]">Termómetro Nacional</router-link></li>
         <li><a href="#" class="py-2 px-3 hover:text-[#be985d] transition-all duration-300 border-b-2 border-transparent hover:border-[#be985d]">¿Cómo sería si... ?</a></li>
+        <li><router-link to="" class="py-2 px-3 hover:text-[#be985d] transition-all duration-300 border-b-2 border-transparent hover:border-[#be985d]">Sobre nosotros</router-link></li>
         <li>
           <button 
             @click="openModal" 
