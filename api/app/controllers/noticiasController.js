@@ -235,8 +235,7 @@ class NoticiasController {
             }
       
             const grupo = gruposMap.get(row.grupo_id);
-      
-            // Usa la primera imagen válida
+    
             if (!grupo.imagen && row.imagen) {
               grupo.imagen = row.imagen;
             }

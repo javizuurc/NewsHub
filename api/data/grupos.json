@@ -41,6 +41,18 @@
       {
         "id": 85,
         "titulo": "El plan de Sánchez incluye elevar hasta el 81% la dependencia de las renovables y el apagón se produjo con un 71%"
+      },
+      {
+        "id": 96,
+        "titulo": "La lentitud regulatoria del Gobierno lastra el desarrollo del almacenamiento energético"
+      },
+      {
+        "id": 108,
+        "titulo": "El Gobierno sigue recopilando datos sobre el apagón tras la segunda reunión del Comité de análisis"
+      },
+      {
+        "id": 109,
+        "titulo": "Sara Aagesen: “Señalar a las renovables me parece irresponsable y simplista. España será verde o no será”"
       }
     ]
   },
@@ -87,6 +99,10 @@
       {
         "id": 43,
         "titulo": "Ribera, la profeta del apagón"
+      },
+      {
+        "id": 92,
+        "titulo": "El informe de auditoría de REE desmiente a Beatriz Corredor: esta es la larga lista de \"riesgos\" del sistema eléctrico"
       }
     ]
   },
@@ -120,6 +136,19 @@
       {
         "id": 67,
         "titulo": "Cristina Narbona señala a quienes cuestionan al Gobierno por el apagón: \"Forma parte de la oposición chusca del PP\""
+      }
+    ]
+  },
+  {
+    "titular_general": "Dar confianza cuanto antes",
+    "noticias": [
+      {
+        "id": 16,
+        "titulo": "Pío, pío, que yo no he sido"
+      },
+      {
+        "id": 114,
+        "titulo": "Dar confianza cuanto antes"
       }
     ]
   },
@@ -159,6 +188,19 @@
       {
         "id": 78,
         "titulo": "La ministra Aagesen fue advertida del riesgo de apagón y ordenó seguir apostando por una generación masiva de renovables"
+      }
+    ]
+  },
+  {
+    "titular_general": "Los ocho papables de un cónclave que busca superar las divisiones internas",
+    "noticias": [
+      {
+        "id": 98,
+        "titulo": "Los nuevos papables que podrían dar la sorpresa en el cónclave"
+      },
+      {
+        "id": 113,
+        "titulo": "Los ocho papables de un cónclave que busca superar las divisiones internas"
       }
     ]
   }
