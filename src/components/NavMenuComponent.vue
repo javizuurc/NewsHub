@@ -34,9 +34,15 @@
             <img src="/src/assets/Logo NewsHub.png" alt="Logo NewsHub" class="size-15">
           </a>
 
-          <a href="#" class="text-3xl md:text-4xl font-extrabold text-white hover:text-[#C0C0C0] transition-all duration-500 transform hover:scale-105 ml-1" aria-label="NewsHub" id="nombre">
-            NewsHub
-          </a>
+          <router-link 
+          to="/" 
+          class="text-3xl md:text-4xl font-extrabold text-white hover:text-[#C0C0C0] transition-all duration-500 transform hover:scale-105 ml-1" 
+          aria-label="NewsHub" 
+          id="nombre"
+        >
+    NewsHub
+  </router-link>
+
         </div>
       </div>
 

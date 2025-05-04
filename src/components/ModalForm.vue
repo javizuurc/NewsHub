@@ -68,7 +68,8 @@
           />
         </div>
 
-        <div class="flex justify-end">
+        <div class="flex flex-col sm:flex-row justify-center sm:justify-end gap-2">
+
           <button 
             type="button" 
             @click="close" 

@@ -37,7 +37,9 @@ onMounted(fetchGrupos);
 
 <template>
   <section class="flex-1 p-4 bg-white rounded-lg shadow">
-    <h2 class="text-xl font-semibold mb-4">Grupos de Noticias Similares</h2>
+    <h2 class="text-lg font-bold text-[#be985d] mb-3 border-b border-[#b08d57] pb-2 text-center">
+      Grupos de Noticias Similares
+    </h2>
 
     <div v-if="cargando" class="text-center text-gray-500">Cargando grupos...</div>
     <div v-else-if="error" class="text-center text-red-500">Error: {{ error }}</div>
