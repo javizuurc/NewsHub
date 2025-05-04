@@ -88,39 +88,33 @@ async function buscarDuplicados(modelo, criterios, opciones = {}) {
   try {
     const sequelize = db.getSequelize();
     
-    // Configuración por defecto
     const config = {
-      camposIndice: opciones.camposIndice || Object.keys(criterios), // Campos para crear índices
-      atributos: opciones.atributos || null // Permite seleccionar solo ciertos campos
+      camposIndice: opciones.camposIndice || Object.keys(criterios),
+      atributos: opciones.atributos || null
     };
     
-    // Preparar condiciones de búsqueda
     const condiciones = {
       where: {
-        [Op.or]: []  // Use the imported Op instead of sequelize.Op
+        [Op.or]: []
       }
     };
     
-    // Añadir atributos si se especifican
     if (config.atributos) {
       condiciones.attributes = config.atributos;
     }
     
-    // Procesar cada criterio de búsqueda
     Object.entries(criterios).forEach(([campo, valores]) => {
       if (valores && Array.isArray(valores) && valores.length > 0) {
         const condicion = {};
-        condicion[campo] = { [Op.in]: valores };  // Use Op instead of sequelize.Op
-        condiciones.where[Op.or].push(condicion);  // Use Op instead of sequelize.Op
+        condicion[campo] = { [Op.in]: valores };
+        condiciones.where[Op.or].push(condicion);
       } else if (valores && !Array.isArray(valores)) {
-        // Si es un valor único, no un array
         const condicion = {};
         condicion[campo] = valores;
-        condiciones.where[Op.or].push(condicion);  // Use Op instead of sequelize.Op
+        condiciones.where[Op.or].push(condicion);
       }
     });
     
-    // Si no hay condiciones, devolver resultado vacío
     if (condiciones.where[Op.or].length == 0) {
       return {
         registros: [],
@@ -128,22 +122,19 @@ async function buscarDuplicados(modelo, criterios, opciones = {}) {
       };
     }
     
-    // Buscar registros existentes
     const registrosExistentes = await modelo.findAll(condiciones);
     
-    // Crear resultado con los registros encontrados
     const resultado = {
       registros: registrosExistentes,
       indices: {}
     };
     
-    // Crear índices para búsqueda rápida según los campos especificados
     config.camposIndice.forEach(campo => {
       resultado.indices[campo] = {};
       
       registrosExistentes.forEach(registro => {
         const valor = registro[campo];
-        if (valor !== null && valor !== undefined) {
+        if (valor != null && valor != undefined) {
           resultado.indices[campo][valor] = registro;
         }
       });
@@ -158,7 +149,6 @@ async function buscarDuplicados(modelo, criterios, opciones = {}) {
 
 async function buscarNoticiasDuplicadas(modelo, criterios) {
   try {
-    // Convertir criterios específicos de noticias al formato genérico
     const criteriosGenericos = {};
     if (criterios.titulos && criterios.titulos.length > 0) {
       criteriosGenericos.titulo = criterios.titulos;
@@ -167,12 +157,10 @@ async function buscarNoticiasDuplicadas(modelo, criterios) {
       criteriosGenericos.url = criterios.urls;
     }
     
-    // Usar la función genérica
     const resultado = await buscarDuplicados(modelo, criteriosGenericos, {
       camposIndice: ['titulo', 'url']
     });
     
-    // Convertir al formato anterior para mantener compatibilidad
     return {
       noticias: resultado.registros,
       porTitulo: resultado.indices.titulo || {},
@@ -204,45 +192,34 @@ async function insertarRegistros(modelo, registros, opciones = {}) {
       return resultados;
     }
     
-    // Modify the date sanitization logic in the insertarRegistros function
-    
-    // Sanitize date fields to prevent 'Invalid date' errors
     registros = registros.map(registro => {
       const registroLimpio = {...registro};
-      
-      // Check for date fields and sanitize them
+
       ['fecha_publicacion', 'fecha_scraping'].forEach(campo => {
         if (registroLimpio[campo]) {
-          // Check if it's already an 'Invalid date' string
-          if (registroLimpio[campo] === 'Invalid date' || registroLimpio[campo] === 'Invalid Date') {
-            // Set default date (today at midnight) instead of null
+          if (registroLimpio[campo] == 'Invalid date' || registroLimpio[campo] == 'Invalid Date') {
             const hoy = new Date();
             hoy.setHours(0, 0, 0, 0);
             registroLimpio[campo] = hoy.toISOString().slice(0, 19).replace('T', ' ');
           } else {
-            // Try to parse the date
             try {
               const fecha = new Date(registroLimpio[campo]);
               
-              // If the date is invalid, set to today at midnight
               if (isNaN(fecha.getTime())) {
                 const hoy = new Date();
                 hoy.setHours(0, 0, 0, 0);
                 registroLimpio[campo] = hoy.toISOString().slice(0, 19).replace('T', ' ');
               } else {
-                // Format the date as YYYY-MM-DD HH:MM:SS for MySQL
                 registroLimpio[campo] = fecha.toISOString().slice(0, 19).replace('T', ' ');
               }
             } catch (e) {
               console.log(`Error parsing date for ${campo}:`, registroLimpio[campo]);
-              // Set default date (today at midnight) instead of null
               const hoy = new Date();
               hoy.setHours(0, 0, 0, 0);
               registroLimpio[campo] = hoy.toISOString().slice(0, 19).replace('T', ' ');
             }
           }
         } else {
-          // If the field is empty or null, set it to today at midnight
           const hoy = new Date();
           hoy.setHours(0, 0, 0, 0);
           registroLimpio[campo] = hoy.toISOString().slice(0, 19).replace('T', ' ');
@@ -252,7 +229,6 @@ async function insertarRegistros(modelo, registros, opciones = {}) {
       return registroLimpio;
     });
     
-    // Buscar registros existentes para evitar duplicados
     const criteriosBusqueda = {};
     
     config.camposComparacion.forEach(campo => {
@@ -328,7 +304,6 @@ async function insertarRegistros(modelo, registros, opciones = {}) {
       }
     }
     
-    // Realizar actualizaciones
     if (actualizaciones.length > 0) {
       await Promise.all(actualizaciones.map(async (act) => {
         try {
@@ -360,28 +335,23 @@ async function insertarRegistros(modelo, registros, opciones = {}) {
 
 async function existenRegistros(modelo, criterios, opciones = {}) {
   try {
-    // Default configuration
     const config = {
       camposComparacion: opciones.camposComparacion || Object.keys(criterios),
-      operador: opciones.operador || 'OR', // 'OR' or 'AND' for condition joining
-      exactMatch: opciones.exactMatch !== false // true by default
+      operador: opciones.operador || 'OR',
+      exactMatch: opciones.exactMatch != false
     };
     
-    // Prepare search conditions
     const condiciones = {
       where: {}
     };
     
-    // Set up the logical operator (AND/OR)
-    if (config.operador.toUpperCase() === 'AND') {
-      // All conditions must match (AND)
+    if (config.operador.toUpperCase() == 'AND') {
       Object.entries(criterios).forEach(([campo, valor]) => {
         if (valor !== null && valor !== undefined) {
           if (config.exactMatch) {
             condiciones.where[campo] = valor;
           } else {
-            // For string fields, use LIKE for partial matching
-            if (typeof valor === 'string') {
+            if (typeof valor == 'string') {
               condiciones.where[campo] = { [Op.like]: `%${valor}%` };
             } else {
               condiciones.where[campo] = valor;
@@ -390,17 +360,15 @@ async function existenRegistros(modelo, criterios, opciones = {}) {
         }
       });
     } else {
-      // Any condition can match (OR)
       condiciones.where[Op.or] = [];
       
       Object.entries(criterios).forEach(([campo, valor]) => {
-        if (valor !== null && valor !== undefined) {
+        if (valor != null && valor != undefined) {
           const condicion = {};
           
           if (config.exactMatch) {
             condicion[campo] = valor;
           } else {
-            // For string fields, use LIKE for partial matching
             if (typeof valor === 'string') {
               condicion[campo] = { [Op.like]: `%${valor}%` };
             } else {
@@ -412,8 +380,7 @@ async function existenRegistros(modelo, criterios, opciones = {}) {
         }
       });
       
-      // If no conditions were added, return false (no matches)
-      if (condiciones.where[Op.or].length === 0) {
+      if (condiciones.where[Op.or].length == 0) {
         return {
           existe: false,
           cantidad: 0,
@@ -422,12 +389,10 @@ async function existenRegistros(modelo, criterios, opciones = {}) {
       }
     }
     
-    // Add limit to optimize query if we only need to know existence
     if (!opciones.obtenerRegistros) {
       condiciones.limit = 1;
     }
     
-    // Execute the query
     const registros = await modelo.findAll(condiciones);
     
     return {

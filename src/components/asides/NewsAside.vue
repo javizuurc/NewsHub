@@ -35,14 +35,10 @@ const fetchNoticias = () => {
 };
 
 onMounted(() => {
-    // Obtener noticias inmediatamente al montar
     fetchNoticias();
-    
-    // Configurar intervalo para actualizar cada 5 minutos (300000 ms)
     intervalId = setInterval(fetchNoticias, 300000);
 });
 
-// Limpiar el intervalo cuando el componente se desmonta
 onBeforeUnmount(() => {
     if (intervalId) {
         clearInterval(intervalId);
@@ -70,22 +66,13 @@ onBeforeUnmount(() => {
       />
       <!-- Noticias de ejemplo como fallback -->
       <AsideCard 
-        v-if="noticias.length === 0"
+        v-if="noticias.length == 0"
         :key="'noticia1'" 
-        :titulo="'El gobierno anuncia nuevas medidas económicas para impulsar el crecimiento'" 
+        :titulo="'No están cargando las noticias'" 
         :fecha="'2023-05-15'" 
-        :url="'https://example.com/noticia1'"
-        :periodico="'El Diario'"
-        :coeficiente="0.2"
-      />
-      <AsideCard 
-        v-if="noticias.length === 0"
-        :key="'noticia2'" 
-        :titulo="'Avances en la investigación de energías renovables prometen reducir emisiones de carbono'" 
-        :fecha="'2023-05-14'" 
-        :url="'https://example.com/noticia2'"
-        :periodico="'Ciencia Hoy'"
-        :coeficiente="-0.1"
+        :url="''"
+        :periodico="'NewsHub'"
+        :coeficiente="0"
       />
     </div>
   </AsideComponent>

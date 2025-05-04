@@ -6,41 +6,37 @@ const QUERIES = {
     p.nombre AS periodico_nombre,
     n.url,
     n.coeficiente
-FROM
-    noticias n
-JOIN
-    periodicos p ON p.id = n.periodico_id
-JOIN (
-    SELECT
-        periodico_id,
-        MIN(fecha_scraping) AS min_fecha
     FROM
-        noticias
-    WHERE DATE(fecha_scraping) = CURDATE()
-    GROUP BY
-        periodico_id
-) sub ON sub.periodico_id = n.periodico_id
-AND n.fecha_scraping = sub.min_fecha
-JOIN (
-    SELECT
-        periodico_id,
-        MIN(id) AS min_id
-    FROM
-        noticias
-    WHERE DATE(fecha_scraping) = CURDATE()
-    GROUP BY
-        periodico_id
-) sub2 ON sub2.periodico_id = n.periodico_id
-AND n.id = sub2.min_id
-WHERE DATE(n.fecha_scraping) = CURDATE()
-ORDER BY
-    n.fecha_scraping DESC;
+        noticias n
+    JOIN
+        periodicos p ON p.id = n.periodico_id
+    JOIN (
+        SELECT
+            periodico_id,
+            MIN(fecha_scraping) AS min_fecha
+        FROM
+            noticias
+        WHERE DATE(fecha_scraping) = CURDATE()
+        GROUP BY
+            periodico_id
+    ) sub ON sub.periodico_id = n.periodico_id
+    AND n.fecha_scraping = sub.min_fecha
+    JOIN (
+        SELECT
+            periodico_id,
+            MIN(id) AS min_id
+        FROM
+            noticias
+        WHERE DATE(fecha_scraping) = CURDATE()
+        GROUP BY
+            periodico_id
+        ) sub2 ON sub2.periodico_id = n.periodico_id
+        AND n.id = sub2.min_id
+        WHERE DATE(n.fecha_scraping) = CURDATE()
+        ORDER BY
+            n.fecha_scraping DESC;
 
-
-
-
-
-    `,
+        `,
     TOPICOS_DIARIOS: `
         SELECT 
             c.nombre AS palabra, 

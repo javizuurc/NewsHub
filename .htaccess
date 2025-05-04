@@ -6,27 +6,16 @@
     Options Indexes FollowSymLinks
     AllowOverride All
     Require all granted
-    
-    php_flag display_errors on
-    php_value error_reporting E_ALL
 </Directory>
 
-<Files "*.php">
-    Require all granted
-    Header set Access-Control-Allow-Origin "*"
-    Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
-    Header set Access-Control-Allow-Headers "Content-Type, Authorization"
-</Files>
 AddDefaultCharset UTF-8
 
 ErrorDocument 500 "Sorry, there was an internal server error. Please check the server logs for more information."
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /
+    RewriteBase /\
     
-    RewriteCond %{REQUEST_URI} ^/obtener_noticias\.php$ [OR]
-    RewriteCond %{REQUEST_URI} ^/obtener_topics\.php$
     RewriteRule ^(.*)$ /public/$1 [L]
     
     RewriteCond %{REQUEST_FILENAME} !-f

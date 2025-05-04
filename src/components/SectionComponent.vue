@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import Modal from './GrupoModal.vue'; // Asegúrate de que se llame así
+import Modal from './GrupoModal.vue';
 const grupos = ref([]);
 const cargando = ref(true);
 const error = ref(null);

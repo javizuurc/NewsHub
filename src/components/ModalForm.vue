@@ -57,10 +57,10 @@
           />
         </div>
 
-        <div v-if="score !== null" class="mb-4">
+        <div v-if="score != null" class="mb-4">
           <p class="text-gray-800">Puntuación del sesgo ideológico:</p>
           <IdeologyThermometer 
-            v-if="score !== null && !isNaN(score)" 
+            v-if="score != null && !isNaN(score)" 
             :coeficiente="score" 
             class="my-1.5 max-w-full"
             height="h-1.5"

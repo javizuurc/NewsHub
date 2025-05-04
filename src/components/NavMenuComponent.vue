@@ -28,18 +28,22 @@
           class="md:hidden text-white hover:text-[#be985d] focus:outline-none mr-3"
           aria-label="Menú"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
         </button>
-        <a href="#" class="text-3xl md:text-4xl font-extrabold text-white hover:text-[#C0C0C0] transition-all duration-500 transform hover:scale-105 ml-1" aria-label="NewsHub" id="nombre">
-          NewsHub
-        </a>
+        <div class="flex flex-row m5 justify-center items-center">
+          <a href="/">
+            <img src="/src/assets/Logo NewsHub.png" alt="Logo NewsHub" class="size-15">
+          </a>
+
+          <a href="#" class="text-3xl md:text-4xl font-extrabold text-white hover:text-[#C0C0C0] transition-all duration-500 transform hover:scale-105 ml-1" aria-label="NewsHub" id="nombre">
+            NewsHub
+          </a>
+        </div>
       </div>
 
       <!-- Menú para pantallas medianas y grandes -->
+      <!--NECESITAMOS QUE SE ABRA EL MENÚ PARA LOS MÓVILES (NO LO HACE)-->
       <ul class="hidden md:flex items-center space-x-6 mx-auto">
-        <li><router-link to="/estadisticas" class="py-2 px-3 hover:text-[#be985d] transition-all duration-300 border-b-2 border-transparent hover:border-[#be985d]">Estadísticas</router-link></li>
+        <li><router-link to="/estadisticas" class="py-2 px-3 hover:text-[#be985d] transition-all duration-300 border-b-2 border-transparent hover:border-[#be985d]">Termómetro Nacional</router-link></li>
         <li><a href="#" class="py-2 px-3 hover:text-[#be985d] transition-all duration-300 border-b-2 border-transparent hover:border-[#be985d]">¿Cómo sería si... ?</a></li>
         <li>
           <button 
@@ -53,13 +57,16 @@
 
     </div>
 
+
+
+
     <div 
       v-if="mobileMenuOpen" 
       class="md:hidden bg-[#3A3A3A] border-t border-[#be985d]/30 mt-2"
     >
       <ul class="flex flex-col py-2">
         <li><router-link to="/" class="block px-4 py-3 hover:bg-[#4A4A4A] hover:text-[#be985d] transition-colors duration-200">Inicio</router-link></li>
-        <li><router-link to="/estadisticas" class="block px-4 py-3 hover:bg-[#4A4A4A] hover:text-[#be985d] transition-colors duration-200">Estadísticas</router-link></li>
+        <li><router-link to="/estadisticas" class="block px-4 py-3 hover:bg-[#4A4A4A] hover:text-[#be985d] transition-colors duration-200">Termómetro Nacional</router-link></li>
         <li><a href="#" class="block px-4 py-3 hover:bg-[#4A4A4A] hover:text-[#be985d] transition-colors duration-200">¿Cómo sería?</a></li>
         <li>
           <button 

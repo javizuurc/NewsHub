@@ -116,14 +116,6 @@ onBeforeUnmount(() => {
             :link="topico.url"
             :type="'daily'"
           />
-          
-          <TopicCard 
-            v-if="topicosDiarios.length == 0"
-            :key="'topico-diario-1'" 
-            :name="'Economía'"
-            :link="'/topico/economia'"
-            :type="'daily'"
-          />
         </div>
       </li>
       
@@ -140,14 +132,6 @@ onBeforeUnmount(() => {
             v-for="(topico, index) in topicosSemanales" 
             :key="index" 
             :name="topico.nombre"
-            :link="topico.url"
-            :type="'weekly'"
-          />
-          <TopicCard 
-            v-if="topicosSemanales.length == 0"
-            :key="'topico-semanal-1'" 
-            :name="'Tecnología'"
-            :link="'/topico/tecnologia'"
             :type="'weekly'"
           />
         </div>

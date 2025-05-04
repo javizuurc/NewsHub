@@ -11,16 +11,16 @@ class Auxiliares {
     static noticiaExiste(nuevaNoticia, fuenteNoticias, camposComparar = ['url', 'titulo']) {
 
         const noticias = Array.isArray(fuenteNoticias) ? fuenteNoticias : 
-                        (fuenteNoticias && typeof fuenteNoticias === 'object') ? 
+                        (fuenteNoticias && typeof fuenteNoticias == 'object') ? 
                         Object.values(fuenteNoticias) : [];
         
 
-        if (noticias.length === 0) return false;
+        if (noticias.length == 0) return false;
         
         return noticias.some(noticia => {
             return camposComparar.some(campo => {
                 return nuevaNoticia[campo] && noticia[campo] && 
-                       nuevaNoticia[campo].toString().trim() === noticia[campo].toString().trim();
+                       nuevaNoticia[campo].toString().trim() == noticia[campo].toString().trim();
             });
         });
     }
