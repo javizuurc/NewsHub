@@ -17,6 +17,7 @@ desktop.ini     # Windows
 # Dependencias y paquetes
 # --------------------------
 node_modules/   # Node.js
+package-lock.json
 venv/           # Entorno virtual Python
 *.pyc           # Bytecode Python
 __pycache__/
