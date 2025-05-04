@@ -1,5 +1,5 @@
 <script setup>
-import IdeologyThermometer from './thermometers/IdeologyThermometerComponent.vue';
+import IdeologyThermometer from '../thermometers/IdeologyThermometerComponent.vue';
 
 defineProps({
   grupo: Object

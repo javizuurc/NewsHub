@@ -1,6 +1,6 @@
 <script setup>
   import { ref } from 'vue';
-  import ModalForm from './ModalForm.vue';
+  import ModalForm from '../ui/modals/ModalForm.vue';
 
   const mobileMenuOpen = ref(false);
   const showModal = ref(false);
@@ -30,9 +30,9 @@
         >
         </button>
         <div class="flex flex-row m5 justify-center items-center">
-          <a href="/">
+          <router-link to="/">
             <img src="/src/assets/Logo NewsHub.png" alt="Logo NewsHub" class="size-15">
-          </a>
+          </router-link>
 
           <router-link 
           to="/" 

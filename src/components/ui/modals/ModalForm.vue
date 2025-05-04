@@ -1,7 +1,7 @@
 <script setup>
   import { ref } from 'vue';
   import axios from 'axios';
-  import IdeologyThermometer from './thermometers/IdeologyThermometerComponent.vue';
+  import IdeologyThermometer from '../thermometers/IdeologyThermometerComponent.vue';
 
   const props = defineProps({
     show: Boolean,
@@ -69,7 +69,6 @@
         </div>
 
         <div class="flex flex-col sm:flex-row justify-center sm:justify-end gap-2">
-
           <button 
             type="button" 
             @click="close" 

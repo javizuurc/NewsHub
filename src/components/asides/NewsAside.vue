@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
-import AsideCard from '../cards/NewsCardComponent.vue';
+import AsideCard from '../ui/cards/NewsCardComponent.vue';
 import AsideComponent from './AsideComponent.vue';
 
 const noticias = ref([]);

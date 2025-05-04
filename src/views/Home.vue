@@ -1,7 +1,7 @@
 <script setup>
 import NewsAside from '../components/asides/NewsAside.vue';
 import TopicsAside from '../components/asides/TopicsAside.vue';
-import SectionComponent from '../components/SectionComponent.vue';
+import SectionComponent from '../components/layout/SectionComponent.vue';
 </script>
 
 <template>

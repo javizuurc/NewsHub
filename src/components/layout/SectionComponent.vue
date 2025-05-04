@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import Modal from './GrupoModal.vue';
+import Modal from '../ui/modals/GrupoModal.vue';
 const grupos = ref([]);
 const cargando = ref(true);
 const error = ref(null);
@@ -38,7 +38,7 @@ onMounted(fetchGrupos);
 <template>
   <section class="flex-1 p-4 bg-white rounded-lg shadow">
     <h2 class="text-lg font-bold text-[#be985d] mb-3 border-b border-[#b08d57] pb-2 text-center">
-      Grupos de Noticias Similares
+      Noticias Relevantes
     </h2>
 
     <div v-if="cargando" class="text-center text-gray-500">Cargando grupos...</div>

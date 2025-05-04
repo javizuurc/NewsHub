@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import AsideComponent from './AsideComponent.vue';
-import TopicCard from '../cards/tags/TopicTagComponent.vue';
+import TopicCard from '../ui/tags/TopicTagComponent.vue';
 
 const topicosDiarios = ref([]);
 const topicosSemanales = ref([]);
@@ -101,7 +101,7 @@ onBeforeUnmount(() => {
   >
     <ul class="space-y-6">
       <li>
-        <h3 class="text-[#b08d57] font-medium mb-2">Tópicos Diarios</h3>
+        <h3 class="text-[#d4af37] font-medium mb-2">Tópicos Diarios</h3>
         <div v-if="cargandoDiarios" class="p-2 text-center text-gray-300">
           Cargando tópicos diarios...
         </div>
@@ -113,7 +113,6 @@ onBeforeUnmount(() => {
             v-for="(topico, index) in topicosDiarios" 
             :key="index" 
             :name="topico.nombre"
-            :link="topico.url"
             :type="'daily'"
           />
         </div>
