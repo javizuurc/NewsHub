@@ -31,14 +31,14 @@
 
 <template>
   <BaseCard
-    customClass="bg-white border border-yellow-400 w-full hover:shadow-xl transition-all duration-300 sm:h-auto"
+    customClass="bg-white border border-yellow-400 w-full h-full hover:shadow-md transition-all duration-300"
   >
     <div class="flex flex-col h-full">
       <div class="min-h-[70px] sm:min-h-[100px] bg-gray-100 overflow-hidden rounded-t-lg">
         <img 
           :src="imageUrl" 
           :alt="title" 
-          class="w-full h-16 sm:h-32 md:h-full object-cover transition-transform duration-300 hover:scale-105"
+          class="w-full h-20 sm:h-40 md:h-50 object-cover transition-transform duration-300 hover:scale-105"
         >
       </div>
       <div class="flex-1 flex flex-col p-1.5 md:p-2">

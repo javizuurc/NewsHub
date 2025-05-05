@@ -143,7 +143,7 @@ const getGridClass = (index) => {
     <div v-if="cargando" class="text-center text-gray-500">Cargando grupos...</div>
     <div v-else-if="error" class="text-center text-red-500">Error: {{ error }}</div>
 
-    <div v-else class="grid grid-cols-5 grid-rows-5 gap-4">
+    <div v-else class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 auto-rows-min">
       <CardGrid
         v-for="(grupo, index) in grupos"
         :key="index"

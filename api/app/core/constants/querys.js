@@ -83,57 +83,52 @@ const QUERIES = {
     SELECT AVG(coeficiente) FROM noticias
     `,
     GRUPOS_NOTICIAS:`
-                    WITH imagen_valida_por_grupo AS (
-                    SELECT
-                        gn.grupo_id,
-                        MIN(n.imagen) AS imagen_valida
-                    FROM grupo_noticia gn
-                    JOIN noticias n ON gn.noticia_id = n.id
-                    JOIN periodicos p ON n.periodico_id = p.id
-                    WHERE p.nombre != 'Libertad Digital'
-                    AND n.imagen NOT LIKE '%trans.png%'
-                    AND n.fecha_scraping >= (
-                        SELECT MAX(n2.fecha_scraping)
-                        FROM noticias n2
-                    ) - INTERVAL 12 DAY
-                    GROUP BY gn.grupo_id
-                ),
-                grupos_filtrados AS (
-                    SELECT g.id
-                    FROM grupos g
-                    JOIN grupo_noticia gn ON g.id = gn.grupo_id
-                    JOIN noticias n ON gn.noticia_id = n.id
-                    WHERE n.fecha_scraping >= (
-                        SELECT MAX(n2.fecha_scraping)
-                        FROM noticias n2
-                    ) - INTERVAL 12 DAY
-                    GROUP BY g.id
-                    HAVING COUNT(*) > 1
-                    LIMIT 9
-                )
+                   WITH imagen_valida_por_grupo AS (
+  SELECT
+    gn.grupo_id,
+    MIN(n.imagen) AS imagen_valida
+  FROM grupo_noticia gn
+  JOIN noticias n ON gn.noticia_id = n.id
+  JOIN periodicos p ON n.periodico_id = p.id
+  WHERE p.nombre != 'Libertad Digital'
+    AND n.imagen NOT LIKE '%trans.png%'
+    AND DATE(n.fecha_scraping) = CURDATE()
+  GROUP BY gn.grupo_id
+),
 
-                SELECT
-                    g.id AS grupo_id,
-                    g.titular_general,
-                    n.id AS noticia_id,
-                    n.titulo AS noticia_titulo,
-                    COALESCE(iv.imagen_valida, 'http://192.168.1.35/img/generica.jpg') AS imagen,
-                    n.justificacion,
-                    n.url,
-                    n.fecha_publicacion,
-                    n.coeficiente,
-                    p.nombre AS periodico
-                FROM grupos g
-                JOIN grupo_noticia gn ON g.id = gn.grupo_id
-                JOIN noticias n ON gn.noticia_id = n.id
-                JOIN periodicos p ON n.periodico_id = p.id
-                LEFT JOIN imagen_valida_por_grupo iv ON iv.grupo_id = g.id
-                WHERE g.id IN (SELECT id FROM grupos_filtrados)
-                AND n.fecha_scraping >= (
-                    SELECT MAX(n2.fecha_scraping)
-                    FROM noticias n2
-                ) - INTERVAL 12 DAY
-                ORDER BY g.id, n.id;
+grupos_ordenados_por_cantidad AS (
+  SELECT
+    g.id
+  FROM grupos g
+  JOIN grupo_noticia gn ON g.id = gn.grupo_id
+  JOIN noticias n ON gn.noticia_id = n.id
+  WHERE DATE(n.fecha_scraping) = CURDATE()
+  GROUP BY g.id
+  HAVING COUNT(*) > 1
+  ORDER BY COUNT(*) DESC
+  LIMIT 7
+)
+
+SELECT
+  g.id AS grupo_id,
+  g.titular_general,
+  n.id AS noticia_id,
+  n.titulo AS noticia_titulo,
+  COALESCE(iv.imagen_valida, 'http://192.168.1.35/img/generica.jpg') AS imagen,
+  n.justificacion,
+  n.url,
+  n.fecha_publicacion,
+  n.coeficiente,
+  p.nombre AS periodico
+FROM grupos g
+JOIN grupo_noticia gn ON g.id = gn.grupo_id
+JOIN noticias n ON gn.noticia_id = n.id
+JOIN periodicos p ON n.periodico_id = p.id
+LEFT JOIN imagen_valida_por_grupo iv ON iv.grupo_id = g.id
+WHERE g.id IN (SELECT id FROM grupos_ordenados_por_cantidad)
+  AND DATE(n.fecha_scraping) = CURDATE()
+ORDER BY g.id, n.fecha_scraping DESC;
+
 
 
         `

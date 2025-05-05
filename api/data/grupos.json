@@ -53,6 +53,10 @@
       {
         "id": 109,
         "titulo": "Sara Aagesen: “Señalar a las renovables me parece irresponsable y simplista. España será verde o no será”"
+      },
+      {
+        "id": 136,
+        "titulo": "Red Eléctrica reclamó en mayo de 2024 \"Criterios de Protección\" por la \"entrada masiva de renovables\""
       }
     ]
   },
@@ -201,6 +205,70 @@
       {
         "id": 113,
         "titulo": "Los ocho papables de un cónclave que busca superar las divisiones internas"
+      }
+    ]
+  },
+  {
+    "titular_general": "El C.D. Leganés, Los Morancos o el alcalde de Málaga entre los afectados por los paros en alta velocidad de este domingo",
+    "noticias": [
+      {
+        "id": 137,
+        "titulo": "Más de 10.000 pasajeros del AVE afectados mientras Puente insiste en una acción deliberada: «El cable robado vale apenas 300 euros»"
+      },
+      {
+        "id": 145,
+        "titulo": "El C.D. Leganés, Los Morancos o el alcalde de Málaga entre los afectados por los paros en alta velocidad de este domingo"
+      }
+    ]
+  },
+  {
+    "titular_general": "Guardia Civil investiga el “sabotaje” denunciado por Puente y que ha afectado a miles de pasajeros",
+    "noticias": [
+      {
+        "id": 138,
+        "titulo": "Contradicciones y muchas incógnitas por resolver: el caos en el AVE vuelve a poner en entredicho la gestión del Gobierno"
+      },
+      {
+        "id": 143,
+        "titulo": "Estos son los cincos puntos donde se produjo el robo de cable que ha afectado a más de 30 trenes"
+      },
+      {
+        "id": 153,
+        "titulo": "Guardia Civil investiga el “sabotaje” denunciado por Puente y que ha afectado a miles de pasajeros"
+      },
+      {
+        "id": 155,
+        "titulo": "ENCUESTA: ¿Crees que el incidente del AVE Madrid-Sevilla se debe a un “sabotaje”?"
+      }
+    ]
+  },
+  {
+    "titular_general": "Óscar Puente insiste en el «sabotaje» de la línea ferroviaria: «Esperamos a ver si tiene un interés económico o tiene un interés de otro tipo»",
+    "noticias": [
+      {
+        "id": 139,
+        "titulo": "Óscar Puente insiste en el «sabotaje» de la línea ferroviaria: «Esperamos a ver si tiene un interés económico o tiene un interés de otro tipo»"
+      },
+      {
+        "id": 141,
+        "titulo": "Renfe contradice a Puente sobre el «sabotaje» del robo de cable: la interrupción de la circulación se debe al enganchón de un tren con la catenaria"
+      },
+      {
+        "id": 142,
+        "titulo": "Moreno exige a Sánchez \"una importante inversión ferroviaria\" en Andalucía: \"Nos merecemos el mismo trato que Cataluña\""
+      }
+    ]
+  },
+  {
+    "titular_general": "Israel da luz verde a la “conquista” de Gaza y promete “retener los territorios”",
+    "noticias": [
+      {
+        "id": 147,
+        "titulo": "Israel da luz verde a la “conquista” de Gaza y promete “retener los territorios”"
+      },
+      {
+        "id": 160,
+        "titulo": "Israel da luz verde a conquistar Gaza y retener los territorios tomados: “Estamos ocupando para quedarnos”"
       }
     ]
   }
