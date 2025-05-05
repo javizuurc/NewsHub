@@ -1,10 +1,96 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import Modal from '../ui/modals/GrupoModal.vue';
-const grupos = ref([]);
+import CardGrid from '../ui/cards/CardGridComponent.vue';
+
+const grupos = ref([
+  {
+    titular_general: "Crisis climática: Nuevas medidas globales",
+    imagen: "https://picsum.photos/800/600?random=1",
+    noticias: [
+      {
+        id: 1,
+        titulo: "La UE anuncia plan contra el cambio climático",
+        periodico: "El País",
+        justificacion: "Medida importante que afecta a toda Europa"
+      },
+      {
+        id: 2,
+        titulo: "España lidera iniciativas verdes en 2024",
+        periodico: "El Mundo"
+      }
+    ]
+  },
+  {
+    titular_general: "Avances en Inteligencia Artificial",
+    imagen: "https://picsum.photos/800/600?random=2",
+    noticias: [
+      {
+        id: 3,
+        titulo: "Nueva IA supera pruebas médicas",
+        periodico: "ABC",
+        justificacion: "Revolución en diagnóstico médico"
+      }
+    ]
+  },
+  {
+    titular_general: "Desarrollo tecnológico en España",
+    imagen: "https://picsum.photos/800/600?random=3",
+    noticias: [
+      {
+        id: 4,
+        titulo: "Madrid se convierte en hub tecnológico",
+        periodico: "El Confidencial"
+      }
+    ]
+  },
+  {
+    titular_general: "Innovación en educación digital",
+    imagen: "https://picsum.photos/800/600?random=4",
+    noticias: [
+      {
+        id: 5,
+        titulo: "Universidades implementan IA en enseñanza",
+        periodico: "La Vanguardia"
+      }
+    ]
+  },
+  {
+    titular_general: "Deportes: Final de temporada",
+    imagen: "https://picsum.photos/800/600?random=5",
+    noticias: [
+      {
+        id: 6,
+        titulo: "Récord de audiencia en competiciones",
+        periodico: "Marca"
+      }
+    ]
+  },
+  {
+    titular_general: "Economía: Perspectivas 2024",
+    imagen: "https://picsum.photos/800/600?random=6",
+    noticias: [
+      {
+        id: 7,
+        titulo: "Previsiones económicas positivas",
+        periodico: "Expansión"
+      }
+    ]
+  },
+  {
+    titular_general: "Cultura Digital",
+    imagen: "https://picsum.photos/800/600?random=7",
+    noticias: [
+      {
+        id: 8,
+        titulo: "Museos virtuales ganan popularidad",
+        periodico: "El Cultural"
+      }
+    ]
+  }
+]);
 const cargando = ref(true);
 const error = ref(null);
-
 const modalVisible = ref(false);
 const grupoSeleccionado = ref(null);
 
@@ -33,6 +119,19 @@ const cerrarModal = () => {
 };
 
 onMounted(fetchGrupos);
+
+const getGridClass = (index) => {
+  const gridClasses = [
+    'col-span-3 row-span-2',                    // 1
+    'row-span-2 col-start-1 row-start-3',       // 2
+    'col-span-2 row-span-2 col-start-2 row-start-3', // 3
+    'col-span-2 row-span-3 col-start-4 row-start-1', // 4
+    'col-span-2 col-start-1 row-start-5',       // 5
+    'col-span-2 row-span-2 col-start-4 row-start-4', // 6
+    'col-start-3 row-start-5'                   // 7
+  ];
+  return gridClasses[index] || '';
+};
 </script>
 
 <template>
@@ -44,16 +143,16 @@ onMounted(fetchGrupos);
     <div v-if="cargando" class="text-center text-gray-500">Cargando grupos...</div>
     <div v-else-if="error" class="text-center text-red-500">Error: {{ error }}</div>
 
-    <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div 
+    <div v-else class="grid grid-cols-5 grid-rows-5 gap-4">
+      <CardGrid
         v-for="(grupo, index) in grupos"
         :key="index"
-        class="cursor-pointer border border-yellow-400 bg-gray-50 p-4 rounded-xl hover:shadow-lg transition"
+        :class="getGridClass(index)"
+        :title="grupo.titular_general"
+        :content="[`Contiene ${grupo.noticias.length} noticias`]"
+        :image-url="grupo.imagen || '/img/generica.jpg'"
         @click="abrirModal(grupo)"
-      >
-        <h3 class="text-lg font-bold">{{ grupo.titular_general }}</h3>
-        <p class="text-sm text-gray-600 mt-1">Contiene {{ grupo.noticias.length }} noticias</p>
-      </div>
+      />
     </div>
 
     <Modal v-if="modalVisible && grupoSeleccionado" :grupo="grupoSeleccionado" @close="cerrarModal">
@@ -76,5 +175,5 @@ onMounted(fetchGrupos);
         </div>
       </template>
       </Modal>
-    </section>
+  </section>
   </template>

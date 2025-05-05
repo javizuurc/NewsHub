@@ -47,8 +47,8 @@
       <!--NECESITAMOS QUE SE ABRA EL MENÚ PARA LOS MÓVILES (NO LO HACE)-->
       <ul class="hidden md:flex items-center space-x-6 mx-auto">
         <li><router-link to="/estadisticas" class="py-2 px-3 hover:text-[#be985d] transition-all duration-300 border-b-2 border-transparent hover:border-[#be985d]">Termómetro Nacional</router-link></li>
-        <li><a href="#" class="py-2 px-3 hover:text-[#be985d] transition-all duration-300 border-b-2 border-transparent hover:border-[#be985d]">¿Cómo sería si... ?</a></li>
-        <li><router-link to="" class="py-2 px-3 hover:text-[#be985d] transition-all duration-300 border-b-2 border-transparent hover:border-[#be985d]">Sobre nosotros</router-link></li>
+        <!--<li><a href="#" class="py-2 px-3 hover:text-[#be985d] transition-all duration-300 border-b-2 border-transparent hover:border-[#be985d]">¿Cómo sería si... ?</a></li>-->
+        <li><router-link to="/nosotros" class="py-2 px-3 hover:text-[#be985d] transition-all duration-300 border-b-2 border-transparent hover:border-[#be985d]">Sobre nosotros</router-link></li>
         <li>
           <button 
             @click="openModal" 
