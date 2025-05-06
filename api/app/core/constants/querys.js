@@ -92,7 +92,6 @@ const QUERIES = {
   JOIN periodicos p ON n.periodico_id = p.id
   WHERE p.nombre != 'Libertad Digital'
     AND n.imagen NOT LIKE '%trans.png%'
-    AND DATE(n.fecha_scraping) = CURDATE()
   GROUP BY gn.grupo_id
 ),
 
@@ -102,7 +101,6 @@ grupos_ordenados_por_cantidad AS (
   FROM grupos g
   JOIN grupo_noticia gn ON g.id = gn.grupo_id
   JOIN noticias n ON gn.noticia_id = n.id
-  WHERE DATE(n.fecha_scraping) = CURDATE()
   GROUP BY g.id
   HAVING COUNT(*) > 1
   ORDER BY COUNT(*) DESC
@@ -126,7 +124,6 @@ JOIN noticias n ON gn.noticia_id = n.id
 JOIN periodicos p ON n.periodico_id = p.id
 LEFT JOIN imagen_valida_por_grupo iv ON iv.grupo_id = g.id
 WHERE g.id IN (SELECT id FROM grupos_ordenados_por_cantidad)
-  AND DATE(n.fecha_scraping) = CURDATE()
 ORDER BY g.id, n.fecha_scraping DESC;
 
 

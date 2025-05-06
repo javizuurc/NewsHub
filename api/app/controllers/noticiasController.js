@@ -261,7 +261,7 @@ class NoticiasController {
       
             return {
               ...grupo,
-              media_coeficiente: media !== null ? Number(media) : null
+              media_coeficiente: media != null ? Number(media) : null
             };
           });
       
@@ -274,7 +274,7 @@ class NoticiasController {
             error: error.message
           });
         }
-      }
+    }
       
       
       

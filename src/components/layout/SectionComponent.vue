@@ -3,92 +3,7 @@ import { ref, onMounted } from 'vue';
 import Modal from '../ui/modals/GrupoModal.vue';
 import CardGrid from '../ui/cards/CardGridComponent.vue';
 
-const grupos = ref([
-  {
-    titular_general: "Crisis climática: Nuevas medidas globales",
-    imagen: "https://picsum.photos/800/600?random=1",
-    noticias: [
-      {
-        id: 1,
-        titulo: "La UE anuncia plan contra el cambio climático",
-        periodico: "El País",
-        justificacion: "Medida importante que afecta a toda Europa"
-      },
-      {
-        id: 2,
-        titulo: "España lidera iniciativas verdes en 2024",
-        periodico: "El Mundo"
-      }
-    ]
-  },
-  {
-    titular_general: "Avances en Inteligencia Artificial",
-    imagen: "https://picsum.photos/800/600?random=2",
-    noticias: [
-      {
-        id: 3,
-        titulo: "Nueva IA supera pruebas médicas",
-        periodico: "ABC",
-        justificacion: "Revolución en diagnóstico médico"
-      }
-    ]
-  },
-  {
-    titular_general: "Desarrollo tecnológico en España",
-    imagen: "https://picsum.photos/800/600?random=3",
-    noticias: [
-      {
-        id: 4,
-        titulo: "Madrid se convierte en hub tecnológico",
-        periodico: "El Confidencial"
-      }
-    ]
-  },
-  {
-    titular_general: "Innovación en educación digital",
-    imagen: "https://picsum.photos/800/600?random=4",
-    noticias: [
-      {
-        id: 5,
-        titulo: "Universidades implementan IA en enseñanza",
-        periodico: "La Vanguardia"
-      }
-    ]
-  },
-  {
-    titular_general: "Deportes: Final de temporada",
-    imagen: "https://picsum.photos/800/600?random=5",
-    noticias: [
-      {
-        id: 6,
-        titulo: "Récord de audiencia en competiciones",
-        periodico: "Marca"
-      }
-    ]
-  },
-  {
-    titular_general: "Economía: Perspectivas 2024",
-    imagen: "https://picsum.photos/800/600?random=6",
-    noticias: [
-      {
-        id: 7,
-        titulo: "Previsiones económicas positivas",
-        periodico: "Expansión"
-      }
-    ]
-  },
-  {
-    titular_general: "Cultura Digital",
-    imagen: "https://picsum.photos/800/600?random=7",
-    noticias: [
-      {
-        id: 8,
-        titulo: "Museos virtuales ganan popularidad",
-        periodico: "El Cultural"
-      }
-    ]
-  }
-]);
+const grupos = ref([]);
 const cargando = ref(true);
 const error = ref(null);
 const modalVisible = ref(false);
@@ -97,7 +12,12 @@ const grupoSeleccionado = ref(null);
 const fetchGrupos = () => {
   cargando.value = true;
   fetch(import.meta.env.VITE_API_URL + '/api/noticias/grupos-noticias')
-    .then(res => res.json())
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(`Error HTTP: ${res.status}`);
+      }
+      return res.json();
+    })
     .then(data => {
       grupos.value = data;
       cargando.value = false;
@@ -156,18 +76,20 @@ const getGridClass = (index) => {
     </div>
 
     <Modal v-if="modalVisible && grupoSeleccionado" :grupo="grupoSeleccionado" @close="cerrarModal">
+      <!--CREAR COMPONENTE PARA ESTO-->
       <template #header>
         <h2 class="text-xl font-bold text-black">{{ grupoSeleccionado.titular_general }}</h2>
       </template>
 
+      <!--CREAR COMPONENTE PARA ESTO-->
       <template #body>
+        <!--TODO ESTO DEBERÍA DE SER UN ENLACE HACIA LA NOTICIA-->
         <img 
           v-if="grupoSeleccionado.imagen" 
           :src="grupoSeleccionado.imagen" 
           alt="Imagen representativa" 
           class="w-full h-64 object-cover rounded-md mb-4" 
         />
-
         <div v-for="noticia in grupoSeleccionado.noticias" :key="noticia.id" class="mb-4 border p-3 rounded-md bg-white shadow-sm">
           <p class="font-semibold text-black">{{ noticia.titulo }}</p>
           <p class="text-sm text-gray-600">Periódico: {{ noticia.periodico }}</p>
