@@ -150,7 +150,7 @@ class AIService {
       const response = await axios.post('https://api.openai.com/v1/chat/completions', {
         model: this.model,
         messages: [
-          { role: prompts.EVALUACION_URL },
+          { role: "system", content: prompts.EVALUACION_URL }, // O "user", si lo prefieres
           { role: "user", content: prompt }
         ],
         max_tokens: 20,
@@ -162,6 +162,7 @@ class AIService {
         },
         timeout: 30000
       });
+      
   
       if (!response.data?.choices?.[0]?.message?.content) {
         console.error("Respuesta inesperada:", response.data);

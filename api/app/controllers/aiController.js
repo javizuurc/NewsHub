@@ -108,12 +108,13 @@ class AIController {
 
   async getEvaluarNoticia(req, res) {
     try {
+      const aux = new Auxiliares();
       const url = req.body.url;
       console.log(req.body)
 
       if (!url) return res.status(400).json({ success: false, message: "URL no proporcionada" });
 
-      if (!Auxiliares.regex.URL.test(url)) return res.status(400).json({ success: false, message: "URL inválida" });
+      if (!aux.regex.URL.test(url)) return res.status(400).json({ success: false, message: "URL inválida" });
 
       const prompt          = PROMPTS.EVALUACION_URL.replace('{URL}', url);
       const respuestaOpenAI = await this.aiService.evaluarURLNoticia(prompt);
