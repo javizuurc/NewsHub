@@ -25,6 +25,20 @@ class AIController {
     this.aiService = AIService;
   }
 
+  limpiarTexto(texto) {
+    if (!texto) return texto;
+      
+    return texto
+      .replace(/([a-záéíóúñ])([A-ZÁÉÍÓÚÑ])/g, '$1. $2')
+      .replace(/([a-zA-Z])(\d)/g, '$1 $2')
+      .replace(/([0-9])([a-zA-Z])/g, '$1 $2')
+      .replace(/([a-zA-Z])([A-Z])/g, '$1 $2')
+      .replace(/([.,])(?=\S)/g, '$1 ')
+      .replace(/\s+/g, ' ')
+      .replace(/\r?\n/g, ' ')
+      .trim();
+  }
+
   async analizarNoticias(req, res) {
     try {
       const jsonPath = path.join(__dirname, '../../data/noticias.json');
@@ -39,7 +53,7 @@ class AIController {
 
       const resultados = [];
       for (const noticia of noticias) {
-        noticia.articulo  = Auxiliares.limpiarTexto(noticia.articulo);
+        noticia.articulo  = this.limpiarTexto(noticia.articulo);
         const resultado   = await safeRequest(() => this.aiService.datosNoticia(noticia, PROMPTS.ANALISIS_NOTICIA));
         resultados.push({
           noticia: noticia.titulo,
@@ -74,7 +88,7 @@ class AIController {
         periodico: "ABC"
       };
 
-      noticia.articulo  = Auxiliares.limpiarTexto(noticia.articulo);
+      noticia.articulo = this.limpiarTexto(noticia.articulo);
       const resultado   = await this.aiService.datosNoticia(noticia);
 
       return res.status(200).json({

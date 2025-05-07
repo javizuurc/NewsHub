@@ -85,4 +85,4 @@ class Auxiliares {
     }
 }
 
-module.exports = new Auxiliares();
+module.exports = Auxiliares;

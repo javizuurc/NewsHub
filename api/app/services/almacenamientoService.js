@@ -55,6 +55,23 @@ class AlmacenamientoService {
                estructuraPalabrasClavesCorrecta && 
                estructuraJustificacionCorrecta;
     }
+    
+    crearJSONFile() {
+        const rutaArchivo = path.join(this.dataDir, 'noticias.json');
+        var estado = {};
+        if (this.auxiliares.directorioVacio(this.dataDir)) {
+            fs.writeFileSync(rutaArchivo, JSON.stringify([], null, 2));
+            estado = { success: true, message: "Archivo JSON creado correctamente" };
+        } else {
+            if (!fs.existsSync(rutaArchivo)) {
+                fs.writeFileSync(rutaArchivo, JSON.stringify([], null, 2));
+                estado = { success: true, message: "Archivo JSON creado correctamente" };
+            }
+            estado = { success: false, message: "El directorio no está vacío y el archivo ya existe" };
+        }
+
+        return estado;
+    }
 
     insertarNoticiasJSON(noticia) {
         try {
@@ -65,7 +82,9 @@ class AlmacenamientoService {
             let noticias = [];
             const fileContent = fs.readFileSync(rutaArchivo, 'utf8');
     
-            if (fileContent) noticias = JSON.parse(fileContent);
+            if (fileContent) {
+                noticias = JSON.parse(fileContent);
+            }
             
             const noticiaExistenteIndex = noticias.findIndex(n => 
                 (n.url && noticia.url && n.url == noticia.url) || 
@@ -157,22 +176,7 @@ class AlmacenamientoService {
     eliminarContenidoJSON(crearArchivoVacio = true) {
         try {
             const rutaArchivo = path.join(this.dataDir, 'noticias.json');
-            const rutaUltimaEliminacion = '/var/www/html/NewsHub/api/data/ultima_eliminacion.txt';
             
-            if (fs.existsSync(rutaUltimaEliminacion)) {
-                const ultimaEliminacion = fs.readFileSync(rutaUltimaEliminacion, 'utf8');
-                const fechaUltimaEliminacion = new Date(ultimaEliminacion);
-                const fechaActual = new Date();
-                const diferenciaDias = (fechaActual - fechaUltimaEliminacion) / (1000 * 60 * 60 * 24);
-                
-                if (diferenciaDias < 2) {
-                    return {
-                        success: false,
-                        message: "Aún no han pasado dos días desde la última eliminación"
-                    };
-                }
-            }
-
             if (!fs.existsSync(rutaArchivo)) {
                 return {
                     success: false,
@@ -186,7 +190,6 @@ class AlmacenamientoService {
             
             if (crearArchivoVacio) {
                 fs.writeFileSync(rutaArchivo, JSON.stringify([], null, 2), 'utf8');
-                fs.writeFileSync(rutaUltimaEliminacion, new Date().toISOString(), 'utf8');
                 return {
                     success: true,
                     message: `Se eliminaron ${cantidadNoticias} noticias del archivo JSON`,
@@ -194,7 +197,6 @@ class AlmacenamientoService {
                 };
             } else {
                 fs.unlinkSync(rutaArchivo);
-                fs.writeFileSync(rutaUltimaEliminacion, new Date().toISOString(), 'utf8');
                 return {
                     success: true,
                     message: `Se eliminó el archivo JSON con ${cantidadNoticias} noticias`,
@@ -242,6 +244,7 @@ class AlmacenamientoService {
                 try {
                     console.log(`Procesando noticia: ${noticiaJSON.titulo}`);
                     
+                    // Verificar si la noticia ya existe en la base de datos
                     const noticiaExistente = await NoticiaModel.findOne({
                         where: { url: noticiaJSON.url }
                     });
@@ -258,8 +261,9 @@ class AlmacenamientoService {
                         continue;
                     }
                     
+                    // Validar que la noticia tenga palabras clave no vacías
                     const tienePalabrasClave = noticiaJSON.palabras_claves &&
-                    typeof noticiaJSON.palabras_claves == 'object' &&
+                    typeof noticiaJSON.palabras_claves === 'object' &&
                     (
                         (Array.isArray(noticiaJSON.palabras_claves.comunes) && noticiaJSON.palabras_claves.comunes.length > 0) ||
                         (Array.isArray(noticiaJSON.palabras_claves.nombres_propios) && noticiaJSON.palabras_claves.nombres_propios.length > 0)
@@ -277,11 +281,12 @@ class AlmacenamientoService {
                         continue;
                     }
     
+                    // Validar campos obligatorios
                     const camposObligatorios = ['titulo', 'articulo', 'periodico', 'coeficiente', 'posicion', 'justificacion'];
                     const camposFaltantes = camposObligatorios.filter(campo => 
                         !noticiaJSON[campo] || 
-                        noticiaJSON[campo] == '' || 
-                        (Array.isArray(noticiaJSON[campo]) && noticiaJSON[campo].length == 0)
+                        noticiaJSON[campo] === '' || 
+                        (Array.isArray(noticiaJSON[campo]) && noticiaJSON[campo].length === 0)
                     );
                     
                     if (camposFaltantes.length > 0) {
@@ -295,6 +300,7 @@ class AlmacenamientoService {
                         continue;
                     }
     
+                    // Continuar con la inserción si pasa todas las validaciones
                     let periodicoId = null;
                     if (noticiaJSON.periodico) {
                         const [periodico] = await PeriodicoModel.findOrCreate({
@@ -323,9 +329,12 @@ class AlmacenamientoService {
     
                     if (noticiaJSON.temas) {
                         let temasArray = [];
-                        temasArray = Array.isArray(noticiaJSON.temas) ? 
-                            noticiaJSON.temas.map(tema => tema.trim()) : 
-                            noticiaJSON.temas.split(',').map(tema => tema.trim());
+
+                        if (Array.isArray(noticiaJSON.temas)) {
+                            temasArray = noticiaJSON.temas.map(tema => tema.trim());
+                        } else if (typeof noticiaJSON.temas === 'string') {
+                            temasArray = noticiaJSON.temas.split(',').map(tema => tema.trim());
+                        }
                         
                         for (const temaNombre of temasArray) {
                             if (temaNombre) {
@@ -338,6 +347,7 @@ class AlmacenamientoService {
                         }
                     }
     
+                    // Procesar palabras clave
                     if (noticiaJSON.id_claves && Array.isArray(noticiaJSON.id_claves) && noticiaJSON.id_claves.length > 0) {
                         console.log(`Procesando ${noticiaJSON.id_claves.length} palabras clave para la noticia ID: ${nuevaNoticia.id}`);
                         
@@ -349,6 +359,13 @@ class AlmacenamientoService {
                         }
                         
                         console.log(`Relaciones de palabras clave creadas para la noticia ID: ${nuevaNoticia.id}`);
+                    } else {
+                        console.log(`La noticia no tiene id_claves válidos: ${nuevaNoticia.id}`);
+                        // Podríamos considerar eliminar la noticia si no tiene id_claves
+                        // await nuevaNoticia.destroy();
+                        // resultado.insertadas--;
+                        // resultado.omitidas++;
+                        // continue;
                     }
     
                     resultado.insertadas++;
@@ -390,10 +407,11 @@ class AlmacenamientoService {
                 return { success: false, message: "Archivo grupos.json no encontrado" };
             }
     
-            const contenido         = fs.readFileSync(rutaArchivo, 'utf8');
-            const grupos            = JSON.parse(contenido);
-            const sequelize         = this.BBDD.getSequelize();
-            const GrupoModel        = sequelize.models.Grupo;
+            const contenido = fs.readFileSync(rutaArchivo, 'utf8');
+            const grupos = JSON.parse(contenido);
+    
+            const sequelize = this.BBDD.getSequelize();
+            const GrupoModel = sequelize.models.Grupo;
             const GrupoNoticiaModel = sequelize.models.grupo_noticia;
     
             const resultado = {
@@ -405,6 +423,7 @@ class AlmacenamientoService {
     
             for (const grupo of grupos) {
                 try {
+                    // Verificar si ya existe un grupo con mismo titular
                     const [grupoCreado, creado] = await GrupoModel.findOrCreate({
                         where: { titular_general: grupo.titular_general },
                         defaults: {
@@ -461,76 +480,28 @@ class AlmacenamientoService {
         }
     }
 
-    async obtenerPalabrasClaveUnicas() {
-        const palabrasClaveJSON = this.sacarPalabrasClaves();
-        return Object.values(palabrasClaveJSON)
-            .flat()
-            .filter((palabra, index, self) => palabra && self.indexOf(palabra) == index);
-    }
-
-    async verificarPalabraEnBBDD(palabra, ClaveModel) {
-        const resultadoExistencia = await this.BBDD.existenRegistros(
-            ClaveModel, 
-            { nombre: palabra },
-            { exactMatch: true, obtenerRegistros: true }
-        );
-        
-        if (resultadoExistencia.existe) {
-            const registro = resultadoExistencia.registros[0];
-            return { existe: true, id: registro.id };
-        }
-        return { existe: false };
-    }
-
-    async insertarPalabraClave(palabra, ClaveModel) {
-        try {
-            const nuevaClave = await ClaveModel.create({ nombre: palabra });
-            return { success: true, id: nuevaClave.id };
-        } catch (error) {
-            console.error(`Error al insertar palabra clave "${palabra}":`, error);
-            return { success: false, error };
-        }
-    }
-
-    async actualizarNoticiasConIdsPalabrasClaves(mapaPalabrasIds) {
-        try {
-            const resultado = this.leerNoticiasJSON(true);
+    sacarPalabrasClaves(){
+        const resultado = this.leerNoticiasJSON();
+        if (resultado.success && resultado.data.length > 0) {
+            const palabrasClavesPorIndice = {};
             
-            if (resultado.success && resultado.data) {
-                const noticias = resultado.data;
-                let modificado = false;
-                
-                noticias.forEach((noticia) => {
-                    if (noticia.palabras_claves) {
-                        const idsArray = [];
-                        
-                        if (noticia.palabras_claves.comunes) {
-                            noticia.palabras_claves.comunes.forEach(palabra => {
-                                if (mapaPalabrasIds[palabra]) idsArray.push(mapaPalabrasIds[palabra]);
-                            });
-                        }
-                        
-                        if (noticia.palabras_claves.nombres_propios) {
-                            noticia.palabras_claves.nombres_propios.forEach(palabra => {
-                                if (mapaPalabrasIds[palabra]) idsArray.push(mapaPalabrasIds[palabra]);
-                            });
-                        }
-                        
-                        noticia.id_claves = idsArray;
-                        modificado = true;
-                    }
-                });
-                
-                if (modificado) {
-                    const filePath = path.join(this.dataDir, 'noticias.json');
-                    fs.writeFileSync(filePath, JSON.stringify(noticias, null, 2), 'utf8');
-                    return { success: true };
+            resultado.data.forEach((noticia, indice) => {
+                if (noticia.palabras_claves) {
+                    const todasPalabras = [
+                        ...(noticia.palabras_claves.comunes || []).map(palabra => palabra.toLowerCase()),
+                        ...(noticia.palabras_claves.nombres_propios || []).map(palabra => palabra.toLowerCase())
+                    ];
+                    palabrasClavesPorIndice[indice] = todasPalabras;
+                } else {
+                    palabrasClavesPorIndice[indice] = [];
                 }
-            }
-            return { success: false };
-        } catch (error) {
-            console.error("Error al actualizar noticias.json:", error);
-            return { success: false, error };
+            });
+            
+            console.log("Palabras clave extraídas por índice:", palabrasClavesPorIndice);
+            return palabrasClavesPorIndice;
+        } else {
+            console.log("No hay noticias disponibles para extraer palabras clave");
+            return {};
         }
     }
 }
