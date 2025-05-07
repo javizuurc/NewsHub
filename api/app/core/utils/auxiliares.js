@@ -1,4 +1,23 @@
 class Auxiliares {
+    constructor(){
+        this.regex = {
+            URL: /^https?:\/\/(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+(\/.*)?$/
+        };
+    }
+    
+    static limpiarTexto(texto) {
+        if (!texto) return texto;
+        
+        return texto
+            .replace(/([a-záéíóúñ])([A-ZÁÉÍÓÚÑ])/g, '$1. $2')
+            .replace(/([a-zA-Z])(\d)/g, '$1 $2')
+            .replace(/([0-9])([a-zA-Z])/g, '$1 $2')
+            .replace(/([a-zA-Z])([A-Z])/g, '$1 $2')
+            .replace(/([.,])(?=\S)/g, '$1 ')
+            .replace(/\s+/g, ' ')
+            .replace(/\r?\n/g, ' ')
+            .trim();
+    }
     static noticiaExisteBBDD(nuevaNoticia, noticias) {
         for(let i = 0; i < noticias.length; i++) {
             if(noticias[i].url == nuevaNoticia.url || noticias[i].titulo == nuevaNoticia.titulo) {
@@ -66,4 +85,4 @@ class Auxiliares {
     }
 }
 
-module.exports = Auxiliares;
+module.exports = new Auxiliares();

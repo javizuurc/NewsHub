@@ -1,4 +1,6 @@
 const express = require('express');
+const fs = require('fs');
+const path = require('path');
 const AlmacenamientoService = require('../services/almacenamientoService');
 
 class AlmacenamientoController {
@@ -50,10 +52,6 @@ class AlmacenamientoController {
 
     guardarNoticiaJSON(req, res) {
         try {
-            console.log('=== Datos recibidos en guardarNoticiaJSON ===');
-            console.log('Body:', JSON.stringify(req.body, null, 2));
-            console.log('=======================================');
-            
             const result = this.almacenamientoService.insertarNoticiasJSON(req.body);
             return res.status(result.success ? 201 : 400).json(result);
         } catch (error) {
@@ -119,16 +117,12 @@ class AlmacenamientoController {
         }
     }
 
+    // En caso de fallo, esta puede ser una razón
     async verificarPalabrasClave(req, res) {
         try {
             console.log("Iniciando verificación de palabras clave...");
-            const palabrasClaveJSON = this.almacenamientoService.sacarPalabrasClaves();
-            console.log("Palabras clave obtenidas del JSON:", JSON.stringify(palabrasClaveJSON, null, 2));
             
-            const todasPalabrasJSON = Object.values(palabrasClaveJSON)
-                .flat()
-                .filter((palabra, index, self) => palabra && self.indexOf(palabra) == index);
-            console.log(`Total de palabras únicas encontradas: ${todasPalabrasJSON.length}`);
+            const todasPalabrasJSON = await this.almacenamientoService.obtenerPalabrasClaveUnicas();
             
             if (todasPalabrasJSON.length == 0) {
                 console.log("No se encontraron palabras clave para verificar");
@@ -154,93 +148,30 @@ class AlmacenamientoController {
             }
             
             console.log("Verificando palabras en la base de datos...");
+
             const palabrasExistentes = [];
             const palabrasNuevas = [];
             const mapaPalabrasIds = {};
             
             for (const palabra of todasPalabrasJSON) {
                 console.log(`Verificando palabra: "${palabra}"`);
-                const resultadoExistencia = await this.almacenamientoService.BBDD.existenRegistros(
-                    ClaveModel, 
-                    { nombre: palabra },
-                    { exactMatch: true, obtenerRegistros: true }
-                );
                 
-                if (resultadoExistencia.existe) {
-                    const registro = resultadoExistencia.registros[0];
-                    console.log(`Palabra "${palabra}" encontrada con ID: ${registro.id}`);
-                    palabrasExistentes.push({
-                        palabra: palabra,
-                        id: registro.id
-                    });
-                    mapaPalabrasIds[palabra] = registro.id;
+                const resultadoVerificacion = await this.almacenamientoService.verificarPalabraEnBBDD(palabra, ClaveModel);
+                
+                if (resultadoVerificacion.existe) {
+                    palabrasExistentes.push({ palabra, id: resultadoVerificacion.id });
+                    mapaPalabrasIds[palabra] = resultadoVerificacion.id;
                 } else {
-                    try {
-                        console.log(`Insertando nueva palabra: "${palabra}"`);
-                        const nuevaClave = await ClaveModel.create({
-                            nombre: palabra
-                        });
-                        
-                        console.log(`Palabra "${palabra}" insertada con ID: ${nuevaClave.id}`);
-                        palabrasNuevas.push({
-                            palabra: palabra,
-                            id: nuevaClave.id
-                        });
-                        mapaPalabrasIds[palabra] = nuevaClave.id;
-                    } catch (error) {
-                        console.error(`Error al insertar palabra clave "${palabra}":`, error);
+                    const resultadoInsercion = await this.almacenamientoService.insertarPalabraClave(palabra, ClaveModel);
+                    if (resultadoInsercion.success) {
+                        palabrasNuevas.push({ palabra, id: resultadoInsercion.id });
+                        mapaPalabrasIds[palabra] = resultadoInsercion.id;
                     }
                 }
             }
             
-            try {
-                console.log("Actualizando archivo noticias.json con IDs de palabras clave...");
-                
-                const resultado = this.almacenamientoService.leerNoticiasJSON(true);
-                
-                if (resultado.success && resultado.data) {
-                    const noticias = resultado.data;
-                    let modificado = false;
-                    
-                    noticias.forEach((noticia, index) => {
-                        console.log(`Procesando noticia ${index + 1}...`);
-                        
-                        if (noticia.palabras_claves) {
-                            const idsArray = [];
-                            
-                            if (noticia.palabras_claves.comunes) {
-                                noticia.palabras_claves.comunes.forEach(palabra => {
-                                    if (mapaPalabrasIds[palabra]) idsArray.push(mapaPalabrasIds[palabra]);
-                                });
-                            }
-                            
-                            if (noticia.palabras_claves.nombres_propios) {
-                                noticia.palabras_claves.nombres_propios.forEach(palabra => {
-                                    if (mapaPalabrasIds[palabra]) idsArray.push(mapaPalabrasIds[palabra]);
-                                });
-                            }
-                            
-                            noticia.id_claves = idsArray;
-                            console.log(`Noticia ${index + 1} actualizada con id_claves:`, idsArray);
-                            modificado = true;
-                        }
-                    });
-                    
-                    if (modificado) {
-                        const fs = require('fs');
-                        const path = require('path');
-                        const dataDir = this.almacenamientoService.dataDir;
-                        const filePath = path.join(dataDir, 'noticias.json');
-                        
-                        fs.writeFileSync(filePath, JSON.stringify(noticias, null, 2), 'utf8');
-                        console.log("Archivo noticias.json actualizado correctamente");
-                    }
-                } else {
-                    console.error("No se pudo leer el archivo noticias.json para actualizar");
-                }
-            } catch (errorActualizacion) {
-                console.error("Error al actualizar noticias.json:", errorActualizacion);
-            }
+            console.log("Actualizando archivo noticias.json con IDs de palabras clave...");
+            await this.almacenamientoService.actualizarNoticiasConIdsPalabrasClaves(mapaPalabrasIds);
             
             return res.status(200).json({
                 success: true,
@@ -260,5 +191,5 @@ class AlmacenamientoController {
         }
     }
 }
-
+   
 module.exports = new AlmacenamientoController();

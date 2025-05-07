@@ -1,10 +1,11 @@
-const express = require('express');
-const router = express.Router();
+// Si falla algo toqué las dependencias del express.js y router
 const AIService = require('../services/aiService');
 const fs = require('fs').promises;
 const path = require('path');
 const PROMPTS = require('../core/constants/prompts');
+const Auxiliares = require('../core/utils/auxiliares');
 
+// Esta función habría que hacer la prueba de si quitándola afecta a todo el programa o sólo a la noticia que no puede ser ejecutada
 async function safeRequest(fn, retries = 3) {
   try {
     return await fn();
@@ -18,24 +19,7 @@ async function safeRequest(fn, retries = 3) {
     }
   }
 }
-  
- 
-function limpiarTexto(texto) {
-  if (!texto) return texto;
-  
-  return texto
-    .replace(/([a-záéíóúñ])([A-ZÁÉÍÓÚÑ])/g, '$1. $2') 
-    .replace(/([a-zA-Z])(\d)/g, '$1 $2')               
-    .replace(/([0-9])([a-zA-Z])/g, '$1 $2')            
-    .replace(/([a-zA-Z])([A-Z])/g, '$1 $2')            
-    .replace(/([.,])(?=\S)/g, '$1 ')                    
-    .replace(/\s+/g, ' ')                          
-    .replace(/\r?\n/g, ' ')                             
-    .trim();
-}
 
-
-  
 class AIController {
   constructor() {
     this.aiService = AIService;
@@ -55,8 +39,8 @@ class AIController {
 
       const resultados = [];
       for (const noticia of noticias) {
-        noticia.articulo = limpiarTexto(noticia.articulo);
-        const resultado = await safeRequest(() => this.aiService.datosNoticia(noticia, PROMPTS.ANALISIS_NOTICIA));
+        noticia.articulo  = Auxiliares.limpiarTexto(noticia.articulo);
+        const resultado   = await safeRequest(() => this.aiService.datosNoticia(noticia, PROMPTS.ANALISIS_NOTICIA));
         resultados.push({
           noticia: noticia.titulo,
           analisis: resultado
@@ -83,15 +67,15 @@ class AIController {
 
       const noticia = {
         titulo: "El experto económico de ABC John Müller valora los aranceles de Trump: «Habrá una profunda Crisis económica»",
-        subtitulo: "El periodista analiza el impacto de las medidas proteccionistas anunciadas por el presidente electo de Estados Unidos",
-        articulo: "El periodista y experto económico John Müller ha analizado en ABC el impacto que tendrán los aranceles anunciados por Donald Trump.",
+        subtitulo: "Müller analiza impacto de medidas de Trump",
+        articulo: "Müller analiza en ABC el impacto de aranceles de Trump",
         autor: "Redacción Economía",
         fecha_publicacion: "2023-11-15",
         periodico: "ABC"
       };
 
-      noticia.articulo = limpiarTexto(noticia.articulo);
-      const resultado = await this.aiService.datosNoticia(noticia);
+      noticia.articulo  = Auxiliares.limpiarTexto(noticia.articulo);
+      const resultado   = await this.aiService.datosNoticia(noticia);
 
       return res.status(200).json({
         success: true,
@@ -115,14 +99,11 @@ class AIController {
 
       if (!url) return res.status(400).json({ success: false, message: "URL no proporcionada" });
 
-      const regex = /^https?:\/\/(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+(\/.*)?$/; // Mover esto a algún otro lado (constructor o carpeta constantes)
+      if (!Auxiliares.regex.URL.test(url)) return res.status(400).json({ success: false, message: "URL inválida" });
 
-      if (!regex.test(url)) return res.status(400).json({ success: false, message: "URL inválida" });
-
-      const prompt = PROMPTS.EVALUACION_URL.replace('{URL}', url);
+      const prompt          = PROMPTS.EVALUACION_URL.replace('{URL}', url);
       const respuestaOpenAI = await this.aiService.evaluarURLNoticia(prompt);
-
-      const parsed = parseFloat(respuestaOpenAI.match(/-?\d+(\.\d+)?/)?.[0]);
+      const parsed          = parseFloat(respuestaOpenAI.match(/-?\d+(\.\d+)?/)?.[0]);
 
       if (isNaN(parsed)) {
         return res.status(500).json({
@@ -148,6 +129,5 @@ class AIController {
     }
   }
 }
-
 
 module.exports = new AIController();

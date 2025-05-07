@@ -37,21 +37,29 @@ class AIService {
 
       const articuloCortado = this.cortarTexto(noticia.articulo, 3000);
 
-      let prompt = prompts.ANALISIS_NOTICIA;
-      prompt += `\nTítulo: ${noticia.titulo}\n`;
-      prompt += noticia.subtitulo ? `Subtítulo: ${noticia.subtitulo}\n` : '';
-      prompt += noticia.autor ? `Autor: ${noticia.autor}\n` : '';
-      prompt += `Periódico: ${noticia.periodico || 'No especificado'}\n`;
-      prompt += `\nContenido:\n${articuloCortado}\n`;
+      const messages = [
+        {
+          role: "system",
+          content: prompts.ANALISIS_NOTICIA
+        },
+        {
+          role: "user",
+          content: `Título: ${noticia.titulo}\n` +
+                   (noticia.subtitulo ? `Subtítulo: ${noticia.subtitulo}\n` : '') +
+                   (noticia.autor ? `Autor: ${noticia.autor}\n` : '') +
+                   `Periódico: ${noticia.periodico || 'No especificado'}\n` +
+                   `\nContenido:\n${articuloCortado}\n`
+        }
+      ];
 
-      const tokensEstimados = Auxiliares.estimarTokens(prompt);
+      const tokensEstimados = Auxiliares.estimarTokens(messages[1].content);
       console.log(`Tokens estimados para esta noticia: ${tokensEstimados}`);
 
       console.log("Llamando a OpenAI API...");
       const response = await axios.post('https://api.openai.com/v1/chat/completions', {
         model: this.model,
-        messages: [{ role: "user", content: prompt }],
-        max_tokens: 4000, // no pidas 10000, modelo solo soporta menos
+        messages: messages,
+        max_tokens: 4000,
         temperature: 0.3
       }, {
         headers: {
@@ -142,7 +150,7 @@ class AIService {
       const response = await axios.post('https://api.openai.com/v1/chat/completions', {
         model: this.model,
         messages: [
-          { role: "system", content: "Eres un analista experto en medios de comunicación. Evalúas el sesgo ideológico en base a URLs de noticias." },
+          { role: prompts.EVALUACION_URL },
           { role: "user", content: prompt }
         ],
         max_tokens: 20,
