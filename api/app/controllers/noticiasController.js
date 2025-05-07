@@ -165,9 +165,51 @@ class NoticiasController {
         }
     }
 
+    async getContarPeriodicos(req, res) {
+        try {
+            console.log("Obteniendo conteo de periódicos...");
+            
+            const sequelize = BBDD.getSequelize();
+            const [results] = await sequelize.query(QUERIES.CONTAR_PERIODICOS);
+            
+            return res.status(200).json({
+                success: true,
+                data: results
+            });
+        } catch (error) {
+            console.error("Error al obtener conteo de periódicos:", error);
+            return res.status(500).json({
+                success: false,
+                message: "Error al obtener el conteo de periódicos",
+                error: error.message
+            });
+        }
+    }
+
+    async getMediaCalificaciones(req, res) {
+        try {
+            console.log("Obteniendo media de calificaciones de noticias...");
+            
+            const sequelize = BBDD.getSequelize();
+            const [results] = await sequelize.query(QUERIES.MEDIA_CALIFICACION_NOTICIAS);
+            
+            return res.status(200).json({
+                success: true,
+                data: results
+            });
+        } catch (error) {
+            console.error("Error al obtener media de calificaciones:", error);
+            return res.status(500).json({
+                success: false,
+                message: "Error al obtener la media de calificaciones",
+                error: error.message
+            });
+        }
+    }
+
     async getContadorNoticias(req, res) {
         try {
-            console.log("Obteniendo últimas noticias de cada periódico...");
+            console.log("Obteniendo contador de noticias...");
             
             const sequelize = BBDD.getSequelize();
             const [results] = await sequelize.query(QUERIES.CONTAR_NOTICIAS);
@@ -177,15 +219,14 @@ class NoticiasController {
                 data: results
             });
         } catch (error) {
-            console.error("Error al obtener últimas noticias:", error);
+            console.error("Error al obtener contador de noticias:", error);
             return res.status(500).json({
                 success: false,
-                message: "Error al obtener las últimas noticias",
+                message: "Error al obtener el contador de noticias",
                 error: error.message
             });
         }
     }
-
 
     async insertarGruposBBDD(req, res) {
         try {
@@ -275,24 +316,10 @@ class NoticiasController {
           });
         }
     }
-      
-      
-      
-    
 }
 
+// Create a single instance of the controller
 const controller = new NoticiasController();
-module.exports = {
-    crearJSON: controller.crearJSON.bind(controller),
-    guardarNoticiaJSON: controller.guardarNoticiaJSON.bind(controller),
-    verJSON: controller.verJSON.bind(controller),
-    almacenarEnBBDD: controller.almacenarEnBBDD.bind(controller),
-    getUltimasNoticias: controller.getUltimasNoticias.bind(controller),
-    getTopicosDiarios: controller.getTopicosDiarios.bind(controller),
-    getTopicosSemanales: controller.getTopicosSemanales.bind(controller),
-    // getEvaluarNoticia: controller.getEvaluarNoticia.bind(controller)
-    getContadorNoticias: controller.getContadorNoticias.bind(controller), // AÑADI
-    insertarGruposBBDD: controller.insertarGruposBBDD.bind(controller),
-    getGruposNoticias: controller.getGruposNoticias.bind(controller),
 
-};
+// Export the instance directly
+module.exports = controller;

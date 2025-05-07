@@ -1,21 +1,25 @@
 <script setup>
+  import instagramIcon from '/public/icons/rrss/claro/instagram.svg';
+  import twitterIcon from '/public/icons/rrss/claro/x.svg';
+  import linkedinIcon from '/public/icons/rrss/claro/linkedin.svg';
+
   const currentYear = new Date().getFullYear();
   
   const socialLinks = [
     {
       name: 'Instagram',
       url: '#',
-      iconId: 'icon-instagram'
+      icon: instagramIcon
     },
     {
       name: 'Twitter',
       url: '#',
-      iconId: 'icon-twitter'
+      icon: twitterIcon
     },
     {
       name: 'LinkedIn',
       url: '#',
-      iconId: 'icon-linkedin'
+      icon: linkedinIcon
     }
   ];
 </script>
@@ -38,9 +42,7 @@
           class="text-[#C0C0C0] hover:text-[#be985d] transition-colors duration-300"
         >
           <span class="sr-only">{{ social.name }}</span>
-          <svg class="h-6 w-6" fill="currentColor">
-            <use :href="`/icons/newshub/social-icons.svg#${social.iconId}`"/>
-          </svg>
+          <img :src="social.icon" alt="" class="h-6 w-6" />
         </a>
       </div>
       

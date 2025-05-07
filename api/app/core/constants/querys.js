@@ -32,7 +32,6 @@ const QUERIES = {
             periodico_id
         ) sub2 ON sub2.periodico_id = n.periodico_id
         AND n.id = sub2.min_id
-        WHERE DATE(n.fecha_scraping) = CURDATE()
         ORDER BY
             n.fecha_scraping DESC;
 
@@ -77,7 +76,7 @@ const QUERIES = {
         SELECT COUNT(id) FROM noticias
     `,
     CONTAR_PERIODICOS: `
-        SELECT id FROM periodicos
+        SELECT count(id) FROM periodicos
     `,
     MEDIA_CALIFICACION_NOTICIAS: `
     SELECT AVG(coeficiente) FROM noticias
