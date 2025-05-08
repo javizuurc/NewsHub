@@ -38,7 +38,7 @@ const cerrarModal = () => {
 
 onMounted(fetchGrupos);
 
-// Solo aplicamos clases si estamos en resolución lg+
+
 const getGridClass = (index) => {
   const gridClasses = [
     'lg:col-span-3 lg:row-span-2',
@@ -62,7 +62,7 @@ const getGridClass = (index) => {
     <div v-if="cargando" class="text-center text-gray-500">Cargando grupos...</div>
     <div v-else-if="error" class="text-center text-red-500">Error: {{ error }}</div>
 
-    <!-- Flex en móviles, grid en lg+ -->
+    
     <div class="flex flex-col gap-4 lg:grid lg:grid-cols-4 xl:grid-cols-5 lg:auto-rows-auto">
       <div v-if="grupos.length === 0" class="col-span-full text-center text-gray-500">
         No hay grupos de noticias disponibles

@@ -1,15 +1,32 @@
 <script setup>
 import IdeologyThermometer from '../thermometers/IdeologyThermometerComponent.vue';
+import { computed } from 'vue';
 
 defineProps({
   grupo: Object
 });
+defineEmits(['close']);
+
+// Función que intenta parsear justificación a array
+const parseJustificacion = (justificacion) => {
+  try {
+    const parsed = JSON.parse(justificacion);
+    return Array.isArray(parsed) ? parsed : [justificacion];
+  } catch {
+    return [justificacion];
+  }
+};
 </script>
 
 <template>
-  <div class="fixed inset-0 bg-black/40 backdrop-blur-sm flex justify-center items-start overflow-auto z-50 p-6">
-    <div class="bg-white rounded-lg shadow-xl w-full max-w-3xl relative">
-     
+  <div
+    class="fixed inset-0 bg-black/40 backdrop-blur-sm flex justify-center items-start overflow-auto z-50 p-6"
+    @click="$emit('close')"
+  >
+    <div
+      class="bg-white rounded-lg shadow-xl w-full max-w-3xl relative"
+      @click.stop
+    >
       <button
         @click="$emit('close')"
         class="absolute top-2 right-2 text-gray-600 hover:text-black text-xl font-bold"
@@ -17,23 +34,10 @@ defineProps({
         ×
       </button>
 
-     
       <h2 class="text-2xl font-bold p-4 border-b text-black">
         {{ grupo.titular_general }}
       </h2>
 
-     
-      <div v-if="grupo.media_coeficiente !== null" class="px-4 pb-2 text-gray-800">
-        <p class="text-sm font-semibold mb-1">Media del sesgo ideológico:</p>
-        <IdeologyThermometer
-          :coeficiente="grupo.media_coeficiente"
-          :showValue="true"
-          height="h-2"
-          class="max-w-full"
-        />
-      </div>
-
-    
       <img
         v-if="grupo.imagen"
         :src="grupo.imagen"
@@ -41,7 +45,16 @@ defineProps({
         class="w-full h-64 object-cover rounded-b-md"
       />
 
-      
+      <div v-if="grupo.media_coeficiente !== null" class="px-4 pb-2 text-gray-800 pt-3">
+        <p class="text-sm font-semibold mb-1">Media del sesgo ideológico:</p>
+        <IdeologyThermometer
+          :coeficiente="grupo.media_coeficiente"
+          :showValue="false"
+          height="h-2"
+          class="max-w-full"
+        />
+      </div>
+
       <div class="p-4 space-y-4">
         <div
           v-for="noticia in grupo.noticias"
@@ -50,14 +63,24 @@ defineProps({
         >
           <p class="font-semibold text-black">{{ noticia.titulo }}</p>
           <p class="text-sm text-gray-600">Periódico: {{ noticia.periodico }}</p>
-          <p
+
+          <div
             v-if="noticia.justificacion"
-            class="text-xs text-gray-500 mt-1 italic"
+            class="text-sm text-gray-700 leading-relaxed mt-2"
           >
-            Justificación: {{ noticia.justificacion }}
-          </p>
+            <p class="italic font-semibold text-black mb-1">Justificación:</p>
+
+            <p
+              v-for="(item, idx) in parseJustificacion(noticia.justificacion)"
+              :key="idx"
+              class="mb-1"
+            >
+              {{ item }}
+            </p>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
 </template>
