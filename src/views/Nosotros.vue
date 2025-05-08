@@ -26,7 +26,9 @@ import javiImage from '../assets/img/fotos/javi.jpg';
           <NosotrosCard
             nombre="Manuel Villar Navarro"
             imagen=""
-            descripcion="Me gusta el m&m amarillo."
+            descripcion="34 años y en continuo aprendizaje. 
+                          Apasionado por la tecnología y por entender cómo funcionan las cosas por dentro, 
+                          he encontrado en el desarrollo web una forma de combinar lógica con la creatividad."
           />
         </div>
       </div>

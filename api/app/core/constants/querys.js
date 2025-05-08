@@ -122,7 +122,7 @@ const QUERIES = {
           g.titular_general,
           n.id AS noticia_id,
           n.titulo AS noticia_titulo,
-          COALESCE(iv.imagen_valida, 'http://192.168.20.145/img/generica.jpg') AS imagen,
+          COALESCE(iv.imagen_valida, 'http://www.newshub.com/img/generica.jpg') AS imagen,
           n.justificacion,
           n.url,
           n.fecha_publicacion,

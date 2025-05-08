@@ -6,7 +6,7 @@
 - El borde de cada uno de los grupos centrales debería de ser de otro color (por definir siguiendo la paleta de colores).
 - Revisar los iconos en el footer (ver si valen la pena así o no).
 - Debajo de los tópicos queda un hueco en blanco, valorar si poner algo ahí o no.
-- El contenido central, tras separar lo que son los componentes de grupos de el section, el título de 'noticias relevantes' se ve más pequeño, deberíamos de corregir eso para que tenga todo el mismo tamaño.
+- El contenido central, tras separar lo que son los componentes de grupos de el section, el título de 'noticias relevantes' se ve más pequeño, deberíamos de corregir   eso para que tenga todo el mismo tamaño.
 
 ### Componentes
 - Hacer que los endpoints recarguen cada cierto tiempo (pero que no sea el mismo para que no se recargue la web entera).

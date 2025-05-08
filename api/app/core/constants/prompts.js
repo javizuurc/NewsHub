@@ -26,14 +26,14 @@ module.exports = {
       - Alineación con línea editorial
 
     5. Coeficiente (-6 a +6):
-      - Libertad Digital (+6), ABC (+3)
-      - El País (-2), El Plural (-6)
-      Rangos:
-      - Izquierda: -6.00 a -3.00
-      - Leve Izquierda: -2.99 a -1.00
+      -En base al artiulo(ten en cuenta tambíen la idelogía del periodico) y dame un coeficiente númerico siendo:
+      - Ultra-Izquierda: -5.00 a -6.00
+      - Izquierda: -2 a -4.99
+      - Leve Izquierda: -1 a -1.99
       - Centro: -0.99 a +0.99
-      - Leve Derecha: +1.00 a +2.99
-      - Derecha: +3.00 a +6.00
+      - Leve Derecha: +1.00 a +1.99
+      - Derecha: +2.00 a +4.99
+      - Ultra-Derecha: +5.00 a +6.00
 
     Devolver JSON:
     {

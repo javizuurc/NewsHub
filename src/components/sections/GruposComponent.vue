@@ -63,7 +63,7 @@ const getGridClass = (index) => {
 
     <!-- Cambia el grid por flex-col en móviles -->
     <div 
-      class="flex flex-col gap-4 sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 sm:auto-rows-min lg:auto-rows-[170px]"
+      class="flex flex-col gap-4 sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 sm:auto-rows-min lg:auto-rows-auto"
     >
       <div v-if="grupos.length === 0" class="col-span-full text-center text-gray-500">
         No hay grupos de noticias disponibles

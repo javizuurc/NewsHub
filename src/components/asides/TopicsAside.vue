@@ -92,39 +92,43 @@ onBeforeUnmount(() => {
     titleClass="text-[#be985d] border-[#b08d57] text-xl tracking-wide"
   >
     <ul class="space-y-6">
+      <!-- Tópicos Diarios -->
       <li>
         <h3 class="text-[#2C2C2C] font-medium mb-2">Tópicos Diarios</h3>
-        <div v-if="diarios && diarios.value && diarios.value.cargando" class="p-2 text-center text-gray-300">
+        <div v-if="diarios.cargando" class="p-2 text-center text-gray-300">
           Cargando tópicos diarios...
         </div>
-        <div v-else-if="diarios && diarios.value && diarios.value.error" class="p-2 text-center text-red-500">
-          Error: {{ diarios.value.error }}
+        <div v-else-if="diarios.error" class="p-2 text-center text-red-500">
+          Error: {{ diarios.error }}
         </div>
         <div v-else class="flex flex-wrap gap-1">
           <TopicCard 
-            v-for="(topico, index) in (diarios && diarios.value ? diarios.value.topicos : [])" 
+            v-for="(topico, index) in diarios.topicos" 
             :key="index" 
             :name="topico.nombre"
             :type="'daily'"
           />
+          <p v-if="diarios.topicos.length === 0" class="text-gray-400">No hay tópicos diarios disponibles.</p>
         </div>
       </li>
-      
+
+      <!-- Tópicos Semanales -->
       <li>
         <h3 class="text-[#2C2C2C] font-medium mb-2">Tópicos Semanales</h3>
-        <div v-if="semanales && semanales.value && semanales.value.cargando" class="p-2 text-center text-gray-300">
-          <p>Cargando tópicos semanales...</p>
+        <div v-if="semanales.cargando" class="p-2 text-center text-gray-300">
+          Cargando tópicos semanales...
         </div>
-        <div v-else-if="semanales && semanales.value && semanales.value.error" class="p-2 text-center text-red-500">
-          <p>Error: {{ semanales.value.error }}</p>
+        <div v-else-if="semanales.error" class="p-2 text-center text-red-500">
+          Error: {{ semanales.error }}
         </div>
         <div v-else class="flex flex-wrap gap-1">
           <TopicCard 
-            v-for="(topico, index) in (semanales && semanales.value ? semanales.value.topicos : [])" 
+            v-for="(topico, index) in semanales.topicos" 
             :key="index" 
             :name="topico.nombre"
             :type="'weekly'"
           />
+          <p v-if="semanales.topicos.length === 0" class="text-gray-400">No hay tópicos semanales disponibles.</p>
         </div>
       </li>
     </ul>
