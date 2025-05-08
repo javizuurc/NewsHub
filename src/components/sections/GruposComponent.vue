@@ -38,15 +38,16 @@ const cerrarModal = () => {
 
 onMounted(fetchGrupos);
 
+// Solo aplicamos clases si estamos en resolución lg+
 const getGridClass = (index) => {
   const gridClasses = [
-    'col-span-3 row-span-2',                    // 1
-    'row-span-2 col-start-1 row-start-3',       // 2
-    'col-span-2 row-span-2 col-start-2 row-start-3', // 3
-    'col-span-2 row-span-3 col-start-4 row-start-1', // 4
-    'col-span-2 col-start-1 row-start-5',       // 5
-    'col-span-2 row-span-2 col-start-4 row-start-4', // 6
-    'col-start-3 row-start-5'                   // 7
+    'lg:col-span-3 lg:row-span-2',
+    'lg:row-span-2 lg:col-start-1 lg:row-start-3',
+    'lg:col-span-2 lg:row-span-2 lg:col-start-2 lg:row-start-3',
+    'lg:col-span-2 lg:row-span-3 lg:col-start-4 lg:row-start-1',
+    'lg:col-span-2 lg:col-start-1 lg:row-start-5',
+    'lg:col-span-2 lg:row-span-2 lg:col-start-4 lg:row-start-4',
+    'lg:col-start-3 lg:row-start-5'
   ];
   return gridClasses[index] || '';
 };
@@ -61,13 +62,12 @@ const getGridClass = (index) => {
     <div v-if="cargando" class="text-center text-gray-500">Cargando grupos...</div>
     <div v-else-if="error" class="text-center text-red-500">Error: {{ error }}</div>
 
-    <!-- Cambia el grid por flex-col en móviles -->
-    <div 
-      class="flex flex-col gap-4 sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 sm:auto-rows-min lg:auto-rows-auto"
-    >
+    <!-- Flex en móviles, grid en lg+ -->
+    <div class="flex flex-col gap-4 lg:grid lg:grid-cols-4 xl:grid-cols-5 lg:auto-rows-auto">
       <div v-if="grupos.length === 0" class="col-span-full text-center text-gray-500">
         No hay grupos de noticias disponibles
       </div>
+
       <CardGrid
         v-else
         v-for="(grupo, index) in grupos"
@@ -81,14 +81,11 @@ const getGridClass = (index) => {
     </div>
 
     <Modal v-if="modalVisible && grupoSeleccionado" :grupo="grupoSeleccionado" @close="cerrarModal">
-      <!--CREAR COMPONENTE PARA ESTO-->
       <template #header>
         <h2 class="text-xl font-bold text-black">{{ grupoSeleccionado.titular_general }}</h2>
       </template>
 
-      <!--CREAR COMPONENTE PARA ESTO-->
       <template #body>
-        <!--TODO ESTO DEBERÍA DE SER UN ENLACE HACIA LA NOTICIA-->
         <img
           v-if="grupoSeleccionado.imagen"
           :src="grupoSeleccionado.imagen"
