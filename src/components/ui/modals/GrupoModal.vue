@@ -7,7 +7,7 @@ defineProps({
 });
 defineEmits(['close']);
 
-// Función que intenta parsear justificación a array
+
 const parseJustificacion = (justificacion) => {
   try {
     const parsed = JSON.parse(justificacion);
