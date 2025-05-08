@@ -16,7 +16,7 @@
     },
     imageUrl: {
       type: String,
-      default: "/images/default-news.jpg", // Imagen por defecto
+      default: "/images/default-news.jpg",
     },
     isWide: {
       type: Boolean,
@@ -31,32 +31,33 @@
 
 <template>
   <BaseCard
-    customClass="bg-white border border-yellow-400 w-full h-full hover:shadow-md transition-all duration-300"
+    customClass="bg-white border border-[#C0C0C0] w-full h-full hover:shadow-md transition-all duration-300"
   >
-    <div class="flex flex-col h-full">
-      <div class="min-h-[70px] sm:min-h-[100px] bg-gray-100 overflow-hidden rounded-t-lg">
+    <article class="flex flex-col h-full">
+      <div class="min-h-[70px] bg-[#F1F1F1] overflow-hidden rounded-t-lg">
         <img 
           :src="imageUrl" 
           :alt="title" 
-          class="w-full h-20 sm:h-40 md:h-50 object-cover transition-transform duration-300 hover:scale-105"
+          class="w-full h-20 lg:h-40 object-cover transition-transform duration-300 hover:scale-105"
         >
       </div>
-      <div class="flex-1 flex flex-col p-1.5 md:p-2">
-        <h4 class="text-xs sm:text-sm md:text-base font-bold mb-0.5 text-gray-800 truncate leading-tight">{{ title }}</h4>
+      <div class="flex-1 flex flex-col p-2">
+        <h4 class="text-xs lg:text-base font-bold mb-0.5 text-[#2C2C2C] truncate leading-tight">{{ title }}</h4>
         <div class="flex-1">
           <p v-for="(text, index) in content" 
-             :key="index" 
-             class="text-xs md:text-sm text-gray-600 truncate mb-0.5 leading-tight">
-             {{ text }}
+            :key="index" 
+            class="text-xs lg:text-sm text-[#2C2C2C] truncate mb-0.5 leading-tight">
+            {{ text }}
           </p>
         </div>
         <div v-if="badge" class="mt-0.5">
-          <span class="inline-block bg-gradient-to-r from-amber-600 to-yellow-400 text-gray-300 px-2 py-0.5 rounded-full text-[0.65rem] font-semibold shadow shadow-black/10 tracking-wide transform transition-all duration-200 ease-in-out hover:-translate-y-0.5 hover:shadow-md hover:from-yellow-400 hover:to-amber-600">
+          <span class="inline-block bg-[#F1F1F1] text-[#be985d] px-2 py-0.5 rounded-full text-[0.65rem] font-semibold shadow shadow-black/10 tracking-wide">
             {{ badge }}
           </span>
         </div>
       </div>
-    </div>
+      <div class="border-t mt-2" style="border-color: #C0C0C0"></div>
+    </article>
   </BaseCard>
 </template>
 

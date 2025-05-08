@@ -13,13 +13,10 @@ const fetchGrupos = () => {
   cargando.value = true;
   fetch(import.meta.env.VITE_API_URL + '/api/noticias/grupos-noticias')
     .then(res => {
-      if (!res.ok) {
-        throw new Error(`Error HTTP: ${res.status}`);
-      }
+      if (!res.ok) throw new Error(`Error HTTP: ${res.status}`);
       return res.json();
     })
     .then(data => {
-      console.log('Datos recibidos de la API:', data);
       grupos.value = data;
       cargando.value = false;
     })
@@ -64,7 +61,10 @@ const getGridClass = (index) => {
     <div v-if="cargando" class="text-center text-gray-500">Cargando grupos...</div>
     <div v-else-if="error" class="text-center text-red-500">Error: {{ error }}</div>
 
-    <div v-else class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 auto-rows-min">
+    <!-- Cambia el grid por flex-col en móviles -->
+    <div 
+      class="flex flex-col gap-4 sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 sm:auto-rows-min lg:auto-rows-[170px]"
+    >
       <div v-if="grupos.length === 0" class="col-span-full text-center text-gray-500">
         No hay grupos de noticias disponibles
       </div>
@@ -95,10 +95,34 @@ const getGridClass = (index) => {
           alt="Imagen representativa"
           class="w-full h-64 object-cover rounded-md mb-4"
         />
-        <div v-for="noticia in grupoSeleccionado.noticias" :key="noticia.id" class="mb-4 border p-3 rounded-md bg-white shadow-sm">
-          <p class="font-semibold text-black">{{ noticia.titulo }}</p>
+        <div
+          v-for="noticia in grupoSeleccionado.noticias"
+          :key="noticia.id"
+          class="mb-4 border p-3 rounded-md bg-white shadow-sm"
+        >
+          <a
+            v-if="noticia.url"
+            :href="noticia.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-semibold text-black hover:underline"
+          >
+            {{ noticia.titulo }}
+          </a>
+          <span v-else class="font-semibold text-black">{{ noticia.titulo }}</span>
           <p class="text-sm text-gray-600">Periódico: {{ noticia.periodico }}</p>
-          <p v-if="noticia.justificacion" class="text-xs text-gray-500 mt-1 italic">Justificación: {{ noticia.justificacion }}</p>
+          <div
+            v-if="noticia.justificacion"
+            class="text-xs text-gray-500 mt-1 italic"
+          >
+            Justificación:
+            <ul v-if="Array.isArray(noticia.justificacion)" class="list-disc pl-4">
+              <li v-for="(item, idx) in noticia.justificacion" :key="idx"> {{ item }} </li>
+            </ul>
+            <span v-else>
+              {{ noticia.justificacion }}
+            </span>
+          </div>
         </div>
       </template>
     </Modal>

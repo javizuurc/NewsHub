@@ -3,14 +3,18 @@ import { ref, onMounted, onBeforeUnmount } from 'vue';
 import AsideComponent from './AsideComponent.vue';
 import TopicCard from '../ui/tags/TopicTagComponent.vue';
 
-const topicosDiarios = ref([]);
-const topicosSemanales = ref([]);
-const cargandoDiarios = ref(true);
-const cargandoSemanales = ref(true);
-const errorDiarios = ref(null);
-const errorSemanales = ref(null);
-let intervalIdDiarios = null;
-let intervalIdSemanales = null;
+const diarios = ref({
+  topicos: [],
+  cargando: true,
+  error: null,
+  intervalId: null
+});
+const semanales = ref({
+  topicos: [],
+  cargando: true,
+  error: null,
+  intervalId: null
+});
 
 const capitalize = (str) => {
   if (!str) return '';
@@ -18,78 +22,66 @@ const capitalize = (str) => {
 };
 
 const fetchTopicosDiarios = () => {
-    cargandoDiarios.value = true;
-    fetch(import.meta.env.VITE_API_URL + '/api/noticias/topicos-diarios')
+  diarios.value.cargando = true;
+  fetch(import.meta.env.VITE_API_URL + '/api/noticias/topicos-diarios')
     .then(response => {
-        if (!response.ok) {
-            throw new Error(`¡Error HTTP! Estado: ${response.status}`);
-        }
-        return response.json();
+      if (!response.ok) throw new Error(`¡Error HTTP! Estado: ${response.status}`);
+      return response.json();
     })
     .then(responseData => {
-        console.log('Tópicos diarios obtenidos:', responseData);
-        cargandoDiarios.value = false;
-        if (responseData && responseData.data) {
-            topicosDiarios.value = responseData.data.map(item => ({
-                nombre: capitalize(item.palabra),
-                url: `/topico/${item.palabra.toLowerCase()}`,
-                frecuencia: item.frecuencia
-            }));
-        } else {
-            throw new Error('Formato de respuesta inválido');
-        }
+      diarios.value.cargando = false;
+      diarios.value.topicos = (responseData && responseData.data)
+        ? responseData.data.map(item => ({
+          nombre: capitalize(item.palabra),
+          url: `/topico/${item.palabra.toLowerCase()}`,
+          frecuencia: item.frecuencia
+        }))
+        : [];
+      diarios.value.error = null;
     })
     .catch(error => {
-        console.error('Error al obtener los tópicos diarios:', error);
-        cargandoDiarios.value = false;
-        errorDiarios.value = error.message;
+      console.error('Error al obtener los tópicos diarios:', error);
+      diarios.value.cargando = false;
+      diarios.value.error = error.message;
     });
 };
 
 const fetchTopicosSemanales = () => {
-    cargandoSemanales.value = true;
-    fetch(import.meta.env.VITE_API_URL + '/api/noticias/topicos-semanales')
+  semanales.value.cargando = true;
+  fetch(import.meta.env.VITE_API_URL + '/api/noticias/topicos-semanales')
     .then(response => {
-        if (!response.ok) {
-            throw new Error(`¡Error HTTP! Estado: ${response.status}`);
-        }
-        return response.json();
+      if (!response.ok) throw new Error(`¡Error HTTP! Estado: ${response.status}`);
+      return response.json();
     })
     .then(responseData => {
-        console.log('Tópicos semanales obtenidos:', responseData);
-        cargandoSemanales.value = false;
-        if (responseData && responseData.data) {
-            topicosSemanales.value = responseData.data.map(item => ({
-                nombre: capitalize(item.palabra),
-                url: `/topico/${item.palabra.toLowerCase()}`,
-                frecuencia: item.frecuencia
-            }));
-        } else {
-            throw new Error('Formato de respuesta inválido');
-        }
+      semanales.value.cargando = false;
+      semanales.value.topicos = (responseData && responseData.data)
+        ? responseData.data.map(item => ({
+          nombre: capitalize(item.palabra),
+          url: `/topico/${item.palabra.toLowerCase()}`,
+          frecuencia: item.frecuencia
+        }))
+        : [];
+      semanales.value.error = null;
     })
     .catch(error => {
-        console.error('Error al obtener los tópicos semanales:', error);
-        cargandoSemanales.value = false;
-        errorSemanales.value = error.message;
+      console.error('Error al obtener los tópicos semanales:', error);
+      semanales.value.cargando = false;
+      semanales.value.error = error.message;
     });
 };
 
 onMounted(() => {
-    fetchTopicosDiarios();
-    fetchTopicosSemanales();
-    
-    intervalIdDiarios = setInterval(fetchTopicosDiarios, 300000);
-    intervalIdSemanales = setInterval(fetchTopicosSemanales, 300000);
+  fetchTopicosDiarios();
+  fetchTopicosSemanales();
+
+  diarios.value.intervalId = setInterval(fetchTopicosDiarios, 300000);
+  semanales.value.intervalId = setInterval(fetchTopicosSemanales, 300000);
 });
 
 onBeforeUnmount(() => {
-    if (intervalIdDiarios) {
-        clearInterval(intervalIdDiarios);
-    }
-    if (intervalIdSemanales) {
-        clearInterval(intervalIdSemanales);
-    }
+  if (diarios.value.intervalId) clearInterval(diarios.value.intervalId);
+  if (semanales.value.intervalId) clearInterval(semanales.value.intervalId);
 });
 </script>
 
@@ -101,16 +93,16 @@ onBeforeUnmount(() => {
   >
     <ul class="space-y-6">
       <li>
-        <h3 class="text-[#d4af37] font-medium mb-2">Tópicos Diarios</h3>
-        <div v-if="cargandoDiarios" class="p-2 text-center text-gray-300">
+        <h3 class="text-[#2C2C2C] font-medium mb-2">Tópicos Diarios</h3>
+        <div v-if="diarios && diarios.value && diarios.value.cargando" class="p-2 text-center text-gray-300">
           Cargando tópicos diarios...
         </div>
-        <div v-else-if="errorDiarios" class="p-2 text-center text-red-500">
-          Error: {{ errorDiarios }}
+        <div v-else-if="diarios && diarios.value && diarios.value.error" class="p-2 text-center text-red-500">
+          Error: {{ diarios.value.error }}
         </div>
         <div v-else class="flex flex-wrap gap-1">
           <TopicCard 
-            v-for="(topico, index) in topicosDiarios" 
+            v-for="(topico, index) in (diarios && diarios.value ? diarios.value.topicos : [])" 
             :key="index" 
             :name="topico.nombre"
             :type="'daily'"
@@ -119,16 +111,16 @@ onBeforeUnmount(() => {
       </li>
       
       <li>
-        <h3 class="text-[#d4af37] font-medium mb-2">Tópicos Semanales</h3>
-        <div v-if="cargandoSemanales" class="p-2 text-center text-gray-300">
-          Cargando tópicos semanales...
+        <h3 class="text-[#2C2C2C] font-medium mb-2">Tópicos Semanales</h3>
+        <div v-if="semanales && semanales.value && semanales.value.cargando" class="p-2 text-center text-gray-300">
+          <p>Cargando tópicos semanales...</p>
         </div>
-        <div v-else-if="errorSemanales" class="p-2 text-center text-red-500">
-          Error: {{ errorSemanales }}
+        <div v-else-if="semanales && semanales.value && semanales.value.error" class="p-2 text-center text-red-500">
+          <p>Error: {{ semanales.value.error }}</p>
         </div>
         <div v-else class="flex flex-wrap gap-1">
           <TopicCard 
-            v-for="(topico, index) in topicosSemanales" 
+            v-for="(topico, index) in (semanales && semanales.value ? semanales.value.topicos : [])" 
             :key="index" 
             :name="topico.nombre"
             :type="'weekly'"

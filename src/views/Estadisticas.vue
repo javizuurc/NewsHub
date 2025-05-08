@@ -151,7 +151,7 @@ onMounted(() => {
                 </p>
               </div>
               <p class="text-sm text-[#5A5A5A] mt-4 text-center">
-                Promedio de tendencia ideológica de todas las noticias
+                Promedio de tendencia ideológica
               </p>
             </div>
           </div>

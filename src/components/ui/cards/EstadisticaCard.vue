@@ -38,7 +38,7 @@ const hasIconSlot = computed(() => !!useSlots().icon);
 
 <template>
   <BaseCard :customClass="`border-t-4 border-[#C0C0C0] bg-[#F1F1F1] shadow-md rounded-xl`">
-    <div class="flex items-center gap-4 p-6">
+    <div class="flex items-center gap-4 p-4">
       <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#C0C0C0] flex items-center justify-center">
         <template v-if="icon">
           <component v-if="typeof icon === 'object'" :is="icon" class="w-6 h-6 text-[#5A5A5A]" />
@@ -49,9 +49,9 @@ const hasIconSlot = computed(() => !!useSlots().icon);
         </template>
       </div>
       <div class="flex-1">
-        <h2 class="text-lg font-semibold text-[#2C2C2C] mb-1">{{ titulo }}</h2>
+        <h2 class="text-base font-semibold text-[#2C2C2C] mb-1">{{ titulo }}</h2>
         <div v-if="hayDatos">
-          <p class="text-3xl font-bold text-[#2C2C2C] mb-1">{{ valor }}</p>
+          <p class="text-2xl font-bold text-[#2C2C2C] mb-1">{{ valor }}</p>
           <p class="text-xs text-[#5A5A5A]">{{ descripcion }}</p>
         </div>
         <div v-else class="text-[#5A5A5A] italic text-xs">

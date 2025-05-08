@@ -89,7 +89,6 @@ const QUERIES = {
         WITH noticias_validas AS (
         SELECT *
         FROM noticias
-        WHERE DATE(fecha_scraping) >= CURDATE() - INTERVAL 2 DAY
         ),
 
         grupos_filtrados AS (

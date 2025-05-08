@@ -25,27 +25,26 @@
       <div class="flex items-center">
         <button 
           @click="toggleMobileMenu" 
-          class="md:hidden text-white hover:text-[#be985d] focus:outline-none mr-3"
+          class="block text-white hover:text-[#be985d] focus:outline-none mr-3 lg:hidden"
           aria-label="Menú"
         >
+          <!-- Icono hamburguesa SVG -->
+          <svg class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
         </button>
         <div class="flex flex-row m5 justify-center items-center">
           <router-link to="/">
             <img src="/src/assets/Logo NewsHub.png" alt="Logo NewsHub" class="size-15">
           </router-link>
-
           <router-link to="/" 
-          class="text-3xl md:text-4xl font-extrabold text-white hover:text-[#C0C0C0] transition-all duration-500 transform hover:scale-105 ml-1" 
-          aria-label="NewsHub" id="nombre">
+            class="text-3xl text-white hover:text-[#C0C0C0] transition-all duration-500 transform hover:scale-105 ml-1" 
+            aria-label="NewsHub" id="nombre">
             NewsHub
           </router-link>
-
         </div>
       </div>
-
-      <!-- Menú para pantallas medianas y grandes -->
-      <!--NECESITAMOS QUE SE ABRA EL MENÚ PARA LOS MÓVILES (NO LO HACE)-->
-      <ul class="hidden md:flex items-center space-x-6 mx-auto">
+      <ul class="hidden lg:flex items-center space-x-6 mx-auto">
         <li><router-link to="/estadisticas" class="py-2 px-3 hover:text-[#be985d] transition-all duration-300 border-b-2 border-transparent hover:border-[#be985d]">Termómetro Nacional</router-link></li>
         <!--<li><a href="#" class="py-2 px-3 hover:text-[#be985d] transition-all duration-300 border-b-2 border-transparent hover:border-[#be985d]">¿Cómo sería si... ?</a></li>-->
         <li><router-link to="/nosotros" class="py-2 px-3 hover:text-[#be985d] transition-all duration-300 border-b-2 border-transparent hover:border-[#be985d]">Sobre nosotros</router-link></li>
@@ -58,15 +57,11 @@
           </button>
         </li>
       </ul>
-
     </div>
-
-
-
 
     <div 
       v-if="mobileMenuOpen" 
-      class="md:hidden bg-[#3A3A3A] border-t border-[#be985d]/30 mt-2"
+      class="block lg:hidden bg-[#3A3A3A] border-t border-[#be985d]/30 mt-2"
     >
       <ul class="flex flex-col py-2">
         <li><router-link to="/" class="block px-4 py-3 hover:bg-[#4A4A4A] hover:text-[#be985d] transition-colors duration-200">Inicio</router-link></li>
