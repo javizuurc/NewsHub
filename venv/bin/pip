@@ -1,4 +1,4 @@
-#!/var/www/html/NewHub/venv/bin/python3
+#!/var/www/html/NewsHub/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
