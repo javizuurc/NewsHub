@@ -54,12 +54,14 @@ const parseJustificacion = (justificacion) => {
           class="max-w-full"
         />
       </div>
-
       <div class="p-4 space-y-4">
-        <div
+        <a
           v-for="noticia in grupo.noticias"
           :key="noticia.id"
-          class="border rounded-md p-3 bg-gray-50 shadow-sm"
+          :href="noticia.url"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block border rounded-md p-3 bg-gray-50 shadow-sm hover:bg-gray-100 transition"
         >
           <p class="font-semibold text-black">{{ noticia.titulo }}</p>
           <p class="text-sm text-gray-600">Periódico: {{ noticia.periodico }}</p>
@@ -78,9 +80,8 @@ const parseJustificacion = (justificacion) => {
               {{ item }}
             </p>
           </div>
-        </div>
+        </a>
       </div>
-
     </div>
   </div>
 </template>
