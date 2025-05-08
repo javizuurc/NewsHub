@@ -1,7 +1,8 @@
 <script setup>
+import { computed } from 'vue';
 import BaseCard from './BaseCardComponent.vue';
 
-defineProps({
+const props = defineProps({
   titulo: {
     type: String,
     required: true
@@ -25,22 +26,37 @@ defineProps({
   hayDatos: {
     type: Boolean,
     default: true
+  },
+  icon: {
+    type: [Object, String], // Componente o SVG string
+    default: null
   }
 });
+
+const hasIconSlot = computed(() => !!useSlots().icon);
 </script>
 
 <template>
-  <BaseCard :customClass="`border-t-4 border-${colorBorde}-500 bg-white`">
-    <div class="p-5">
-      <h2 class="text-xl font-semibold text-gray-800 mb-2">{{ titulo }}</h2>
-      <div v-if="hayDatos">
-        <p class="text-4xl font-bold mb-3" :class="`text-${colorTexto}-600`">
-          {{ valor }}
-        </p>
-        <p class="text-sm text-gray-500">{{ descripcion }}</p>
+  <BaseCard :customClass="`border-t-4 border-[#C0C0C0] bg-[#F1F1F1] shadow-md rounded-xl`">
+    <div class="flex items-center gap-4 p-6">
+      <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#C0C0C0] flex items-center justify-center">
+        <template v-if="icon">
+          <component v-if="typeof icon === 'object'" :is="icon" class="w-6 h-6 text-[#5A5A5A]" />
+          <span v-else v-html="icon"></span>
+        </template>
+        <template v-else>
+          <slot name="icon"></slot>
+        </template>
       </div>
-      <div v-else class="text-gray-400 italic">
-        No hay datos disponibles
+      <div class="flex-1">
+        <h2 class="text-lg font-semibold text-[#2C2C2C] mb-1">{{ titulo }}</h2>
+        <div v-if="hayDatos">
+          <p class="text-3xl font-bold text-[#2C2C2C] mb-1">{{ valor }}</p>
+          <p class="text-xs text-[#5A5A5A]">{{ descripcion }}</p>
+        </div>
+        <div v-else class="text-[#5A5A5A] italic text-xs">
+          No hay datos disponibles
+        </div>
       </div>
     </div>
   </BaseCard>

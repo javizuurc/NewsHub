@@ -1,6 +1,5 @@
 <script setup>
 import BaseCardComponent from './BaseCardComponent.vue';
-import BaseTagComponent from '../tags/BaseTagComponent.vue';
 
 defineProps({
   nombre: {
@@ -32,13 +31,6 @@ defineProps({
       </div>
       <p class="text-gray-600 mb-4">{{ descripcion }}</p>
       <div class="flex justify-center space-x-4">
-        <BaseTagComponent
-          v-for="(tech, index) in tecnologias"
-          :key="index"
-          :text="tech.nombre"
-          :bgColor="tech.bgColor"
-          :textColor="tech.textColor"
-        />
       </div>
     </div>
   </BaseCardComponent>

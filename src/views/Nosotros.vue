@@ -8,10 +8,10 @@ import javiImage from '../assets/img/foto/javi.jpg';
     <div class="w-full py-16 bg-white">
       <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-          <h1 class="text-4xl font-bold text-gray-900 mb-4">Sobre Nosotros</h1>
+          <h4 class="text-xl font-bold mb-4 border-b-2 border-[#b08d57] pb-2 text-[#be985d] text-center">¿Quiénes somos?</h4>
           <p class="text-lg text-gray-600">
-            Somos dos estudiantes apasionados por el Desarrollo de Aplicaciones Web, 
-            trabajando juntos para crear soluciones innovadoras.
+            Somos dos estudiantes apasionados por el Desarrollo de Aplicaciones Web. Nos une la creatividad, 
+            el aprendizaje constante y el deseo de construir soluciones útiles e intuitivas.
           </p>
         </div>
 
@@ -19,21 +19,14 @@ import javiImage from '../assets/img/foto/javi.jpg';
           <NosotrosCard
             nombre="Javier Cruz Rojas"
             :imagen="javiImage"
-            descripcion="Descripción Genérica Turip Donald Trump jr."
-            :tecnologias="[
-              { nombre: 'Vue.js', bgColor: 'bg-blue-100', textColor: 'text-blue-800' },
-              { nombre: 'UI/UX', bgColor: 'bg-green-100', textColor: 'text-green-800' }
-            ]"
+            descripcion="19 años, entusiasta de la teconología, lectura y los bonsais. He decidido hacer este proyecto
+            no sólo para mi beneficio propio, sino para todas las personas con las mismas inquietudes que yo."
           />
           
           <NosotrosCard
             nombre="Manuel Villar Navarro"
             imagen=""
             descripcion="Me gusta el m&m amarillo."
-            :tecnologias="[
-              { nombre: 'Node.js', bgColor: 'bg-red-100', textColor: 'text-red-800' },
-              { nombre: 'APIs', bgColor: 'bg-purple-100', textColor: 'text-purple-800' }
-            ]"
           />
         </div>
       </div>

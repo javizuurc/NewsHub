@@ -10,13 +10,12 @@
 - El contenido central, tras separar lo que son los componentes de grupos de el section, el título de 'noticias relevantes' se ve más pequeño, deberíamos de corregir eso para que tenga todo el mismo tamaño.
 
 ### Estadísticas
-- Mejorar el layout de las estadísticas.
-- Que los colores se adecuen a los de la web.
+- Mejorar el layout de las estadísticas. (hecho)
+- Que los colores se adecuen a los de la web. (hecho)
 
 ### Nosotros
 - Terminar la tarjeta de Manu.
-- Crear descripciones asequibles.
-- Las tarjetas debajo de la descripción pensar utilidad (sino fuera).
+- Crear descripciones asequibles. (hecho)
 
 ## Funcionalidad
 - Ver porque tenemos un fichero en la raíz del proyecto llamado sync.js y porque está ahí.

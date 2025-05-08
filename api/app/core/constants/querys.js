@@ -78,67 +78,65 @@ const QUERIES = {
     CONTAR_PERIODICOS: `
         SELECT count(id) FROM periodicos
     `,
+    DIAS_NOTICIAS: `
+        SELECT COUNT(DISTINCT fecha_publicacion) AS dias_con_noticias
+        FROM noticias;
+    `,
     MEDIA_CALIFICACION_NOTICIAS: `
     SELECT AVG(coeficiente) FROM noticias
     `,
     GRUPOS_NOTICIAS:`
-                 WITH noticias_validas AS (
-  SELECT *
-  FROM noticias
-  WHERE DATE(fecha_scraping) >= CURDATE() - INTERVAL 2 DAY
-),
+        WITH noticias_validas AS (
+        SELECT *
+        FROM noticias
+        WHERE DATE(fecha_scraping) >= CURDATE() - INTERVAL 2 DAY
+        ),
 
-grupos_filtrados AS (
-  SELECT
-    g.id AS grupo_id,
-    MAX(DATE(n.fecha_scraping)) AS fecha_mas_reciente,
-    COUNT(*) AS cantidad_noticias
-  FROM grupos g
-  JOIN grupo_noticia gn ON g.id = gn.grupo_id
-  JOIN noticias_validas n ON gn.noticia_id = n.id
-  GROUP BY g.id
-  HAVING COUNT(*) > 1
-  ORDER BY fecha_mas_reciente DESC, cantidad_noticias DESC
-  LIMIT 7
-),
+        grupos_filtrados AS (
+        SELECT
+            g.id AS grupo_id,
+            MAX(DATE(n.fecha_scraping)) AS fecha_mas_reciente,
+            COUNT(*) AS cantidad_noticias
+        FROM grupos g
+        JOIN grupo_noticia gn ON g.id = gn.grupo_id
+        JOIN noticias_validas n ON gn.noticia_id = n.id
+        GROUP BY g.id
+        HAVING COUNT(*) > 1
+        ORDER BY fecha_mas_reciente DESC, cantidad_noticias DESC
+        LIMIT 7
+        ),
 
-imagen_valida_por_grupo AS (
-  SELECT
-    gn.grupo_id,
-    MIN(n.imagen) AS imagen_valida
-  FROM grupo_noticia gn
-  JOIN noticias_validas n ON gn.noticia_id = n.id
-  JOIN periodicos p ON n.periodico_id = p.id
-  WHERE p.nombre != 'Libertad Digital'
-    AND n.imagen NOT LIKE '%trans.png%'
-  GROUP BY gn.grupo_id
-)
+        imagen_valida_por_grupo AS (
+        SELECT
+            gn.grupo_id,
+            MIN(n.imagen) AS imagen_valida
+        FROM grupo_noticia gn
+        JOIN noticias_validas n ON gn.noticia_id = n.id
+        JOIN periodicos p ON n.periodico_id = p.id
+        WHERE p.nombre != 'Libertad Digital'
+            AND n.imagen NOT LIKE '%trans.png%'
+        GROUP BY gn.grupo_id
+        )
 
-SELECT
-  g.id AS grupo_id,
-  g.titular_general,
-  n.id AS noticia_id,
-  n.titulo AS noticia_titulo,
-  COALESCE(iv.imagen_valida, 'http://192.168.20.145/img/generica.jpg') AS imagen,
-  n.justificacion,
-  n.url,
-  n.fecha_publicacion,
-  n.coeficiente,
-  p.nombre AS periodico
-FROM grupos g
-JOIN grupo_noticia gn ON g.id = gn.grupo_id
-JOIN noticias_validas n ON gn.noticia_id = n.id
-JOIN periodicos p ON n.periodico_id = p.id
-LEFT JOIN imagen_valida_por_grupo iv ON iv.grupo_id = g.id
-WHERE g.id IN (SELECT grupo_id FROM grupos_filtrados)
-ORDER BY g.id, n.fecha_scraping DESC;
-
-
-
-
-
-        `
-
+        SELECT
+          g.id AS grupo_id,
+          g.titular_general,
+          n.id AS noticia_id,
+          n.titulo AS noticia_titulo,
+          COALESCE(iv.imagen_valida, 'http://192.168.20.145/img/generica.jpg') AS imagen,
+          n.justificacion,
+          n.url,
+          n.fecha_publicacion,
+          n.coeficiente,
+          p.nombre AS periodico
+        FROM grupos g
+        JOIN grupo_noticia gn ON g.id = gn.grupo_id
+        JOIN noticias_validas n ON gn.noticia_id = n.id
+        JOIN periodicos p ON n.periodico_id = p.id
+        LEFT JOIN imagen_valida_por_grupo iv ON iv.grupo_id = g.id
+        WHERE g.id IN (SELECT grupo_id FROM grupos_filtrados)
+        ORDER BY g.id, n.fecha_scraping DESC;
+        `,
 };
 
 module.exports = QUERIES;

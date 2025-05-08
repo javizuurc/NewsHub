@@ -12,6 +12,7 @@ router.get('/topicos-semanales', noticiasController.getTopicosSemanales.bind(not
 router.get('/contar-noticias', noticiasController.getContadorNoticias.bind(noticiasController));
 router.get('/contar-periodicos', noticiasController.getContarPeriodicos.bind(noticiasController));
 router.get('/media-calificaciones', noticiasController.getMediaCalificaciones.bind(noticiasController));
+router.get('/dias-noticias', noticiasController.getDiasConNoticias.bind(noticiasController));
 router.post('/agrupar-bbdd', noticiasController.insertarGruposBBDD.bind(noticiasController));
 router.get('/grupos-noticias', noticiasController.getGruposNoticias.bind(noticiasController)); 
 

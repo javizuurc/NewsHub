@@ -316,10 +316,19 @@ class NoticiasController {
           });
         }
     }
+
+    async getDiasConNoticias(req, res) {
+        try {
+            const sequelize = BBDD.getSequelize();
+            const [result] = await sequelize.query(QUERIES.DIAS_NOTICIAS);
+            res.json({ dias_con_noticias: result[0].dias_con_noticias });
+        } catch (error) {
+            console.error('Error al obtener los días con noticias:', error);
+            res.status(500).json({ error: 'Error al obtener los días con noticias' });
+        }
+    }
 }
 
-// Create a single instance of the controller
 const controller = new NoticiasController();
 
-// Export the instance directly
 module.exports = controller;

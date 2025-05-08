@@ -5,18 +5,17 @@ import NewsThermometerComponent from '../components/ui/thermometers/NewsThermome
 import { onMounted, ref } from 'vue';
 import axios from 'axios';
 
-// Referencias para almacenar los datos de las estadísticas
-const contadorNoticias = ref(null);
-const contadorPeriodicos = ref(null);
+const contadorNoticias    = ref(null);
+const contadorPeriodicos  = ref(null);
 const mediaCalificaciones = ref(null);
-const cargando = ref(true);
-const error = ref(null);
-const datosRaw = ref({});
+const diasConNoticias     = ref(null);
 
-// URL base para las peticiones API
+const cargando  = ref(true);
+const error     = ref(null);
+const datosRaw  = ref({});
+
 const API_URL = `${import.meta.env.VITE_API_URL}/api/noticias`;
 
-// Función para obtener el contador de noticias
 const fetchContadorNoticias = async () => {
   try {
     const response = await axios.get(`${API_URL}/contar-noticias`);
@@ -29,7 +28,6 @@ const fetchContadorNoticias = async () => {
   }
 };
 
-// Función para obtener el contador de periódicos
 const fetchContadorPeriodicos = async () => {
   try {
     const response = await axios.get(`${API_URL}/contar-periodicos`);
@@ -42,7 +40,6 @@ const fetchContadorPeriodicos = async () => {
   }
 };
 
-// Función para obtener la media de calificaciones
 const fetchMediaCalificaciones = async () => {
   try {
     const response = await axios.get(`${API_URL}/media-calificaciones`);
@@ -55,16 +52,28 @@ const fetchMediaCalificaciones = async () => {
   }
 };
 
-// Función para reintentar la carga de datos
+const fetchDiasConNoticias = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/dias-noticias`);
+    datosRaw.value.diasConNoticias = response.data;
+    diasConNoticias.value = response.data;
+    return response.data;
+  } catch (error) {
+    console.error('Error al obtener días con noticias:', error);
+    throw error;
+  }
+};
+
 const recargarDatos = async () => {
-  cargando.value = true;
-  error.value = null;
+  cargando.value  = true;
+  error.value     = null;
   
   try {
     await Promise.all([
       fetchContadorNoticias(),
       fetchContadorPeriodicos(),
-      fetchMediaCalificaciones()
+      fetchMediaCalificaciones(),
+      fetchDiasConNoticias()
     ]);
   } catch (err) {
     console.error('Error al cargar datos:', err);
@@ -74,66 +83,61 @@ const recargarDatos = async () => {
   }
 };
 
-// Cargar todos los datos al montar el componente
 onMounted(() => {
   recargarDatos();
 });
 </script>
 
 <template>
-  <main class="flex flex-col md:flex-row flex-grow overflow-y-auto md:overflow-hidden">
+  <main class="flex flex-col md:flex-row flex-grow overflow-y-auto md:overflow-hidden bg-[#D9D9D9]">
     <NewsAside class="w-full md:w-1/4 lg:w-1/5 flex-shrink-0 md:h-full md:overflow-y-auto"></NewsAside>
     
-    <div class="w-full md:w-3/4 lg:w-4/5 p-6 md:overflow-y-auto">
-      <h1 class="text-2xl font-bold mb-6">Estadísticas</h1>
+    <div class="w-full md:w-3/4 lg:w-4/5 p-6 md:overflow-y-auto bg-white">
+      <h4 class="text-xl font-bold mb-4 border-b-2 border-[#b08d57] pb-2 text-[#be985d] text-center">Estadísticas</h4>
       
-      <!-- Indicador de carga -->
       <div v-if="cargando" class="flex justify-center items-center h-64">
-        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-        <span class="ml-3 text-lg text-gray-600">Cargando estadísticas...</span>
+        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#FFD700]"></div>
+        <span class="ml-3 text-lg text-[#5A5A5A]">Cargando estadísticas...</span>
       </div>
       
-      <!-- Mensaje de error -->
       <div v-else-if="error" class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded">
         <p class="font-medium">{{ error }}</p>
         <button 
           @click="recargarDatos" 
-          class="mt-3 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
+          class="mt-3 px-4 py-2 bg-[#FFD700] text-[#2C2C2C] rounded hover:bg-[#FFC700] transition"
         >
           Reintentar
         </button>
       </div>
       
-      <!-- Tarjetas y termómetro de estadísticas -->
       <div v-if="!cargando && !error">
-        <!-- Tarjetas en grid de 2 columnas -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          <!-- Tarjeta: Contador de Noticias -->
           <EstadisticaCard 
             titulo="Noticias Registradas"
             :valor="contadorNoticias && contadorNoticias.data && contadorNoticias.data.length > 0 ? 
                    contadorNoticias.data[0]['COUNT(id)'] || '0' : '0'"
             descripcion="Total de noticias en la base de datos"
-            colorBorde="purple"
-            colorTexto="purple"
             :hayDatos="!!(contadorNoticias && contadorNoticias.data && contadorNoticias.data.length > 0)"
           />
           
-          <!-- Tarjeta: Contador de Periódicos -->
+          <EstadisticaCard 
+            titulo="Días scrapeados"
+            :valor="diasConNoticias && diasConNoticias.dias_con_noticias ? diasConNoticias.dias_con_noticias : '0'"
+            descripcion="Días distintos en los que se han recopilado noticias"
+            :hayDatos="!!(diasConNoticias && diasConNoticias.dias_con_noticias)"
+          />
+
           <EstadisticaCard 
             titulo="Periódicos Registrados"
             :valor="contadorPeriodicos && contadorPeriodicos.data && contadorPeriodicos.data.length > 0 ? 
                    contadorPeriodicos.data[0]['count(id)'] || '0' : '0'"
             descripcion="Fuentes de noticias activas"
-            colorBorde="blue"
-            colorTexto="blue"
             :hayDatos="!!(contadorPeriodicos && contadorPeriodicos.data && contadorPeriodicos.data.length > 0)"
           />
         </div>
         
-        <!-- Termómetro: Media de Calificaciones -->
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden border-t-4 border-green-500 p-5 mb-6">
-          <h2 class="text-xl font-semibold text-gray-800 mb-4">Media de Calificaciones</h2>
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden border-t-4 border-[#C0C0C0] p-5 mb-6">
+          <h2 class="text-xl font-semibold text-[#2C2C2C] mb-4">Media de Calificaciones</h2>
           <div v-if="mediaCalificaciones && mediaCalificaciones.data && mediaCalificaciones.data.length > 0">
             <div class="flex flex-col items-center">
               <div class="w-full max-w-2xl">
@@ -142,16 +146,16 @@ onMounted(() => {
                   :showValue="false"
                   height="h-8"
                 />
-                <p class="text-center font-bold text-lg mt-2">
+                <p class="text-center font-bold text-lg mt-2 text-[#2C2C2C]">
                   {{ mediaCalificaciones.data[0]['AVG(coeficiente)'].toFixed(5) }}
                 </p>
               </div>
-              <p class="text-sm text-gray-500 mt-4 text-center">
+              <p class="text-sm text-[#5A5A5A] mt-4 text-center">
                 Promedio de tendencia ideológica de todas las noticias
               </p>
             </div>
           </div>
-          <div v-else class="text-gray-400 italic text-center">
+          <div v-else class="text-[#5A5A5A] italic text-center">
             No hay datos disponibles
           </div>
         </div>
