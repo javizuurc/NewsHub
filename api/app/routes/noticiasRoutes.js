@@ -15,6 +15,7 @@ router.get('/media-calificaciones', noticiasController.getMediaCalificaciones.bi
 router.get('/dias-noticias', noticiasController.getDiasConNoticias.bind(noticiasController));
 router.post('/agrupar-bbdd', noticiasController.insertarGruposBBDD.bind(noticiasController));
 router.get('/grupos-noticias', noticiasController.getGruposNoticias.bind(noticiasController)); 
+router.get('/frecuencia-topico', noticiasController.getFrecuenciaTopico.bind(noticiasController));
 
 
 module.exports = router;

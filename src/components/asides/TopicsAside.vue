@@ -2,6 +2,7 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import AsideComponent from './AsideComponent.vue';
 import TopicCard from '../ui/tags/TopicTagComponent.vue';
+import LineaTiempoTopico from '../../charts/LineaTiempoTopico.vue';
 
 const diarios = ref({
   topicos: [],
@@ -9,12 +10,16 @@ const diarios = ref({
   error: null,
   intervalId: null
 });
+
 const semanales = ref({
   topicos: [],
   cargando: true,
   error: null,
   intervalId: null
 });
+
+const topicoSeleccionado = ref(null);
+const historial = ref([]);
 
 const capitalize = (str) => {
   if (!str) return '';
@@ -71,10 +76,13 @@ const fetchTopicosSemanales = () => {
     });
 };
 
+const seleccionarTopico = (nombre) => {
+  topicoSeleccionado.value = nombre;
+};
+
 onMounted(() => {
   fetchTopicosDiarios();
   fetchTopicosSemanales();
-
   diarios.value.intervalId = setInterval(fetchTopicosDiarios, 300000);
   semanales.value.intervalId = setInterval(fetchTopicosSemanales, 300000);
 });
@@ -107,6 +115,7 @@ onBeforeUnmount(() => {
             :key="index" 
             :name="topico.nombre"
             :type="'daily'"
+            @click="seleccionarTopico(topico.nombre)"
           />
           <p v-if="diarios.topicos.length === 0" class="text-gray-400">No hay tópicos diarios disponibles.</p>
         </div>
@@ -127,9 +136,26 @@ onBeforeUnmount(() => {
             :key="index" 
             :name="topico.nombre"
             :type="'weekly'"
+            @click="seleccionarTopico(topico.nombre)"
           />
           <p v-if="semanales.topicos.length === 0" class="text-gray-400">No hay tópicos semanales disponibles.</p>
         </div>
+      </li>
+
+      <li v-if="topicoSeleccionado" class="mt-4 relative bg-white rounded shadow p-3">
+        <button
+          @click="topicoSeleccionado = null"
+          class="absolute top-2 right-2 text-gray-400 hover:text-black text-lg font-bold"
+          aria-label="Cerrar gráfico"
+        >
+          ×
+        </button>
+
+        <h3 class="text-[#2C2C2C] font-medium mb-2">
+          Evolución de "{{ topicoSeleccionado }}"
+        </h3>
+
+        <LineaTiempoTopico :topico="topicoSeleccionado" />
       </li>
     </ul>
   </AsideComponent>

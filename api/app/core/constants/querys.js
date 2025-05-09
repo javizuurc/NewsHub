@@ -148,6 +148,24 @@ const QUERIES = {
         WHERE g.id IN (SELECT grupo_id FROM grupos_filtrados)
         ORDER BY g.id, n.fecha_scraping DESC;
         `,
+    FRECUENCIA_TOPICO: `
+        SELECT 
+            DATE(n.fecha_scraping) AS fecha, 
+            COUNT(*) AS frecuencia
+        FROM 
+            noticias_claves nc
+        JOIN 
+            claves c ON nc.clave_id = c.id
+        JOIN 
+            noticias n ON nc.noticia_id = n.id
+        WHERE 
+            LOWER(TRIM(c.nombre)) = LOWER(TRIM(?))
+        GROUP BY 
+            fecha
+        ORDER BY 
+            fecha DESC
+        LIMIT 7;
+    `,
 };
 
 module.exports = QUERIES;

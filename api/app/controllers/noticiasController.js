@@ -327,6 +327,25 @@ class NoticiasController {
             res.status(500).json({ error: 'Error al obtener los días con noticias' });
         }
     }
+
+    async getFrecuenciaTopico(req, res) {
+        const { topico } = req.query;
+        if (!topico) return res.status(400).json({ success: false, message: 'Falta el parámetro "topico"' });
+      
+        try {
+          const sequelize = BBDD.getSequelize();
+          const [result] = await sequelize.query(QUERIES.FRECUENCIA_TOPICO, {
+            replacements: [topico]
+          });
+      
+          return res.status(200).json({ success: true, data: result.reverse() }); 
+        } catch (error) {
+          console.error('Error al obtener frecuencia del tópico:', error);
+          return res.status(500).json({ success: false, message: 'Error interno', error: error.message });
+        }
+      }
+
+
 }
 
 const controller = new NoticiasController();
