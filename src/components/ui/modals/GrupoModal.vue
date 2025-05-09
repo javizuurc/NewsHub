@@ -18,9 +18,14 @@ const parseJustificacion = (justificacion) => {
 
 const getTendenciaIdeologica = (coef) => {
   if (coef == null) return null;
-  if (coef < -1) return 'Izquierda';
-  if (coef > 1) return 'Derecha';
-  return 'Centro';
+  if (coef <= -5.00 && coef >= -6.00) return 'Ultra-Izquierda';
+  if (coef < -2.00 && coef > -5.00) return 'Izquierda';
+  if (coef < -1.00 && coef >= -1.99) return 'Leve Izquierda';
+  if (coef <= 0.99 && coef >= -0.99) return 'Centro';
+  if (coef >= 1.00 && coef <= 1.99) return 'Leve Derecha';
+  if (coef > 1.99 && coef <= 4.99) return 'Derecha';
+  if (coef >= 5.00 && coef <= 6.00) return 'Ultra-Derecha';
+  return 'Fuera de rango';
 };
 
 const formatPeriodico = (nombre) => {
