@@ -1,6 +1,7 @@
 <script setup>
 import NosotrosCard from '../components/ui/cards/NosotrosCard.vue';
 import javiImage from '../assets/img/fotos/javi.jpg';
+import manuImage from '../assets/img/fotos/manu.jpeg';
 </script>
 
 <template>
@@ -25,7 +26,7 @@ import javiImage from '../assets/img/fotos/javi.jpg';
           
           <NosotrosCard
             nombre="Manuel Villar Navarro"
-            imagen=""
+            :imagen="manuImage"
             descripcion="34 años y en continuo aprendizaje. 
                           Apasionado por la tecnología y por entender cómo funcionan las cosas por dentro, 
                           he encontrado en el desarrollo web una forma de combinar lógica con la creatividad."
