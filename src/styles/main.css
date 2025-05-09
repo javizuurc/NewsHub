@@ -1,2 +1,5 @@
 @import "tailwindcss";
 @import './fonts.css';
+body {
+    font-family: "Cormorant Garamond", serif;
+}

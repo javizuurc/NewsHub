@@ -370,6 +370,19 @@
     ]
   },
   {
+    "titular_general": "El juez imputa al delegado del Gobierno en Madrid por la contratación de la asesora de Begoña Gómez",
+    "noticias": [
+      {
+        "id": 191,
+        "titulo": "El juez imputa al delegado del Gobierno en Madrid por la contratación de la asesora de Begoña Gómez"
+      },
+      {
+        "id": 324,
+        "titulo": "La Fiscalía sale al rescate del delegado del Gobierno en Madrid tras ser imputado en el caso Begoña y ataca a Peinado"
+      }
+    ]
+  },
+  {
     "titular_general": "Las nucleares responden al señalamiento de Sánchez tras el apagón: \"No fuimos ninguna rémora sino al revés\"",
     "noticias": [
       {
@@ -400,6 +413,10 @@
       {
         "id": 294,
         "titulo": "El Papa que Dios quiera"
+      },
+      {
+        "id": 320,
+        "titulo": "El cardenal Prevost dio la sorpresa y lideró el cónclave desde la primera votación"
       }
     ]
   },
@@ -443,11 +460,19 @@
       {
         "id": 306,
         "titulo": "León XIV nuevo Papa, en directo | El cardenal estadounidense Prevost, elegido Pontífice 267º de la Iglesia Católica"
+      },
+      {
+        "id": 329,
+        "titulo": "Los conservadores acusaron a Prevost de encubrir abusos en Perú y Estados Unidos en vísperas del cónclave"
+      },
+      {
+        "id": 333,
+        "titulo": "‘Podcast’ | El poder que tendrá León XIV"
       }
     ]
   },
   {
-    "titular_general": "Trump, de bromear con ser Papa a celebrar al primer pontífice estadounidense: “Un gran honor para nuestro país”",
+    "titular_general": "Gran Bretaña firma el primer acuerdo comercial con Trump desde la pausa por la guerra comercial",
     "noticias": [
       {
         "id": 302,
@@ -456,6 +481,10 @@
       {
         "id": 319,
         "titulo": "Trump, de bromear con ser Papa a celebrar al primer pontífice estadounidense: “Un gran honor para nuestro país”"
+      },
+      {
+        "id": 326,
+        "titulo": "Trump sugiere reducir los aranceles a China al 80% antes de retomar las negociaciones de la guerra comercial"
       }
     ]
   }

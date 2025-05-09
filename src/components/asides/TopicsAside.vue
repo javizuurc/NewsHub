@@ -2,7 +2,7 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import AsideComponent from './AsideComponent.vue';
 import TopicCard from '../ui/tags/TopicTagComponent.vue';
-import LineaTiempoTopico from '../../charts/LineaTiempoTopico.vue';
+import LineaTiempoTopico from '../../components/ui/charts/LineaTiempoTopico.vue';
 
 const diarios = ref({
   topicos: [],

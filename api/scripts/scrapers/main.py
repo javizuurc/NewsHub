@@ -12,12 +12,12 @@ from scripts.scrapers.periodicos.el_plural import ElPlural
 from scripts.scrapers.periodicos.libertad_digital import LibertadDigital
 
 PERIODICOS = {
-    'el_pais':          ElPais(), 
+    'El País':          ElPais(), 
     #'el_diario':        ElDiario(),
-    'el_plural':        ElPlural(),
-    'abc':              ABC(),
+    'El Plural':        ElPlural(),
+    'ABC':              ABC(),
     #'la_vanguardia':    LaVanguardia(),
-    'libertad_digital': LibertadDigital()
+    'Libertad Digital': LibertadDigital()
 }
 
 async def scrape_newspaper(nombre, objeto):

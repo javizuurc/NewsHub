@@ -7,7 +7,6 @@ defineProps({
 });
 defineEmits(['close']);
 
-
 const parseJustificacion = (justificacion) => {
   try {
     const parsed = JSON.parse(justificacion);
@@ -15,6 +14,13 @@ const parseJustificacion = (justificacion) => {
   } catch {
     return [justificacion];
   }
+};
+
+const getTendenciaIdeologica = (coef) => {
+  if (coef == null) return null;
+  if (coef < -1) return 'Izquierda';
+  if (coef > 1) return 'Derecha';
+  return 'Centro';
 };
 </script>
 
@@ -54,6 +60,7 @@ const parseJustificacion = (justificacion) => {
           class="max-w-full"
         />
       </div>
+
       <div class="p-4 space-y-4">
         <a
           v-for="noticia in grupo.noticias"
@@ -75,10 +82,14 @@ const parseJustificacion = (justificacion) => {
             <p
               v-for="(item, idx) in parseJustificacion(noticia.justificacion)"
               :key="idx"
-              class="mb-1"
+              class="mb-1 before:content-['\2014'] before:mr-2"
             >
               {{ item }}
             </p>
+          </div>
+
+          <div v-if="noticia.coeficiente !== null" class="text-xs text-right mt-2 italic text-gray-700">
+            Tendencia: {{ getTendenciaIdeologica(noticia.coeficiente) }}
           </div>
         </a>
       </div>

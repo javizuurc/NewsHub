@@ -1,0 +1,6 @@
+aiohttp
+requests
+python-dotenv
+mysql-connector-python
+psycopg2-binary
+bs4
