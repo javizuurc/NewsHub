@@ -22,6 +22,15 @@ const getTendenciaIdeologica = (coef) => {
   if (coef > 1) return 'Derecha';
   return 'Centro';
 };
+
+const formatPeriodico = (nombre) => {
+  if (!nombre) return '';
+  return nombre
+    .replace(/_/g, ' ')
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
+};
 </script>
 
 <template>
@@ -51,8 +60,14 @@ const getTendenciaIdeologica = (coef) => {
         class="w-full h-64 object-cover rounded-b-md"
       />
 
-      <div v-if="grupo.media_coeficiente !== null" class="px-4 pb-2 text-gray-800 pt-3">
-        <p class="text-sm font-semibold mb-1">Media del sesgo ideológico:</p>
+      <div v-if="grupo.media_coeficiente != null" class="px-4 pb-2 text-gray-800 pt-3">
+        <p class="text-sm font-semibold mb-1">
+          Media del sesgo ideológico:
+          <span class="ml-2 text-black">
+            {{ grupo.media_coeficiente != null ? grupo.media_coeficiente.toFixed(2) : '' }}
+            ({{ getTendenciaIdeologica(grupo.media_coeficiente) }})
+          </span>
+        </p>
         <IdeologyThermometer
           :coeficiente="grupo.media_coeficiente"
           :showValue="false"
@@ -71,7 +86,9 @@ const getTendenciaIdeologica = (coef) => {
           class="block border rounded-md p-3 bg-gray-50 shadow-sm hover:bg-gray-100 transition"
         >
           <p class="font-semibold text-black font-cormorant">{{ noticia.titulo }}</p>
-          <p class="text-sm text-gray-600">Periódico: {{ noticia.periodico }}</p>
+          <p class="text-sm text-gray-600 tracking-wide">
+            Periódico: {{ formatPeriodico(noticia.periodico) }}
+          </p>
 
           <div
             v-if="noticia.justificacion"
