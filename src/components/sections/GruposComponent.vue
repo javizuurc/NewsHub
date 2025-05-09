@@ -55,14 +55,13 @@ const getGridClass = (index) => {
 
 <template>
   <section class="flex-1 p-4 bg-white rounded-lg shadow">
-    <h2 class="text-lg font-bold text-[#be985d] mb-3 border-b-2 border-[#b08d57] pb-2 text-center">
+    <h2 class="text-3xl font-bold text-[#be985d] mb-3 border-b-2 border-[#b08d57] pb-2 text-center font-cormorant">
       Noticias Relevantes
     </h2>
 
     <div v-if="cargando" class="text-center text-gray-500">Cargando grupos...</div>
     <div v-else-if="error" class="text-center text-red-500">Error: {{ error }}</div>
 
-    
     <div class="flex flex-col gap-4 lg:grid lg:grid-cols-4 xl:grid-cols-5 lg:auto-rows-auto">
       <div v-if="grupos.length === 0" class="col-span-full text-center text-gray-500">
         No hay grupos de noticias disponibles

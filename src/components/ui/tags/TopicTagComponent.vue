@@ -34,7 +34,7 @@ const getBorderClass = (type) => {
     :class="[
       getBorderClass(type),
       'shadow-sm shadow-black/10 hover:-translate-y-2 hover:shadow-md hover:shadow-black/15 hover:bg-[#b08d57] hover:text-white mb-2',
-      'bg-[#2C2C2C] text-[#C0C0C0] px-4 py-2 rounded-full font-medium transition-all duration-300 ease-in-out'
+      'bg-[#2C2C2C] text-[#C0C0C0] px-4 py-2 rounded-full font-medium transition-all duration-300 ease-in-out font-overpass'
     ]"
   />
 </template>

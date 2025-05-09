@@ -48,7 +48,7 @@ const submitForm = async () => {
       class="bg-gray-100 p-6 rounded-lg shadow-lg w-1/2 max-w-md relative"
       @click.stop
     >
-      <h2 class="text-2xl font-semibold mb-4 text-black">{{ title }}</h2>
+      <h2 class="text-2xl font-semibold mb-4 text-black font-cormorant">{{ title }}</h2>
 
       <form @submit.prevent="submitForm">
         <div class="mb-4">

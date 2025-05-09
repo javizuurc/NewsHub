@@ -25,10 +25,10 @@
 </script>
 
 <template>
-  <footer class="bg-[#2C2C2C] text-center text-white py-4 sm:py-6 border-t-4 border-[#be985d]">
+  <footer class="bg-[#2C2C2C] text-center text-white py-4 sm:py-6 border-t-4 border-[#be985d] font-overpass">
     <div class="container mx-auto px-4">
       <div class="flex flex-col items-center text-lg">
-        <router-link to="/nosotros" class="hover:text-[#be985d] transition-colors duration-300">
+        <router-link to="/nosotros" class="hover:text-[#be985d] transition-colors duration-300 font-cormorant">
           <p>Hecho por Javier Cruz Rojas & Manuel Villar Navarro</p>
         </router-link>
         <p>&copy; {{ currentYear }} NewsHub</p>
@@ -44,22 +44,11 @@
           <img :src="social.icon" alt="" class="h-6 w-6" />
         </a>
       </div>
-      <!-- Si no necesitas los enlaces de abajo, puedes eliminarlos -->
-      <!--<div class="mt-6 flex flex-wrap justify-center gap-4 text-sm">
-        <a 
-          v-for="(link, index) in socialLinks" 
-          :key="index"
-          :href="link.url" 
-          class="text-[#C0C0C0] hover:text-[#be985d] transition-colors duration-300"
-        >
-        </a>
-      </div>-->
     </div>
   </footer>
 </template>
 
 <style scoped>
-/* Ajustes para pantallas pequeñas */
 @media (max-width: 640px) {
   .container {
     padding-left: 0.5rem;

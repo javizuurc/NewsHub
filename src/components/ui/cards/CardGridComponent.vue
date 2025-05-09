@@ -31,7 +31,7 @@
 
 <template>
   <BaseCard
-    customClass="bg-white border border-[#C0C0C0] w-full h-full hover:shadow-md transition-all duration-300"
+    customClass="bg-white border border-[#C0C0C0] w-full h-full hover:shadow-md transition-all duration-300 font-overpass"
   >
     <article class="flex flex-col h-full">
       <div class="min-h-[70px] bg-[#F1F1F1] overflow-hidden rounded-t-lg">
@@ -42,7 +42,7 @@
         >
       </div>
       <div class="flex-1 flex flex-col p-2">
-        <h4 class="text-xs lg:text-base font-bold mb-0.5 text-[#2C2C2C] truncate leading-tight">{{ title }}</h4>
+        <h4 class="text-xs lg:text-base font-bold mb-0.5 text-[#2C2C2C] truncate leading-tight font-cormorant">{{ title }}</h4>
         <div class="flex-1">
           <p v-for="(text, index) in content" 
             :key="index" 

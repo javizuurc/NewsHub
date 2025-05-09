@@ -46,7 +46,7 @@ const textColor = computed(() => {
 
 <template>
   <div class="flex flex-col items-center p-4 bg-[#2C2C2C]/90 rounded-lg shadow-lg shadow-black/20 my-4 absolute bottom-[30px] left-1/2 -translate-x-1/2 z-40 backdrop-blur-sm border-2 border-[#be985d] w-auto">
-    <h5 class="text-lg font-semibold text-[#be985d] mb-3">{{ title }}</h5>
+    <h5 class="text-lg font-semibold text-[#be985d] mb-3 font-cormorant">{{ title }}</h5>
     
     <div class="flex flex-col items-center justify-center w-full">
       <div class="relative h-10 bg-gray-100 rounded-full overflow-hidden my-4" :style="{ width: `${width}px` }">

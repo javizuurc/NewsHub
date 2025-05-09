@@ -8,7 +8,7 @@ import javiImage from '../assets/img/fotos/javi.jpg';
     <div class="w-full py-16 bg-white">
       <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold mb-4 border-b-2 border-[#b08d57] pb-2 text-[#be985d] text-center">¿Quiénes somos?</h2>
+          <h2 class="text-3xl font-bold mb-4 border-b-2 border-[#b08d57] pb-2 text-[#be985d] text-center font-cormorant">¿Quiénes somos?</h2>
           <p class="text-lg text-gray-600">
             Somos dos estudiantes apasionados por el Desarrollo de Aplicaciones Web. Nos une la creatividad, 
             el aprendizaje constante y el deseo de construir soluciones útiles e intuitivas.

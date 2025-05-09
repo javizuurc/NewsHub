@@ -6,7 +6,7 @@ import SectionComponent from '../components/layout/SectionComponent.vue';
 
 <template>
   <div class="flex flex-col h-screen">
-    <main class="flex flex-col md:flex-row flex-grow overflow-y-auto md:overflow-hidden">
+    <main class="flex flex-col md:flex-row flex-grow overflow-y-auto md:overflow-hidden font-overpass">
       <NewsAside class="w-full md:w-1/4 lg:w-1/5 flex-shrink-0 md:h-full md:overflow-y-auto"></NewsAside>
       <SectionComponent class="w-full md:flex-1 md:h-full md:overflow-y-auto"></SectionComponent>
       <TopicsAside class="w-full md:w-1/4 lg:w-1/5 flex-shrink-0 md:h-full md:overflow-y-auto"></TopicsAside>

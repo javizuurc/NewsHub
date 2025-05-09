@@ -42,9 +42,9 @@
       <div 
         class="absolute w-2 h-3 -mt-2.5 rounded-full bg-black transform -translate-x-1/2"
         :style="{ left: `${indicatorPosition}%` }"
-      ></div>
+      ></div> 
     </div>
-    <div v-if="showValue" class="flex justify-between text-xs text-gray-600 dark:text-gray-400 mt-1">
+    <div v-if="showValue" class="flex justify-between text-xs text-gray-600 dark:text-gray-400 mt-1 font-overpass">
       <span>{{ posicionTexto }}</span>
       <span>{{ coeficiente.toFixed(2) }}</span>
     </div>

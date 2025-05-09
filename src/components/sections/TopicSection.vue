@@ -19,7 +19,7 @@ defineProps({
 
 <template>
   <li>
-    <h5 class="text-lg font-semibold text-[#be985d] mb-3 border-b border-[#b08d57] pb-2">{{ title }}</h5>
+    <h5 class="text-lg font-semibold text-[#be985d] mb-3 border-b border-[#b08d57] pb-2 font-cormorant">{{ title }}</h5>
     <div class="flex flex-wrap gap-2">
       <Topic 
         v-for="topic in topics" 

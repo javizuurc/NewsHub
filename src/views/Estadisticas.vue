@@ -93,7 +93,7 @@ onMounted(() => {
     <NewsAside class="w-full md:w-1/4 lg:w-1/5 flex-shrink-0 md:h-full md:overflow-y-auto"></NewsAside>
     
     <div class="w-full md:w-3/4 lg:w-4/5 p-6 md:overflow-y-auto bg-white">
-      <h4 class="text-xl font-bold mb-4 border-b-2 border-[#b08d57] pb-2 text-[#be985d] text-center">Estadísticas</h4>
+      <h4 class="text-xl font-bold mb-4 border-b-2 border-[#b08d57] pb-2 text-[#be985d] text-center font-cormorant">Estadísticas</h4>
       
       <div v-if="cargando" class="flex justify-center items-center h-64">
         <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#FFD700]"></div>
@@ -137,7 +137,7 @@ onMounted(() => {
         </div>
         
         <div class="bg-white rounded-lg shadow-lg overflow-hidden border-t-4 border-[#C0C0C0] p-5 mb-6">
-          <h2 class="text-xl font-semibold text-[#2C2C2C] mb-4">Media de Calificaciones</h2>
+          <h2 class="text-xl font-semibold text-[#2C2C2C] mb-4 font-cormorant">Media de Calificaciones</h2>
           <div v-if="mediaCalificaciones && mediaCalificaciones.data && mediaCalificaciones.data.length > 0">
             <div class="flex flex-col items-center">
               <div class="w-full max-w-2xl">

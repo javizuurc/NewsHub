@@ -49,7 +49,7 @@ const hasIconSlot = computed(() => !!useSlots().icon);
         </template>
       </div>
       <div class="flex-1">
-        <h2 class="text-base font-semibold text-[#2C2C2C] mb-1">{{ titulo }}</h2>
+        <h2 class="text-base font-semibold text-[#2C2C2C] mb-1 font-cormorant">{{ titulo }}</h2>
         <div v-if="hayDatos">
           <p class="text-2xl font-bold text-[#2C2C2C] mb-1">{{ valor }}</p>
           <p class="text-xs text-[#5A5A5A]">{{ descripcion }}</p>

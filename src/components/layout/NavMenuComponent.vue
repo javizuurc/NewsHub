@@ -20,7 +20,7 @@
 </script>
 
 <template>
-  <nav class="bg-[#2C2C2C] text-white p-4 shadow-xl border-b-4 border-[#be985d]">
+  <nav class="bg-[#2C2C2C] text-white p-4 shadow-xl border-b-4 border-[#be985d] font-overpass">
     <div class="container mx-auto px-4 flex flex-row justify-between items-center">
       <div class="flex items-center">
         <button 
@@ -38,7 +38,7 @@
             <img src="/src/assets/Logo NewsHub.png" alt="Logo NewsHub" class="size-15">
           </router-link>
           <router-link to="/" 
-            class="text-3xl text-white hover:text-[#C0C0C0] transition-all duration-500 transform hover:scale-105 ml-1" 
+            class="text-3xl text-white hover:text-[#C0C0C0] transition-all duration-500 transform hover:scale-105 ml-1 font-cormorant" 
             aria-label="NewsHub" id="nombre">
             NewsHub
           </router-link>

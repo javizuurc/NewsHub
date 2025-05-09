@@ -96,8 +96,8 @@ onBeforeUnmount(() => {
 <template>
   <AsideComponent 
     sectionTitle="Tópicos" 
-    class="bg-[#2C2C2C] rounded-lg shadow-md shadow-black/10"
-    titleClass="text-[#be985d] border-[#b08d57] text-xl tracking-wide"
+    class="bg-[#2C2C2C] rounded-lg shadow-md shadow-black/10 font-overpass"
+    titleClass="text-[#be985d] border-[#b08d57] text-xl tracking-wide font-cormorant"
   >
     <ul class="space-y-6">
       <!-- Tópicos Diarios -->

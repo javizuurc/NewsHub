@@ -63,7 +63,7 @@
           :style="{ left: `${thermometerValue}%` }"
         ></div>
       </div>
-      <div v-if="showValue" class="flex justify-between text-xs text-gray-600 dark:text-gray-400 mt-1">
+      <div v-if="showValue" class="flex justify-between text-xs text-gray-600 dark:text-gray-400 mt-1 font-overpass">
         <span>{{ posicionTexto }}</span>
         <span>{{ coeficiente.toFixed(2) }}</span>
       </div>

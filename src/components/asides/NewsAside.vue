@@ -39,23 +39,25 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <AsideComponent sectionTitle="Noticias Recientes">
-    <div v-if="cargando" class="p-4 text-center">
-      <p>Cargando noticias...</p>
-    </div>
-    <div v-else-if="error" class="p-4 text-center text-red-500">
-      <ErrorTexto v-if="error" :mensaje="error" />
-    </div>
-    <div v-else class="space-y-4 pr-2">
-      <AsideCard 
-        v-for="(noticia, index) in noticias" 
-        :key          = "index" 
-        :titulo       = "noticia.titulo" 
-        :fecha        = "noticia.fecha_publicacion" 
-        :url          = "noticia.url"
-        :periodico    = "noticia.periodico_nombre"
-        :coeficiente  = Number(noticia.coeficiente)
-      />
-    </div>
+  <AsideComponent sectionTitle="Noticias Recientes" class="font-overpass">
+    <template #default>
+      <div v-if="cargando" class="p-4 text-center">
+        <p>Cargando noticias...</p>
+      </div>
+      <div v-else-if="error" class="p-4 text-center text-red-500">
+        <ErrorTexto v-if="error" :mensaje="error" />
+      </div>
+      <div v-else class="space-y-4 pr-2">
+        <AsideCard 
+          v-for="(noticia, index) in noticias" 
+          :key          = "index" 
+          :titulo       = "noticia.titulo" 
+          :fecha        = "noticia.fecha_publicacion" 
+          :url          = "noticia.url"
+          :periodico    = "noticia.periodico_nombre"
+          :coeficiente  = "Number(noticia.coeficiente)"
+        />
+      </div>
+    </template>
   </AsideComponent>
 </template>

@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Overpass';
+    src: url('../assets/fonts/Overpass/static/Overpass-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('../assets/fonts/Cormorant_Garamond/static/CormorantGaramond-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}

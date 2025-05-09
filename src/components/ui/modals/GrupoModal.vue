@@ -34,7 +34,7 @@ const parseJustificacion = (justificacion) => {
         ×
       </button>
 
-      <h2 class="text-2xl font-bold p-4 border-b text-black">
+      <h2 class="text-2xl font-bold p-4 border-b text-black font-cormorant">
         {{ grupo.titular_general }}
       </h2>
 
@@ -63,14 +63,14 @@ const parseJustificacion = (justificacion) => {
           rel="noopener noreferrer"
           class="block border rounded-md p-3 bg-gray-50 shadow-sm hover:bg-gray-100 transition"
         >
-          <p class="font-semibold text-black">{{ noticia.titulo }}</p>
+          <p class="font-semibold text-black font-cormorant">{{ noticia.titulo }}</p>
           <p class="text-sm text-gray-600">Periódico: {{ noticia.periodico }}</p>
 
           <div
             v-if="noticia.justificacion"
             class="text-sm text-gray-700 leading-relaxed mt-2"
           >
-            <p class="italic font-semibold text-black mb-1">Justificación:</p>
+            <p class="italic font-semibold text-black mb-1 font-cormorant">Justificación:</p>
 
             <p
               v-for="(item, idx) in parseJustificacion(noticia.justificacion)"
