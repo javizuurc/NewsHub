@@ -19,7 +19,7 @@ class ElPais(ModeloPeriodico):
                 if respuesta.status == 200:
                     html = await respuesta.text()
                     soup = BeautifulSoup(html, 'html.parser')
-                    section = soup.find('section', class_='_g _g-lg _g-o b b-co') 
+                    section = soup.find('section', class_='_g _g-md _g-o b b-d') 
                     if section:
                         # Se itera sobre los elementos hijos directos de la sección
                         for sec in section.find_all(recursive=False):
