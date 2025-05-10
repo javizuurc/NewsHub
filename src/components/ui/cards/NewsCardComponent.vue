@@ -42,7 +42,9 @@
     >
       <div class="flex flex-col h-full w-full">
         <div class="mb-2 w-full">
-          <h5 class="text-sm font-semibold line-clamp-2 bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-[length:200%_auto] text-transparent bg-clip-text animate-silverShine break-words font-cormorant">{{ titulo }}</h5>
+          <h5 class="text-sm font-semibold line-clamp-2 break-words font-cormorant text-black dark:text-[#F1F1F1]">
+            {{ titulo }}
+          </h5>
         </div>
         
         <div class="flex-grow flex flex-col justify-between w-full">

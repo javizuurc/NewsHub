@@ -20,7 +20,7 @@
 </script>
 
 <template>
-  <nav class="bg-[#2C2C2C] text-white p-4 shadow-xl border-b-4 border-[#be985d] font-overpass">
+  <nav class="bg-[#2C2C2C] text-white p-4 shadow-xl border-b-4 border-[#be985d]">
     <div class="container mx-auto px-4 flex flex-row justify-between items-center">
       <div class="flex items-center">
         <button 

@@ -14,7 +14,6 @@ const QUERIES = {
             INNER JOIN (
                 SELECT periodico_id, MIN(id) AS min_id
                 FROM noticias
-                WHERE DATE(fecha_scraping) = CURDATE()
                 GROUP BY periodico_id
             ) sub ON sub.periodico_id = n.periodico_id AND n.id = sub.min_id
             )
