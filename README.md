@@ -61,3 +61,8 @@ node server.js
 ```
 
 Una vez iniciado el servidor Express.js la aplicación está lista tanto para recibir noticias como para analizarlas.
+
+
+#### 7. Documentación NewsHub
+
+https://drive.google.com/file/d/11P8m4yfPN1Tq_I24cPZsgpyYa12wkJxt/view?usp=drive_link
