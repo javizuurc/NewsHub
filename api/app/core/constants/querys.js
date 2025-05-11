@@ -1,45 +1,45 @@
 const QUERIES = {
     ULTIMAS_NOTICIAS_PERIODICOS: `
-      
-      (
-            SELECT
-                n.id,
-                n.titulo,
-                DATE_FORMAT(n.fecha_publicacion, '%d-%m-%Y') AS fecha_publicacion,
-                p.nombre AS periodico_nombre,
-                n.url,
-                n.coeficiente
-            FROM noticias n
-            JOIN periodicos p ON p.id = n.periodico_id
-            INNER JOIN (
-                SELECT periodico_id, MIN(id) AS min_id
-                FROM noticias
-                GROUP BY periodico_id
-            ) sub ON sub.periodico_id = n.periodico_id AND n.id = sub.min_id
-            )
-            UNION
-            (
-            SELECT
-                n.id,
-                n.titulo,
-                DATE_FORMAT(n.fecha_publicacion, '%d-%m-%Y') AS fecha_publicacion,
-                p.nombre AS periodico_nombre,
-                n.url,
-                n.coeficiente
-            FROM noticias n
-            JOIN periodicos p ON p.id = n.periodico_id
-            WHERE DATE(n.fecha_scraping) = CURDATE()
-                AND n.id NOT IN (
-                SELECT MIN(id)
-                FROM noticias
-                WHERE DATE(fecha_scraping) = CURDATE()
-                GROUP BY periodico_id
-                )
-            ORDER BY RAND()
-            LIMIT 1
-            );
-                
-
+        (
+    SELECT
+        n.id,
+        n.titulo,
+        DATE_FORMAT(n.fecha_publicacion, '%d-%m-%Y') AS fecha_publicacion,
+        p.nombre AS periodico_nombre,
+        n.url,
+        n.coeficiente
+    FROM noticias n
+    JOIN periodicos p ON p.id = n.periodico_id
+    INNER JOIN (
+        SELECT periodico_id, MIN(id) AS min_id
+        FROM noticias
+        WHERE DATE(fecha_scraping) = CURDATE()
+        GROUP BY periodico_id
+    ) sub ON sub.periodico_id = n.periodico_id AND n.id = sub.min_id
+    LIMIT 4
+)
+UNION
+(
+   
+    SELECT
+        n.id,
+        n.titulo,
+        DATE_FORMAT(n.fecha_publicacion, '%d-%m-%Y') AS fecha_publicacion,
+        p.nombre AS periodico_nombre,
+        n.url,
+        n.coeficiente
+    FROM noticias n
+    JOIN periodicos p ON p.id = n.periodico_id
+    WHERE DATE(n.fecha_scraping) = CURDATE()
+      AND n.id NOT IN (
+          SELECT MIN(id)
+          FROM noticias
+          WHERE DATE(fecha_scraping) = CURDATE()
+          GROUP BY periodico_id
+      )
+    ORDER BY RAND()
+    LIMIT 1
+);
 
         `,
     TOPICOS_DIARIOS: `
@@ -128,7 +128,7 @@ const QUERIES = {
           g.titular_general,
           n.id AS noticia_id,
           n.titulo AS noticia_titulo,
-          COALESCE(iv.imagen_valida, 'http://www.newshub.com/img/generica.jpg') AS imagen,
+          COALESCE(iv.imagen_valida, 'http://2.137.35.207/img/generica.jpg') AS imagen,
           n.justificacion,
           n.url,
           n.fecha_publicacion,
