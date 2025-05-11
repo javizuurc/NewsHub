@@ -33,7 +33,7 @@ ToDo.md
 *.key
 *.pem
 config/secrets.yml
-
+vite.config.js
 # --------------------------
 # Logs y bases de datos
 # --------------------------
