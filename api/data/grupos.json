@@ -61,6 +61,10 @@
       {
         "id": 201,
         "titulo": "La Comisión Europea descarta que el apagón peninsular fuera causado por las renovables"
+      },
+      {
+        "id": 361,
+        "titulo": "La investigación preliminar de los operadores europeos desmonta la primera gran mentira del Gobierno sobre el apagón"
       }
     ]
   },
@@ -541,6 +545,10 @@
       {
         "id": 349,
         "titulo": "Macron, Merz, Starmer y Tusk se reúnen en Kiev con Zelenski para abordar una tregua de 30 días"
+      },
+      {
+        "id": 373,
+        "titulo": "Zelenski valora positivamente que Moscú \"comience a considerar el fin de la guerra\""
       }
     ]
   },
@@ -584,7 +592,7 @@
     ]
   },
   {
-    "titular_general": "La India y Pakistán acuerdan un alto el fuego inmediato en el conflicto",
+    "titular_general": "Trump anuncia un \"alto el fuego inmediato\" entre India y Pakistán",
     "noticias": [
       {
         "id": 345,
@@ -593,6 +601,40 @@
       {
         "id": 353,
         "titulo": "La India y Pakistán acuerdan un alto el fuego inmediato en el conflicto"
+      },
+      {
+        "id": 375,
+        "titulo": "Trump valora positivamente el acuerdo entre India y Pakistán y promete un aumento sustancial de sus relaciones comerciales"
+      }
+    ]
+  },
+  {
+    "titular_general": "La presión de los líderes europeos fuerza a Putin a pedir dialogar con Ucrania",
+    "noticias": [
+      {
+        "id": 362,
+        "titulo": "La presión de los líderes europeos fuerza a Putin a pedir dialogar con Ucrania"
+      },
+      {
+        "id": 363,
+        "titulo": "Zelenski condiciona el diálogo con Putin a un alto el fuego desde el lunes"
+      },
+      {
+        "id": 369,
+        "titulo": "Putin desoye el ultimátum europeo para una tregua y propone una nueva negociación directa con Kiev"
+      }
+    ]
+  },
+  {
+    "titular_general": "El Papa León XIV clama por la paz: «En el escenario de una tercera guerra mundial, repito: ¡nunca más la guerra!»",
+    "noticias": [
+      {
+        "id": 364,
+        "titulo": "El Papa León XIV clama por la paz: «En el escenario de una tercera guerra mundial, repito: ¡nunca más la guerra!»"
+      },
+      {
+        "id": 368,
+        "titulo": "Del '¡no tengáis miedo!' de Juan Pablo II al '¡nunca más la guerra!' de Francisco: el primer ángelus de León XIV"
       }
     ]
   }

@@ -5,7 +5,7 @@ import manuImage from '../assets/img/fotos/manu.jpeg';
 </script>
 
 <template>
-  <main class="flex-1 bg-gray-50">
+  <main class="bg-gray-50 py-12">
     <div class="w-full py-16 bg-white">
       <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">

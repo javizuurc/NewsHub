@@ -4,12 +4,15 @@ import FooterComponent from './components/layout/FooterComponent.vue';
 </script>
 
 <template>
-  <div class="flex flex-col h-screen">
-    <NavMenu class="flex-shrink-0"></NavMenu>
-    <router-view />
-    <FooterComponent class="flex-shrink-0"></FooterComponent>
+  <div class="flex flex-col min-h-screen">
+    <NavMenu class="flex-shrink-0" />
+    <div class="flex-grow">
+      <router-view />
+    </div>
+    <FooterComponent class="flex-shrink-0" />
   </div>
 </template>
+
 
 <style scoped>
 @media (max-width: 768px) {

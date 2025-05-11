@@ -47,7 +47,6 @@
       <ul class="hidden lg:flex items-center space-x-6 mx-auto">
         <li><router-link to="/estadisticas" class="py-2 px-3 hover:text-[#be985d] transition-all duration-300 border-b-2 border-transparent hover:border-[#be985d]">Termómetro Nacional</router-link></li>
         <!--<li><a href="#" class="py-2 px-3 hover:text-[#be985d] transition-all duration-300 border-b-2 border-transparent hover:border-[#be985d]">¿Cómo sería si... ?</a></li>-->
-        <li><router-link to="/nosotros" class="py-2 px-3 hover:text-[#be985d] transition-all duration-300 border-b-2 border-transparent hover:border-[#be985d]">Sobre nosotros</router-link></li>
         <li>
           <button 
             @click="openModal" 
@@ -56,6 +55,7 @@
            Analiza tu propia noticia
           </button>
         </li>
+        <li><router-link to="/nosotros" class="py-2 px-3 hover:text-[#be985d] transition-all duration-300 border-b-2 border-transparent hover:border-[#be985d]">Sobre nosotros</router-link></li>
       </ul>
     </div>
 
@@ -66,15 +66,15 @@
       <ul class="flex flex-col py-2">
         <li><router-link to="/" class="block px-4 py-3 hover:bg-[#4A4A4A] hover:text-[#be985d] transition-colors duration-200">Inicio</router-link></li>
         <li><router-link to="/estadisticas" class="block px-4 py-3 hover:bg-[#4A4A4A] hover:text-[#be985d] transition-colors duration-200">Termómetro Nacional</router-link></li>
-        <li><a href="#" class="block px-4 py-3 hover:bg-[#4A4A4A] hover:text-[#be985d] transition-colors duration-200">¿Cómo sería?</a></li>
         <li>
           <button 
             @click="openModal" 
             class="w-full text-left px-4 py-3 hover:bg-[#4A4A4A] hover:text-[#be985d] transition-colors duration-200"
           >
-            Justifica tu propia noticia
+            Analiza tu propia noticia
           </button>
         </li>
+        <li><router-link to="/nosotros" class="block px-4 py-3 hover:bg-[#4A4A4A] hover:text-[#be985d] transition-colors duration-200">Sobre nosotros</router-link></li>
       </ul>
     </div>
 
